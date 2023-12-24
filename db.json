@@ -1,0 +1,51 @@
+
+
+{
+    "searched-journals": [
+      {
+        "id": 1001,
+        "title": "INTELLIGENT FACIAL RECOGNITION SYSTEM USING MACHINE LEARNING ALGORITHM",
+        "subject_area": "Computer Science",
+        "date": "Thursday, 07-Dec-2023 ",
+        "main_author": "Nwogwu J.O., Ugwu Edith A., Mba David L., Oliokwe Bibian N. ",
+        "views": 36,
+        "volume": "Volume 2 Issue XI, Nov 2023",
+        "journal_id": 1,
+        "journal_category": "International Journal Of Real-Time Applications And Computing Systems (IJORTACS)",
+        "address": "Agbani, Enugu state Nigeria ",
+        "intro": "Over recent years, Researchers have displayed a keen interest in dynamic research domains, including the realm of Face Recognition Systems. This study aimed to develop a facial recognition system using a machine learning algorithm, specifically Feedforward Neural Network.Utilizing an effective and efficient facial recognition system enhances itseconomic importance to optimize processes, improve security, enhance customer experience, and reduce costs across a wide range of industries. The study presents a comprehensive methodology for developing an efficient facial recognition system using machine learning techniques. The workflow involves literature review, data collection from the database, image processing with Gaussian and Median filters, robust feature extraction via PCA, and training using a Feedforward Neural Network (FNN) algorithm. The resulting FNN-based model achieved a commendable TPR of 95.58%, FNR of 3.98%, and overall accuracy of 98.78% which showcases the effectiveness, reliability, and versatility of the model across various scenarios.The performance of the FFN-based model demonstrates a balanced trade-off between accuracy, efficiency, and robustness. The innovative approach and consideration of diverse performance metrics of this study contributed significantly to the field of facial recognition technology. The model's potential for real-world scenarios and its unique insights emphasizes the importance of holistic system evaluation. This work enriches the understanding of facial recognition technology and provides a promising direction for future research and advancements in the field. "
+      },
+  
+      {
+        "id": 1002,
+        "title": "INTELLIGENT FACIAL RECOGNITION SYSTEM USING MACHINE LEARNING ALGORITHM",
+        "subject_area": "Computer Science",
+        "date": "Thursday, 07-Dec-2023 ",
+        "main_author": "Nwogwu J.O., Ugwu Edith A., Mba David L., Oliokwe Bibian N. ",
+        "views": 36,
+        "volume": "Volume 2 Issue XI, Nov 2023",
+        "journal_id": 1,
+        "address": "Agbani, Enugu state Nigeria ",
+        "journal_category": "International Journal Of Real-Time Applications And Computing Systems (IJORTACS)",
+        "intro": "Over recent years, Researchers have displayed a keen interest in dynamic research domains, including the realm of Face Recognition Systems. This study aimed to develop a facial recognition system using a machine learning algorithm, specifically Feedforward Neural Network.Utilizing an effective and efficient facial recognition system enhances itseconomic importance to optimize processes, improve security, enhance customer experience, and reduce costs across a wide range of industries. The study presents a comprehensive methodology for developing an efficient facial recognition system using machine learning techniques. The workflow involves literature review, data collection from the database, image processing with Gaussian and Median filters, robust feature extraction via PCA, and training using a Feedforward Neural Network (FNN) algorithm. The resulting FNN-based model achieved a commendable TPR of 95.58%, FNR of 3.98%, and overall accuracy of 98.78% which showcases the effectiveness, reliability, and versatility of the model across various scenarios.The performance of the FFN-based model demonstrates a balanced trade-off between accuracy, efficiency, and robustness. The innovative approach and consideration of diverse performance metrics of this study contributed significantly to the field of facial recognition technology. The model's potential for real-world scenarios and its unique insights emphasizes the importance of holistic system evaluation. This work enriches the understanding of facial recognition technology and provides a promising direction for future research and advancements in the field. "
+      },
+  
+      {
+        "id": 1003,
+        "title": "INTELLIGENT FACIAL RECOGNITION SYSTEM USING MACHINE LEARNING ALGORITHM",
+        "subject_area": "Enginneering",
+        "date": "Thursday, 07-Dec-2023 ",
+        "main_author": "Nwogwu J.O., Ugwu Edith A., Mba David L., Oliokwe Bibian N. ",
+        "views": 36,
+        "volume": "Volume 2 Issue XI, Nov 2023",
+        "journal_id": 2,
+        "journal_category": "International Journal Of Cutting Edge Engineering Research (IJOCEER)",
+        "address": "Agbani, Enugu state Nigeria ",
+        "intro": "Over recent years, Researchers have displayed a keen interest in dynamic research domains, including the realm of Face Recognition Systems. This study aimed to develop a facial recognition system using a machine learning algorithm, specifically Feedforward Neural Network.Utilizing an effective and efficient facial recognition system enhances itseconomic importance to optimize processes, improve security, enhance customer experience, and reduce costs across a wide range of industries. The study presents a comprehensive methodology for developing an efficient facial recognition system using machine learning techniques. The workflow involves literature review, data collection from the database, image processing with Gaussian and Median filters, robust feature extraction via PCA, and training using a Feedforward Neural Network (FNN) algorithm. The resulting FNN-based model achieved a commendable TPR of 95.58%, FNR of 3.98%, and overall accuracy of 98.78% which showcases the effectiveness, reliability, and versatility of the model across various scenarios.The performance of the FFN-based model demonstrates a balanced trade-off between accuracy, efficiency, and robustness. The innovative approach and consideration of diverse performance metrics of this study contributed significantly to the field of facial recognition technology. The model's potential for real-world scenarios and its unique insights emphasizes the importance of holistic system evaluation. This work enriches the understanding of facial recognition technology and provides a promising direction for future research and advancements in the field. "
+      }
+    ]
+  
+
+  
+  }
+  
