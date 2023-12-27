@@ -1,12 +1,10 @@
 <script lang="ts">
 	import journal from '$lib/assets/images/isometric-white-book.png';
-	import { Checkbox, Input } from 'flowbite-svelte';
 	import { enhance } from '$app/forms';
 	import { navigating } from '$app/stores';
 	import {
 		LockSolid,
 		CloseOutline,
-		InfoCircleSolid,
 		CloudArrowUpOutline
 	} from 'flowbite-svelte-icons';
 	import Loader from '../../components/Loader.svelte';
@@ -47,12 +45,7 @@
 		}
 	];
 
-	const choices = [
-		{
-			title: 'Payment Method',
-			options: ['PayStack', 'Stripe', 'Flutter Wave', 'Opay', 'MoniePoint']
-		}
-	];
+	
 
 	const files = [
 		{

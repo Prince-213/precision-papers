@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import type { PageData } from './$types';
+	
 	import { page, navigating } from '$app/stores';
 
 	import notFound from '$lib/assets/images/bubble-gum-magnifier-and-internet-search-bar.png';
@@ -17,20 +17,10 @@
 
 	$: searchItem = data.journals;
 
-	$: key = data.key;
+	
 
-	const searchTitles = [
-		'International Journal Of Real-Time Applications And Computing Systems (IJORTACS)',
-		'International Journal Of Cutting Edge Engineering Research (IJOCEER)',
-		'International Journal Of Explorative Computing Systems (IJECOS)',
-		'International Journal Of Next Generation Engineering Solutions (IJONGES)',
-		'International Journal Of Advances In Artificial Intelligent Trends (IJAIT)',
-		'International Journal Of Advanced Industrial Communications and Cyber Security Systems (IJAICCSS)',
-		'International Journal Of Transformative Engineering Technology (IJOTET)',
-		'International Journal Of Trending Biomedical Science (IJTBS)'
-	];
 
-	$: category = searchTitles[parseInt(key) - 1];
+	
 	$: title = data.title;
 </script>
 

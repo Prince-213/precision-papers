@@ -5,8 +5,6 @@ export const actions = {
     register: async ({ request, cookies }) => {
         const data: any = await request.formData();
 
-        const username = data.get("firstname");
-
         const firstName = data.get("firstname");
         const lastName = data.get("lastname");
         const email = data.get("email")

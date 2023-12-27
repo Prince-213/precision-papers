@@ -5,7 +5,6 @@ export const actions = {
     login: async ({ request, cookies }) => {
         const data: any = await request.formData();
 
-       
         const email = data.get("email")
         const password = data.get("password")
 

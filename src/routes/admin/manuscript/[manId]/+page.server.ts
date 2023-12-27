@@ -38,7 +38,7 @@ export const load = (async ( { fetch, params, url } ) => {
 
     const res = await fetch(`http://localhost:4000/searched-journals`);
     const searchJournals: search[] = await res.json();
-    const filteredJournals = searchJournals.find( ( item: search ) => item.id == parseInt(manId) )
+   
 
 
 

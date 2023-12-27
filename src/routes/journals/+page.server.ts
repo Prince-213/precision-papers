@@ -31,7 +31,6 @@ export const load = (async ( { fetch } ) => {
     .from('categories')
     .select('*')
     
-    console.log(data)
 
     return {
         journals: journals,

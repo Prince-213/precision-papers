@@ -9,10 +9,8 @@
 	import pie from '$lib/assets/images/pexels-lukas-590041.jpg';
 	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
 	import office from '$lib/assets/images/pexels-marc-mueller-380769.jpg';
-	import { goto } from '$app/navigation';
-	import { Button, Checkbox, Gallery } from 'flowbite-svelte';
+	import { Button, Checkbox } from 'flowbite-svelte';
 
-	import { CardPlaceholder } from 'flowbite-svelte';
 	import { navigating } from '$app/stores';
 	import Loader from '../../components/Loader.svelte';
 
@@ -20,46 +18,8 @@
 
 	export let data;
 
-	$: journals = data.journals;
-
 	$: updated = data.updated;
 
-
-	const journalss = [
-		{
-			title: 'International Journal Of Real-Time Applications And Computing Systems (IJORTACS)',
-			poster: maze
-		},
-		{
-			title: 'International Journal Of Cutting Edge Engineering Research (IJOCEER)',
-			poster: abstract
-		},
-		{
-			title: 'International Journal Of Explorative Computing Systems (IJECOS)',
-			poster: code
-		},
-		{
-			title: 'International Journal Of Next Generation Engineering Solutions (IJONGES)',
-			poster: think
-		},
-		{
-			title: 'International Journal Of Advances In Artificial Intelligent Trends (IJAIT)',
-			poster: spark
-		},
-		{
-			title:
-				'International Journal Of Advanced Industrial Communications and Cyber Security Systems (IJAICCSS)',
-			poster: pie
-		},
-		{
-			title: 'International Journal Of Transformative Engineering Technology (IJOTET)',
-			poster: review
-		},
-		{
-			title: 'International Journal Of Trending Biomedical Science (IJTBS)',
-			poster: office
-		}
-	];
 </script>
 
 <svelte:head>

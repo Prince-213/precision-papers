@@ -39,7 +39,7 @@ export const load = (async ( { fetch, params, url } ) => {
 
     return {
         journals: data ?? [],
-        key: searchId,
+        
         title: title[0].title ?? ''
     };
 }) satisfies PageServerLoad;

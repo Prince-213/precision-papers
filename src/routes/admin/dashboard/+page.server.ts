@@ -28,10 +28,7 @@ export const load = (async ({ cookies, url }) => {
 
 export const actions = {
     logout: async ({ request, cookies, url }) => {
-        
-        console.log('fired')
-
-        
+           
         
         cookies.set("status", "", {
             httpOnly: true,

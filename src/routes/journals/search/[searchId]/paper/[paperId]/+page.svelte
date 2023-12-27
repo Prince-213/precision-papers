@@ -6,29 +6,7 @@
 	import { BadgeCheckIcon, UserSearchIcon } from 'lucide-svelte'
 	import { navigating } from '$app/stores';
 
-	let { paperId } = $page.params;
-
-	const categories = [
-		'•	International Journal of Engineering design and Cognitive Computing Systems ',
-		'•	International Journal of Advanced Deep Learning Perspectives ',
-		'•	International Journal of PowerGrid Dynamics Systems Engineering ',
-		'•	International Journal of Recycled Energy Systems and Management ',
-		'•	International Journal of Power-Tech Advances and Innovations ',
-		'•	International Journal of Precision Control Systems  ',
-		'•	International Journal of Space communication Spectrum ',
-		'•	International Journal of Wireless Technologies Review  ',
-		'•	International Journal of Future Communication Trends  ',
-		'•	International Journal of Cyber Resilience Review ',
-		'•	International Journal of Computer Science and Biometric Innovations Review ',
-		'•	International Journal of Computer Science and Smart Biometric Trends ',
-		'•	International Journal of Biomedical and Computer Engineering Trends ',
-		'•	Advance Journal of Database Management Trends ',
-		'•	Advance journal of Secure Information Systems Review ',
-		'•	International Journal of Computer Science and Bio-Tech Innovations ',
-		'•	International Journal of Artificial Intelligence and MedTech Advances ',
-		'•	International Journal of Health-Tech Management '
-	];
-
+	
 	export let data;
 
 	import {
@@ -37,7 +15,7 @@
 		MapPinOutline,
 		BookOpenOutline,
 		ClockOutline,
-		FilePdfSolid,
+		
 		ArchiveDownloadSolid
 	} from 'flowbite-svelte-icons';
 	import Loader from '../../../../../../components/Loader.svelte';

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	
 	import { navigating, page } from '$app/stores';
-	import type { PageData } from '../../$types';
+	
 
-	import { Button, CardPlaceholder, ImagePlaceholder, TextPlaceholder } from 'flowbite-svelte';
+	import { Button, ImagePlaceholder } from 'flowbite-svelte';
 	import Loader from '../../../../components/Loader.svelte';
 
 	const { category } = $page.params;
@@ -20,7 +20,7 @@
 
 	$: journals = data.journals;
 
-	$: description = journals[0].description;
+	
 </script>
 
 <div class=" font-inter w-full min-h-screen py-[10vh]">

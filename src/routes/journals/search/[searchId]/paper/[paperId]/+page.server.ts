@@ -43,7 +43,7 @@ export const load = (async ( { fetch, params, url } ) => {
         .eq('journal_id', paperId)).data
 
 
-    console.log(journal);
+  
 
 
     return {

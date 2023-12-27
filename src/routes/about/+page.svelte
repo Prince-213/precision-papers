@@ -5,13 +5,12 @@
 
 	import background from '$lib/assets/images/pexels-marc-mueller-380769.jpg';
 	import aim from '$lib/assets/images/pexels-lukas-590041.jpg';
-	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
+	
 
 	import { navigating } from '$app/stores';
 
 	import {
-		CheckOutline,
-		FacebookSolid,
+		
 		EnvelopeOutline,
 		GlobeOutline,
 		ChevronRightSolid
@@ -194,11 +193,5 @@
 		background-blend-mode: multiply;
 	}
 
-	.card {
-		backdrop-filter: blur(3px) saturate(200%);
-		-webkit-backdrop-filter: blur(3px) saturate(200%);
-		background-color: rgba(17, 25, 40, 0.71);
-		border-radius: 10px;
-		border: 1px solid rgba(255, 255, 255, 0.125);
-	}
+	
 </style>

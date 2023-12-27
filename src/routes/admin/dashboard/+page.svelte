@@ -3,7 +3,7 @@
 
 	import { navigating } from '$app/stores';
 
-	import { ListPlaceholder, TabItem, WidgetPlaceholder } from 'flowbite-svelte';
+	import { ListPlaceholder } from 'flowbite-svelte';
 
 	const { subscribers, editors, manuscript }: any = data
 

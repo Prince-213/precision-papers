@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { goto, invalidateAll } from '$app/navigation';
-	import type { LayoutData } from './$types';
+	
 
-	import { Button, CardPlaceholder } from 'flowbite-svelte';
+	import { Button } from 'flowbite-svelte';
 	import { navigating } from '$app/stores';
 	import Loader from '../../../../components/Loader.svelte';
 
 	export let data;
 
-	$: journals = data.journals;
+	
 
     $: updated = data.updated;
 

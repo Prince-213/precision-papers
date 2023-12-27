@@ -63,9 +63,7 @@
 					<button on:click={() => goto('/')}>
 						<img src={logo} alt="" />
 					</button>
-					
 				</div>
-				
 
 				<div class="hidden lg:block w-[60%]">
 					<Search />
@@ -102,7 +100,6 @@
 
 							<h2>Final Manuscript Submission</h2>
 						</button>
-						
 					</Dropdown>
 					<Button
 						class=" border-0 border-white focus:border-0 text-black outline-none hover:bg-white border-none focus:border-none focus:outline-none bg-white text-base font-medium p-0"
@@ -111,22 +108,27 @@
 						/></Button
 					>
 					<Dropdown class="w-60 p-3 space-y-1 text-sm">
-						<button
-							on:click={() => goto('/about')}
-							class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-						>
-							<InfoCircleOutline class=" text-black" size="md" />
-
-							<h2>About</h2>
-						</button>
-						<button
-							on:click={() => goto('/eligibility')}
-							class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-						>
-							<InfoCircleOutline class=" text-black" size="md" />
-
-							<h2>Eligibility Info and Benefits</h2>
-						</button>
+						<a href="/about" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
+							<button
+								on:click={() => goto('/about')}
+								class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+							>
+								<InfoCircleOutline class=" text-black" size="md" />
+	
+								<h2>About</h2>
+							</button>
+						</a>
+	
+						<a href="/eligibility" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
+							<button
+								on:click={() => goto('/eligibility')}
+								class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+							>
+								<InfoCircleOutline class=" text-black" size="md" />
+	
+								<h2>Eligibility Info</h2>
+							</button>
+						</a>
 					</Dropdown>
 					<Button
 						class=" border-0 border-white focus:border-0 text-black outline-none hover:bg-white border-none focus:border-none focus:outline-none bg-white text-base font-medium p-0"
@@ -144,14 +146,19 @@
 							<h2>Apply as Editor</h2>
 						</button>
 					</Dropdown>
-					<button
-					on:click={() => goto('/journals')}
-					class="rounded flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-				>
-					<h2>Journals</h2>
-				</button>
+					<a
+						href="/journals"
+						data-sveltekit-preload-code="hover"
+						data-sveltekit-preload-data="hover"
+					>
+						<button
+							on:click={() => goto('/journals')}
+							class="rounded flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+						>
+							<h2>Journals</h2>
+						</button>
+					</a>
 				</ul>
-				
 			</div>
 			<div class=" lg:hidden flex items-center space-x-6">
 				<SearchOutline />
@@ -195,7 +202,6 @@
 
 						<h2>Final Manuscript Submission</h2>
 					</button>
-					
 				</Dropdown>
 				<Button
 					class=" border-0 border-white focus:border-0 text-black outline-none hover:bg-white border-none focus:border-none focus:outline-none bg-white text-base font-medium p-0"
@@ -204,22 +210,27 @@
 					/></Button
 				>
 				<Dropdown class="w-60 p-3 space-y-1 text-sm">
-					<button
-						on:click={() => goto('/about')}
-						class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-					>
-						<InfoCircleOutline class=" text-black" size="md" />
+					<a href="/about" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
+						<button
+							on:click={() => goto('/about')}
+							class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+						>
+							<InfoCircleOutline class=" text-black" size="md" />
 
-						<h2>About</h2>
-					</button>
-					<button
-						on:click={() => goto('/eligibility')}
-						class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-					>
-						<InfoCircleOutline class=" text-black" size="md" />
+							<h2>About</h2>
+						</button>
+					</a>
 
-						<h2>Eligibility Info and Benefits</h2>
-					</button>
+					<a href="/eligibility" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
+						<button
+							on:click={() => goto('/eligibility')}
+							class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+						>
+							<InfoCircleOutline class=" text-black" size="md" />
+
+							<h2>Eligibility Info</h2>
+						</button>
+					</a>
 				</Dropdown>
 				<Button
 					class=" border-0 border-white focus:border-0 text-black outline-none hover:bg-white border-none focus:border-none focus:outline-none bg-white text-base font-medium p-0"
@@ -237,14 +248,10 @@
 						<h2>Apply as Editor</h2>
 					</button>
 				</Dropdown>
-				<button
-					on:click={() => goto('/journals')}
-					class="rounded flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
-				>
-					<h2>Journal</h2>
-				</button>
+				<a href="/journals" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
+					<h2>Journals</h2>
+				</a>
 			</ul>
-			
 		</div>
 	</div>
 </div>
