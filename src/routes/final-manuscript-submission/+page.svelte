@@ -69,6 +69,10 @@
 	$: val = '';
 </script>
 
+<svelte:head>
+	<title>FINAL MANUSCRIPT</title>
+</svelte:head>
+
 {#if $navigating}
 	<Loader />
 {:else}

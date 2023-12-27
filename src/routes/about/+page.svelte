@@ -72,6 +72,10 @@
 	];
 </script>
 
+<svelte:head>
+	<title>ABOUT</title>
+</svelte:head>
+
 {#if $navigating}
 	<Loader />
 {:else}

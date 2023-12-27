@@ -62,6 +62,10 @@
 	];
 </script>
 
+<svelte:head>
+	<title>JOURNALS</title>
+</svelte:head>
+
 <div class=" w-full py-[20vh]">
 	
 	{#if $navigating}

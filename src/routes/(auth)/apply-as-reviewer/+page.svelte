@@ -55,6 +55,10 @@
 	};
 </script>
 
+<svelte:head>
+	<title>EDITOR SIGN UP</title>
+</svelte:head>
+
 <div class=" relative w-full pb-[10vh] pt-[20vh] flex items-center justify-center font-poppins">
 
 	<form

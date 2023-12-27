@@ -64,6 +64,10 @@
 	];
 </script>
 
+<svelte:head>
+	<title>ELIGIBILITY</title>
+</svelte:head>
+
 {#if $navigating}
 	<Loader />
 	{:else}
