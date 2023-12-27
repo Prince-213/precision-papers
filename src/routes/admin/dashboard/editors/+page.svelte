@@ -28,8 +28,8 @@
 
 	import { navigating, page } from '$app/stores';
 
-	import { Button, Checkbox, ListPlaceholder, WidgetPlaceholder } from 'flowbite-svelte';
-	import { Input, Label, Select, Textarea } from 'flowbite-svelte';
+	import { Button, Checkbox, ListPlaceholder } from 'flowbite-svelte';
+	import { Input, Label, Select} from 'flowbite-svelte';
 
 	import { EditOutline, TrashBinOutline } from 'flowbite-svelte-icons';
 
@@ -45,7 +45,7 @@
 
 	let searchTerm = '';
 
-	import { Section } from 'flowbite-svelte-blocks';
+	
 	import { Modal } from 'flowbite-svelte';
 
 	let defaultUpdateModal = false;
@@ -86,7 +86,7 @@
 		
 	};
 
-	import { Trash2Icon } from 'lucide-svelte';
+	
 	import { goto, invalidateAll } from '$app/navigation';
 	import { supabase } from '$lib/supabaseClient';
 

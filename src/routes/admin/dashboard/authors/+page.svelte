@@ -1,5 +1,5 @@
 <script lang="ts">
-	import UsersLine from '../../../../components/UsersLine.svelte';
+	
 
 	type journals = {
 		id: number;

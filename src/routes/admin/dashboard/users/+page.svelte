@@ -4,7 +4,7 @@
 		Modal,
 		Label,
 		Input,
-		Checkbox,
+		
 		Textarea,
 		ListPlaceholder,
 		Spinner
@@ -13,7 +13,6 @@
 
 	import { navigating } from '$app/stores';
 
-	import EmailLine from '../../../../components/EmailLine.svelte';
 	export let data;
 
 	import {

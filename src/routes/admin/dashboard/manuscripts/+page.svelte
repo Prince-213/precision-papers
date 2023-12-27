@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto, invalidateAll } from '$app/navigation';
-	import UsersLine from '../../../../components/UsersLine.svelte';
+	
 	import { supabase } from '$lib/supabaseClient';
 
 	type journals = {
@@ -32,11 +32,11 @@
 
 	import { navigating } from '$app/stores';
 
-	import { Checkbox, ListPlaceholder, WidgetPlaceholder } from 'flowbite-svelte';
+	import { ListPlaceholder } from 'flowbite-svelte';
 
 	import { EditOutline, TrashBinOutline } from 'flowbite-svelte-icons';
 
-	import { Section } from 'flowbite-svelte-blocks';
+	
 	import { Button, Modal } from 'flowbite-svelte';
 	let defaultModal = false;
 	const handleCancel = () => {
@@ -50,7 +50,7 @@
 		}
 	};
 
-	import { Trash2Icon } from 'lucide-svelte';
+	
 
 	import {
 		Table,
