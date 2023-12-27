@@ -92,10 +92,10 @@
 	<div class=" w-full pt-[4%] lg:pt-[2%]">
 		<div class="main w-full flex pt-[15%] pb-[18vh] lg:pt-[0%] bg-cover overflow-x-hidden">
 			<div
-				class=" card w-[95%] lg:w-[60%] flex items-center py-8 lg:py-10 h-fit mt-[10%] lg:mt-[8%] ml-[6%] overflow-hidden"
+				class=" card w-[95%] lg:w-[60%] mx-auto flex items-center py-8 lg:py-10 h-fit mt-[10%] lg:mt-[8%] lg:ml-[6%] overflow-hidden"
 			>
 				<div class=" w-[90%] space-y-10 mx-auto">
-					<h1 class=" text-white font-extrabold font-nova text-6xl w-[90%] lg:text-5xl">
+					<h1 class=" text-white font-extrabold font-nova text-4xl w-[90%] lg:text-5xl">
 						Open Access publishing for the scientific community
 					</h1>
 					<p class=" font-poppins font-medium lg:text-lg w-[80%] text-gray-300">
@@ -105,14 +105,14 @@
 					<div class=" w-full flex justify-between items-center">
 						<button
 							on:click={() => goto('/journals')}
-							class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[48.5%] text-left p-5"
+							class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-sm lg:text-lg rounded-md w-[48.5%] text-left p-5"
 						>
 							<p>Our Jounals</p>
 							<ChevronRightSolid />
 						</button>
 						<button
 							on:click={() => goto('/initial-manuscript-submission')}
-							class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[48.5%] text-left p-5"
+							class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-sm lg:text-lg rounded-md w-[48.5%] text-left p-5"
 						>
 							<p>Publish with us</p>
 							<ChevronRightSolid />
@@ -287,8 +287,8 @@
 			<div
 				class=" w-[80%] lg:flex lg:flex-row lg:items-center flex flex-col lg:justify-between space-y-5 mx-auto"
 			>
-				<div class=" w-[50%] border-r-2 pr-32">
-					<h1 class=" text-3xl mb-8 font-medium pl-14">For authors</h1>
+				<div class=" lg:w-[50%] lg:border-r-2 lg:pr-32">
+					<h1 class=" text-3xl mb-8 font-medium lg:pl-14">For authors</h1>
 					<div class=" flex space-x-10">
 						<PenNibOutline strokeWidth=".5" class=" w-14 h-14" />
 						<div>
@@ -308,7 +308,7 @@
 					</div>
 				</div>
 
-				<div class=" w-[50%] pl-24">
+				<div class=" lg:w-[50%] lg:pl-24">
 					<h1 class=" text-3xl mb-8 font-medium pl-14">For publishers</h1>
 					<div class=" flex space-x-10">
 						<BookOutline strokeWidth=".5" class=" w-14 h-14" />
@@ -358,11 +358,5 @@
 		border: 1px solid rgba(255, 255, 255, 0.048);
 	}
 
-	.neo-btn {
-		border-radius: 50px;
-		background: #ffffff;
-		box-shadow:
-			2px 2px 3px #a6a8ad,
-			-2px -2px 8px #9da0a5;
-	}
+	
 </style>

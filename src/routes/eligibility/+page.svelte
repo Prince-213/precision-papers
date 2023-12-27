@@ -71,9 +71,9 @@
 {#if $navigating}
 	<Loader />
 	{:else}
-	<div class=" font-poppins w-full min-h-screen py-[10vh]">
+	<div class=" font-poppins w-full min-h-screen py-[5vh] lg:py-[10vh]">
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
-			<div class=" text-white w-[40%] space-y-6 ml-[10%] ">
+			<div class=" text-white lg:w-[40%] space-y-6 w-[95%] mx-auto lg:ml-[10%] ">
 				<h1 class=" text-4xl font-medium">Eligibility Info</h1>
 				<h3 class=" text-lg">One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.</h3>
 				<button class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[60%] text-left p-5">
@@ -109,27 +109,7 @@
 				</div>
 				<br />
 	
-				<div class=" relative w-full space-y-5 lg:space-y-20">
-					<div class=" w-full lg:flex-row-reverse lg:flex items-center relative">
-						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={aim} />
-	
-						<div
-							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] left-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
-						>
-							<h1 class=" text-3xl font-semibold">Peer Review Process</h1>
-							<div class=" space-y-3">
-								{#each benefits as process}
-									<div class=" border-b-2 border-gray-400 pb-2 flex  space-x-3">
-										
-										<p class=" text-base text-gray-700">
-											{process}
-										</p>
-									</div>
-								{/each}
-							</div>
-						</div>
-					</div>
-				</div>
+			
 			</div>
 		</div>
 	</div>

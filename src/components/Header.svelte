@@ -174,8 +174,8 @@
 		<div class="flexflex-col lg:hidden pl-8 py-8">
 			<ul class=" space-y-6 flex flex-col justify-start items-start font-medium">
 				<button
-					on:click={() => goto('/')}
-					class="rounded flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+					on:click={() => { goto('/'); toggle() }}
+					class="rounded flex items-center text-left hover:bg-gray-100 dark:hover:bg-gray-600"
 				>
 					<h2>Home</h2>
 				</button>
@@ -187,7 +187,7 @@
 				>
 				<Dropdown class="w-60 p-3 space-y-1 text-sm">
 					<button
-						on:click={() => goto('/initial-manuscript-submission')}
+						on:click={() => {goto('/initial-manuscript-submission'); toggle()}}
 						class="rounded flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
 					>
 						<NewspapperOutline class=" text-black" size="md" />
@@ -195,7 +195,7 @@
 						<h2>Initial Manuscript Submission</h2>
 					</button>
 					<button
-						on:click={() => goto('/final-manuscript-submission')}
+						on:click={() => {goto('/final-manuscript-submission'); toggle()}}
 						class="rounded flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
 					>
 						<NewspapperOutline class=" text-black" size="md" />
@@ -212,7 +212,7 @@
 				<Dropdown class="w-60 p-3 space-y-1 text-sm">
 					<a href="/about" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
 						<button
-							on:click={() => goto('/about')}
+							on:click={() => {goto('/about'); toggle()}}
 							class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
 						>
 							<InfoCircleOutline class=" text-black" size="md" />
@@ -223,7 +223,7 @@
 
 					<a href="/eligibility" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
 						<button
-							on:click={() => goto('/eligibility')}
+							on:click={() => {goto('/eligibility'); toggle()}}
 							class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
 						>
 							<InfoCircleOutline class=" text-black" size="md" />
@@ -240,7 +240,7 @@
 				>
 				<Dropdown class="w-60 p-3 space-y-1 text-sm">
 					<button
-						on:click={() => goto('/apply-as-reviewer')}
+						on:click={() => {goto('/apply-as-reviewer'); toggle()}}
 						class="rounded w-full flex items-center text-left space-x-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-600"
 					>
 						<InfoCircleOutline class=" text-black" size="md" />
@@ -249,7 +249,10 @@
 					</button>
 				</Dropdown>
 				<a href="/journals" data-sveltekit-preload-code="hover" data-sveltekit-preload-data="hover">
-					<h2>Journals</h2>
+					<button on:click={toggle}>
+						<h2>Journals</h2>
+					</button>
+					
 				</a>
 			</ul>
 		</div>

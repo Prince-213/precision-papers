@@ -78,9 +78,9 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" font-poppins w-full min-h-screen py-[10vh]">
+	<div class=" font-poppins w-full min-h-screen py-[5vh] lg:py-[10vh]">
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
-			<div class=" text-white w-[50%] space-y-6 ml-[10%]">
+			<div class=" text-white lg:w-[50%] space-y-6 w-[90%] mx-auto lg:ml-[10%]">
 				<h1 class=" text-4xl font-medium">About Us</h1>
 				<h3 class=" text-lg">
 					Welcome to Precision Papers, a leading platform dedicated to fostering knowledge and

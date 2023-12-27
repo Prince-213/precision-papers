@@ -27,11 +27,11 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" font-inter w-full min-h-screen py-[15vh]">
+	<div class=" font-inter w-full overflow-hidden min-h-screen py-[15vh]">
 		<div class=" w-[90%] mx-auto">
-			<div class=" flex space-x-5 items-end">
-				<h1 class=" text-2xl font-semibold">Search Results For:</h1>
-				<h1 class=" text-xl font-medium">
+			<div class=" flex lg:flex-row flex-col lg:space-x-5 lg:items-end">
+				<h1 class=" text-xl font-semibold">Search Results For:</h1>
+				<h1 class=" text-lg font-medium">
 					{title}
 				</h1>
 			</div>
@@ -42,7 +42,7 @@
 				</div>
 			{:else}
 				<div
-					class=" mans mt-10 lg:w-full w-[95%] md:w-[80%] columns-4 grid lg:grid-cols-3 gap-5 mx-auto"
+					class=" mans mt-10 lg:w-full w-[95%] md:w-[80%] grid-cols-1 grid lg:grid-cols-3 gap-5 mx-auto"
 				>
 					{#each searchItem as item}
 						<div

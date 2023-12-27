@@ -23,13 +23,13 @@
 	
 </script>
 
-<div class=" font-inter w-full min-h-screen py-[10vh]">
+<div class=" font-inter w-full min-h-screen lg:py-[10vh]">
 	{#if $navigating}
 		<ImagePlaceholder />
 	{:else}
 		<div
 			style={` background-image: url(${journals[0].poster})`}
-			class="main bg-fixed flex items-center bg-cover bg-center bg-blend-multiply w-full min-h-[50vh] py-10 bg-[#0000009e]"
+			class="main bg-fixed flex items-center bg-cover bg-center bg-blend-multiply w-full min-h-[50vh] lg:py-10 bg-[#0000009e]"
 		>
 			<div class=" w-[85%] space-y-4 mx-auto py-8">
 				<h1 class=" font-semibold text-white text-3xl">{journals[0].title}</h1>

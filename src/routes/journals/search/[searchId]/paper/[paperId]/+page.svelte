@@ -71,7 +71,7 @@
 				
 			</div>
 			<div
-				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-3 gap-y-10 p-10"
+				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-1 lg:grid-cols-3 gap-y-10 p-10"
 			>
 				<div class=" text-lg flex items-center space-x-3">
 					<ClockOutline />

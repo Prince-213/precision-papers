@@ -14,26 +14,23 @@
 	import { navigating } from '$app/stores';
 	import Loader from '../../components/Loader.svelte';
 
-	$: group = []
+	$: group = [];
 
 	export let data;
 
 	$: updated = data.updated;
-
 </script>
 
 <svelte:head>
 	<title>JOURNALS</title>
 </svelte:head>
 
-<div class=" w-full py-[20vh]">
-	
-	{#if $navigating}
-		<Loader />
-	{:else}
+{#if $navigating}
+	<Loader />
+{:else}
+	<div class=" w-full py-[20vh]">
 		<div class=" flex pl-10">
-			<div class=" space-y-8 h-fit p-5 w-[45%] bg-gray-100">
-				
+			<div class=" hidden lg:block space-y-8 h-fit p-5 w-[45%] bg-gray-100">
 				<h3 class=" border-b-2 border-white pb-2 font-medium text-2xl">Filter By Discipline</h3>
 				<div class="  mt-5 flex items-center space-x-4">
 					<Checkbox bind:group value={'deep_learning'} />
@@ -49,7 +46,7 @@
 				</div>
 				<div class=" mt-5 flex items-center space-x-4">
 					<Checkbox bind:group value={'communication'} />
-					<p class=" font-medium text-lg">Communication </p>
+					<p class=" font-medium text-lg">Communication</p>
 				</div>
 				<div class=" mt-5 flex items-center space-x-4">
 					<Checkbox bind:group value={'biometric_technology'} />
@@ -65,14 +62,14 @@
 				</div>
 			</div>
 			<div class=" space-y-4">
-				<h1 class=" text-5xl mb-10 ml-10 font-semibold">Journals</h1>
+				<h1 class=" text-4xl lg:text-5xl lg:mb-10 lg:ml-10 font-semibold">Journals</h1>
 				<div
-					class=" mans lg:w-[95%] w-[90%] md:w-[80%] columns-4 grid lg:grid-cols-3 gap-5 mx-auto"
+					class=" -translate-x-5 lg:-translate-x-0 mans lg:w-[95%] w-[95%] md:w-[80%] grid lg:grid-cols-3 gap-5 mx-auto"
 				>
 					{#each updated as journal}
 						<div
-							class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10 flex flex-col justify-between">
-						
+							class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10 flex flex-col justify-between"
+						>
 							<h2 class="h-[40%] text-lg font-semibold">
 								{journal.title}
 							</h2>
@@ -84,7 +81,6 @@
 
 							<Button
 								href={`/journals/category/${journal.short}`}
-								
 								class=" py-3 hover:shadow-md w-full px-8 text-black-100 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
 							>
 								See More
@@ -94,8 +90,8 @@
 				</div>
 			</div>
 		</div>
-	{/if}
-</div>
+	</div>
+{/if}
 
 <style>
 </style>

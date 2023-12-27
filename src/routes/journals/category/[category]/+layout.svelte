@@ -18,7 +18,7 @@
 	};
 </script>
 
-<div class=" relative pb-[30vh]">
+<div class=" w-full min-h-screen relative pb-[30vh]">
 	{#if $navigating}
 		<Loader />
 	{:else}
