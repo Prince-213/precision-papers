@@ -152,19 +152,7 @@
 				</div>
 			</div>
 		</div>
-		<div class=" relative w-full z-50 bg-white flex justify-center items-center py-10">
-			<div class=" w-full">
-				<div class=" text-center space-y-2">
-					<h3 class=" text-lg lg:text-3xl font-medium">Biggest Research Formation</h3>
-					<h1 class=" text-3xl lg:text-5xl font-semibold">Publication Process Flow</h1>
-				</div>
-				<div class=" gap-5 w-[90%] mx-auto mt-8 lg:grid-cols-4 grid font-poppins">
-					{#each process as pro}
-						<ProcessCard gif={pro.gif} title={pro.title} description={pro.description} />
-					{/each}
-				</div>
-			</div>
-		</div>
+		
 		<div class=" hidden relative w-full z-50 bg-slate-50 py-4 lg:py-10">
 			<div
 				class=" w-[90%] mx-auto flex flex-col lg:flex-row lg:flex lg:justify-between lg:items-center"
