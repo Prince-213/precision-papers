@@ -3,10 +3,10 @@
 	import { supabase } from '$lib/supabaseClient';
 	import { Button, Spinner } from 'flowbite-svelte';
 	import { CardPlaceholder } from 'flowbite-svelte';
-	import { BadgeCheckIcon, UserSearchIcon } from 'lucide-svelte'
+	import { BadgeCheckIcon, UserSearchIcon, EyeIcon } from 'lucide-svelte';
 	import { navigating } from '$app/stores';
+	import { onMount } from 'svelte';
 
-	
 	export let data;
 
 	import {
@@ -15,7 +15,6 @@
 		MapPinOutline,
 		BookOpenOutline,
 		ClockOutline,
-		
 		ArchiveDownloadSolid
 	} from 'flowbite-svelte-icons';
 	import Loader from '../../../../../../components/Loader.svelte';
@@ -26,6 +25,16 @@
 
 	let path = `https://xedepqtbxdmvqbsbsrrd.supabase.co/storage/v1/object/public/journals/public/${manu}`;
 	console.log(journals);
+
+	$: view = journals[0].views;
+
+	onMount(async () => {
+		const { data, error } = await supabase
+			.from('journals')
+			.update({ views: view + 1 })
+			.eq('journal_id', journals[0].journal_id)
+			.select();
+	});
 </script>
 
 <div class=" w-[90%] font-poppins mx-auto min-h-screen space-y-10 py-[5vh]">
@@ -60,15 +69,14 @@
 				<div class=" flex space-x-4 items-center w-fit">
 					{#if journals[0].enabled}
 						<BadgeCheckIcon class=" text-blue-500" />
-						{:else}
+					{:else}
 						<UserSearchIcon />
 					{/if}
-					
-					<p class=" lg:max-w-[90%] text-lg  font-medium">
+
+					<p class=" lg:max-w-[90%] text-lg font-medium">
 						{journals[0]?.main_author}
 					</p>
 				</div>
-				
 			</div>
 			<div
 				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-1 lg:grid-cols-3 gap-y-10 p-10"
@@ -93,7 +101,7 @@
 					<p>{journals[0]?.address}</p>
 				</div>
 				<div class=" text-lg flex items-center space-x-3">
-					<ChartBars3FromLeftSolid />
+					<EyeIcon />
 					<p>{journals[0]?.views}</p>
 				</div>
 				<div class=" text-lg flex items-center space-x-3">
