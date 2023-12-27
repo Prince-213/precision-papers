@@ -116,7 +116,12 @@
 					</div>
 				</div>
 			</div>
-			<Particle />
+			{#if Particle}
+				<Particle />
+				{:else}
+				<p></p>
+			{/if}
+			
 		</div>
 		<div class=" relative w-full z-50 bg-slate-50 py-4 lg:py-10">
 			<div

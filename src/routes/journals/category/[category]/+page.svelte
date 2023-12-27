@@ -3,7 +3,7 @@
 	import { navigating, page } from '$app/stores';
 	import type { PageData } from '../../$types';
 
-	import { CardPlaceholder, ImagePlaceholder, TextPlaceholder } from 'flowbite-svelte';
+	import { Button, CardPlaceholder, ImagePlaceholder, TextPlaceholder } from 'flowbite-svelte';
 	import Loader from '../../../../components/Loader.svelte';
 
 	const { category } = $page.params;
@@ -47,13 +47,13 @@
 			>
 				<p>{journals[0].description}</p>
 
-				<button
-					on:click={() => goto(`/journals/search/${journals[0].short}`)}
+				<Button
+					href={`/journals/search/${journals[0].short}`}
 					type="submit"
-					class=" py-3 hover:text-blue-600 hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
+					class=" py-3 text-black-100 hover:text-blue-600 hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
 				>
 					See More
-				</button>
+				</Button>
 			</div>
 		{/if}
 	</div>
