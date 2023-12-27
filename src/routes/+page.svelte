@@ -120,7 +120,7 @@
 					</div>
 				</div>
 			</div>
-			
+			<Particle />
 			
 		</div>
 		<div class=" relative w-full z-50 bg-slate-50 py-4 lg:py-10">

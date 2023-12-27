@@ -8,13 +8,13 @@ let particles = {
       }
     },
     "color": {
-      "value": "#ffffff"
+      "value": "#FFFFFF49"
     },
     "shape": {
       "type": "circle",
       "stroke": {
         "width": 0,
-        "color": "#000000"
+        "color": "#00000086"
       },
       "polygon": {
         "nb_sides": 5
@@ -26,7 +26,7 @@ let particles = {
       }
     },
     "opacity": {
-      "value": 0.5,
+      "value": 0.2,
       "random": false,
       "anim": {
         "enable": false,
@@ -48,8 +48,8 @@ let particles = {
     "line_linked": {
       "enable": true,
       "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
+      "color": "#FFFFFF4D",
+      "opacity": 0.2,
       "width": 1
     },
     "move": {
@@ -91,7 +91,7 @@ let particles = {
         "distance": 400,
         "size": 40,
         "duration": 2,
-        "opacity": 8,
+        "opacity": 6,
         "speed": 3
       },
       "repulse": {
