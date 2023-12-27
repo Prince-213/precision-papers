@@ -114,7 +114,7 @@
 							on:click={() => goto('/initial-manuscript-submission')}
 							class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-sm lg:text-lg rounded-md w-[48.5%] text-left p-5"
 						>
-							<p>Publish with us</p>
+							<p>Publish </p>
 							<ChevronRightSolid />
 						</button>
 					</div>
@@ -275,7 +275,7 @@
 						visibility and thus maximize the impact of your work.
 					</p>
 					<button
-						class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[50%] mt-10 text-left p-6"
+						class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-sm lg:text-lg rounded-md w-[60%] mt-10 text-left p-6"
 					>
 						<p>Our Jounals</p>
 						<ChevronRightSolid />
@@ -299,7 +299,7 @@
 							</p>
 							<button
 								on:click={() => goto('/initial-manuscript-submission')}
-								class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-full mt-10 text-left p-5"
+								class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-sm lg:text-lg rounded-md w-full mt-10 text-left p-5"
 							>
 								<p>Publish with us</p>
 								<ChevronRightSolid />
@@ -320,7 +320,7 @@
 							</p>
 							<button
 								on:click={() => goto('/apply-as-reviewer')}
-								class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-full mt-10 text-left p-5"
+								class=" text-sm bg-blue-500 flex justify-between items-center text-white font-semibold lg:text-lg rounded-md w-full mt-10 text-left p-5"
 							>
 								<p>Partner with us</p>
 								<ChevronRightSolid />
