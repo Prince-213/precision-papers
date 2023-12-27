@@ -23,7 +23,7 @@
 	
 </script>
 
-<div class=" font-inter w-full min-h-screen lg:py-[10vh]">
+<div class=" font-inter w-full min-h-screen pb-[10vh]">
 	{#if $navigating}
 		<ImagePlaceholder />
 	{:else}

@@ -27,7 +27,7 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" font-inter w-full overflow-hidden min-h-screen py-[15vh]">
+	<div class=" font-inter w-full overflow-hidden min-h-screen pt-10 pb-[15vh]">
 		<div class=" w-[90%] mx-auto">
 			<div class=" flex lg:flex-row flex-col lg:space-x-5 lg:items-end">
 				<h1 class=" text-xl font-semibold">Search Results For:</h1>

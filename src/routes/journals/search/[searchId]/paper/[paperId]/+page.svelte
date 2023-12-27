@@ -37,7 +37,7 @@
 	});
 </script>
 
-<div class=" w-[90%] font-poppins mx-auto min-h-screen space-y-10 py-[5vh]">
+<div class=" w-[90%] font-poppins mx-auto min-h-screen space-y-10 pb-[5vh]">
 	{#if $navigating}
 		<Loader />
 	{:else}

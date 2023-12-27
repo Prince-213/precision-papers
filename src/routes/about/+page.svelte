@@ -78,7 +78,7 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" font-poppins w-full min-h-screen py-[5vh] lg:py-[10vh]">
+	<div class=" font-poppins w-full min-h-screen ">
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
 			<div class=" text-white lg:w-[50%] space-y-6 w-[90%] mx-auto lg:ml-[10%]">
 				<h1 class=" text-4xl font-medium">About Us</h1>

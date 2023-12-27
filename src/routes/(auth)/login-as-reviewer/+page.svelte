@@ -39,7 +39,7 @@
 	import { invalidateAll } from '$app/navigation';
 </script>
 
-<div class=" w-full pb-[10vh] pt-[20vh] flex items-center justify-center font-poppins">
+<div class=" w-full py-[10vh]  flex items-center justify-center font-poppins">
 	
 	<div class=" lg:w-[40%] bg-white border-2 shadow-md shadow-gray-300 rounded-2xl p-10">
 		<h2 class=" ml-3 mb-10 font-medium text-2xl">Register as A Editor</h2>

@@ -89,7 +89,7 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" w-full pt-[4%] lg:pt-[2%]">
+	<div class=" w-full ">
 		<div class="main w-full flex pt-[15%] pb-[18vh] lg:pt-[0%] bg-cover overflow-x-hidden">
 			<div
 				class=" card w-[95%] lg:w-[60%] mx-auto flex items-center py-8 lg:py-10 h-fit mt-[10%] lg:mt-[8%] lg:ml-[6%] overflow-hidden"
@@ -353,9 +353,10 @@
 	.card {
 		backdrop-filter: blur(3px) saturate(200%);
 		-webkit-backdrop-filter: blur(3px) saturate(200%);
-		background-color: rgba(17, 25, 40, 0.882);
+		background-color: rgba(17, 25, 40, 0.634);
 		border-radius: 10px;
 		border: 1px solid rgba(255, 255, 255, 0.048);
+		z-index: 99;
 	}
 
 	

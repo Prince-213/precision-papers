@@ -16,11 +16,11 @@
 	let particlesConfig = {
 		particles: {
 			color: {
-				value: '#fff'
+				value: '#FFFFFF6A'
 			},
 			links: {
 				enable: true,
-				color: '#fff'
+				color: '#FFFFFF63'
 			},
 			move: {
 				enable: true

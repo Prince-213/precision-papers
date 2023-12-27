@@ -24,7 +24,7 @@
 	{:else}
 		<slot />
 		<div
-			class=" h-[80vh] overflow-scroll lg:absolute right-10 top-[60vh] lg:mt-10 lg:w-[35%] bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 shadow-gray-300 rounded-2xl p-10"
+			class=" h-[70vh]  overflow-scroll lg:absolute right-10 top-[50vh] lg:mt-10 lg:w-[35%] bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 shadow-gray-300 rounded-2xl p-10"
 		>
 			<h3 class=" text-2xl font-medium text-center">Other Journal Catgories</h3>
 			{#each updated as journal}

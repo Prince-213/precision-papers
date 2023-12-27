@@ -55,7 +55,7 @@
 	});
 </script>
 
-<div class=" fixed w-full z-50">
+<div class=" sticky w-full z-50">
 	<header class=" border-b-2 py-4 w-full mx-auto shadow-xl rounded-br-md rounded-bl-md bg-white">
 		<div class=" flex w-[95%] mx-auto justify-between items-center">
 			<div class=" w-[40%] flex justify-between items-center">
