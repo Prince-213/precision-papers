@@ -42,14 +42,14 @@
 		<Loader />
 	{:else}
 		<div class=" py-20 space-y-8">
-			<h1 class=" underline uppercase text-3xl font-semibold">
+			<h1 class=" underline uppercase text-2xl lg:text-3xl font-semibold">
 				{journals[0]?.title}
 			</h1>
 			<div
 				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl justify-between p-10 flex"
 			>
 				<div class=" space-y-8">
-					<p class=" text-gray-800 font-medium text-2xl">
+					<p class=" text-gray-800 font-medium text-xl lg:text-2xl">
 						Subject Area: {journals[0]?.subject_area}
 					</p>
 					{#if journals[0].state == 'published'}
