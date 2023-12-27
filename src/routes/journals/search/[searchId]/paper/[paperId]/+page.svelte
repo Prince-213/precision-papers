@@ -1,5 +1,33 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import { page } from '$app/stores';
+	import { supabase } from '$lib/supabaseClient';
+	import { Button, Spinner } from 'flowbite-svelte';
+	import { CardPlaceholder } from 'flowbite-svelte';
+	import { BadgeCheckIcon, UserSearchIcon } from 'lucide-svelte'
+	import { navigating } from '$app/stores';
+
+	let { paperId } = $page.params;
+
+	const categories = [
+		'•	International Journal of Engineering design and Cognitive Computing Systems ',
+		'•	International Journal of Advanced Deep Learning Perspectives ',
+		'•	International Journal of PowerGrid Dynamics Systems Engineering ',
+		'•	International Journal of Recycled Energy Systems and Management ',
+		'•	International Journal of Power-Tech Advances and Innovations ',
+		'•	International Journal of Precision Control Systems  ',
+		'•	International Journal of Space communication Spectrum ',
+		'•	International Journal of Wireless Technologies Review  ',
+		'•	International Journal of Future Communication Trends  ',
+		'•	International Journal of Cyber Resilience Review ',
+		'•	International Journal of Computer Science and Biometric Innovations Review ',
+		'•	International Journal of Computer Science and Smart Biometric Trends ',
+		'•	International Journal of Biomedical and Computer Engineering Trends ',
+		'•	Advance Journal of Database Management Trends ',
+		'•	Advance journal of Secure Information Systems Review ',
+		'•	International Journal of Computer Science and Bio-Tech Innovations ',
+		'•	International Journal of Artificial Intelligence and MedTech Advances ',
+		'•	International Journal of Health-Tech Management '
+	];
 
 	export let data;
 
@@ -9,74 +37,107 @@
 		MapPinOutline,
 		BookOpenOutline,
 		ClockOutline,
-		FilePdfSolid
+		FilePdfSolid,
+		ArchiveDownloadSolid
 	} from 'flowbite-svelte-icons';
+	import Loader from '../../../../../../components/Loader.svelte';
 
-    $: journal = data.journals
+	const { journals } = data;
+
+	let manu: string = journals[0]?.initial_man;
+
+	let path = `https://xedepqtbxdmvqbsbsrrd.supabase.co/storage/v1/object/public/journals/public/${manu}`;
+	console.log(journals);
 </script>
 
-<div class=" font-poppins mx-auto min-h-screen py-[15vh] space-y-5 w-[90%]">
-	<h1 class=" underline uppercase text-3xl font-semibold">
-    
-		{journal?.title}
-	</h1>
-	<div
-		class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl justify-between p-10 flex"
-	>
-		<div class=" space-y-8">
-			<p class=" text-gray-800 font-medium text-2xl">Subject Area: {journal?.subject_area}</p>
-			<div class=" bg-emerald-600 max-w-fit rounded-md py-3 px-6 text-white font-medium">
-				<p>Published</p>
+<div class=" w-[90%] font-poppins mx-auto min-h-screen space-y-10 py-[5vh]">
+	{#if $navigating}
+		<Loader />
+	{:else}
+		<div class=" py-20 space-y-8">
+			<h1 class=" underline uppercase text-3xl font-semibold">
+				{journals[0]?.title}
+			</h1>
+			<div
+				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl justify-between p-10 flex"
+			>
+				<div class=" space-y-8">
+					<p class=" text-gray-800 font-medium text-2xl">
+						Subject Area: {journals[0]?.subject_area}
+					</p>
+					{#if journals[0].state == 'published'}
+						<div class={` bg-emerald-500  max-w-fit rounded-md py-3 px-6 text-white font-medium`}>
+							<p class=" font-medium">Published</p>
+						</div>
+					{:else if journals[0].state == 'review'}
+						<div class={` bg-yellow-500  max-w-fit rounded-md py-3 px-6 text-white font-medium`}>
+							<p class=" font-medium">On-going Review</p>
+						</div>
+					{:else}
+						<div class={` bg-red-500  max-w-fit rounded-md py-3 px-6 text-white font-medium`}>
+							<p class=" font-medium">Pending</p>
+						</div>
+					{/if}
+				</div>
+				<div class=" flex space-x-4 items-center w-fit">
+					{#if journals[0].enabled}
+						<BadgeCheckIcon class=" text-blue-500" />
+						{:else}
+						<UserSearchIcon />
+					{/if}
+					
+					<p class=" lg:max-w-[90%] text-lg  font-medium">
+						{journals[0]?.main_author}
+					</p>
+				</div>
+				
 			</div>
-		</div>
-		<p class=" lg:max-w-[50%] text-lg font-medium">
-			{journal?.main_author}
-		</p>
-	</div>
-	<div
-		class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-3 gap-y-10 p-10"
-	>
-		<div class=" text-lg flex items-center space-x-3">
-			<ClockOutline />
-			<p>{journal?.date}</p>
-		</div>
+			<div
+				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-3 gap-y-10 p-10"
+			>
+				<div class=" text-lg flex items-center space-x-3">
+					<ClockOutline />
+					<p>{journals[0]?.created_at}</p>
+				</div>
 
-		<div class=" text-lg flex space-x-3">
-			<BookOpenOutline class=" mt-[6px]" />
-			<p>{journal?.journal_category}</p>
+				<div class=" text-lg flex space-x-3">
+					<BookOpenOutline class=" mt-[6px]" />
+					<p>{journals[0]?.department}</p>
+				</div>
+				<div class=" text-lg flex space-x-3">
+					<UserOutline class=" mt-[6px]" />
+					<p>
+						{journals[0]?.total_authors}
+					</p>
+				</div>
+				<div class=" text-lg flex items-center space-x-3">
+					<MapPinOutline />
+					<p>{journals[0]?.address}</p>
+				</div>
+				<div class=" text-lg flex items-center space-x-3">
+					<ChartBars3FromLeftSolid />
+					<p>{journals[0]?.views}</p>
+				</div>
+				<div class=" text-lg flex items-center space-x-3">
+					<BookOpenOutline />
+					<p>{journals[0]?.volume}</p>
+				</div>
+			</div>
+			<div
+				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl justify-between p-10"
+			>
+				<p class=" leading-9">
+					{journals[0]?.intro}
+				</p>
+			</div>
+			<br />
+			<a class=" mt-5" href={path} download="proposed_file_name"
+				><Button class=" bg-black-100 text-white py-5 font-medium flex items-center space-x-5"
+					><p>Download Manuscript</p>
+
+					<ArchiveDownloadSolid class=" text-white" />
+				</Button></a
+			>
 		</div>
-		<div class=" text-lg flex space-x-3">
-			<UserOutline class=" mt-[6px]" />
-			<p>
-				{journal?.main_author}
-			</p>
-		</div>
-		<div class=" text-lg flex items-center space-x-3">
-			<MapPinOutline />
-			<p>{journal?.address}</p>
-		</div>
-		<div class=" text-lg flex items-center space-x-3">
-			<ChartBars3FromLeftSolid />
-			<p>{journal?.views}</p>
-		</div>
-		<div class=" text-lg flex items-center space-x-3">
-			<BookOpenOutline />
-			<p>{journal?.volume}</p>
-		</div>
-	</div>
-	<div
-		class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl justify-between p-10"
-	>
-		<p class=" leading-9">
-			{journal?.intro}
-		</p>
-	</div>
-	<button
-		
-		type="submit"
-		class=" py-3 flex space-x-5 items-center hover:shadow-md max-w-fit px-9 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
-	>
-        <FilePdfSolid />
-		<p class=" text-lg font-medium">Download File</p>
-	</button>
+	{/if}
 </div>

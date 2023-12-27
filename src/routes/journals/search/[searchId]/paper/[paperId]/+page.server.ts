@@ -1,30 +1,54 @@
+import { supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
 
-type search = {
-    id: number,
-    title: string,
-    subject_area: string,
+type single = {
+    id: number;
+    created_at: string;
+    title: string;
+    subject_area: string;
+    views: number;
     date: string,
     main_author: string,
-    views: number,
+    verified: boolean;
+    total_authors: string;
+    author_email: string;
+    organisation: string;
+    department: string;
+    phone_number: string;
+    status: string;
+    no_of_pages: string;
+    initial_man: string;
+    author_declaration: any;
+    state: string;
+    enabled: boolean;
+    role: string;
     volume: string,
-    journal_id: number,
-    journal_category: string,
+    journal_id: string;
+    category: number,
     address: string
     intro: string
-}
+}[]
 
 
 export const load = (async ( { fetch, params, url } ) => {
 
     const { paperId } = params;
+    
 
-    const res = await fetch(`http://localhost:4000/searched-journals`);
-    const searchJournals: search[] = await res.json();
-    const filteredJournals = searchJournals.find( ( item: search ) => item.id == parseInt(paperId) )
+
+
+    const journal = (await supabase
+        .from('journals')
+        .select("*")
+        .eq('journal_id', paperId)).data
+
+
+    console.log(journal);
+
 
     return {
-        journals: filteredJournals,
-        key: paperId
+        journals: journal ?? [],
+        key: paperId,
+        
     };
 }) satisfies PageServerLoad;

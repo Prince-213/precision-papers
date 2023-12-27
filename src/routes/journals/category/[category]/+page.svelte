@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { navigating, page } from '$app/stores';
 	import type { PageData } from '../../$types';
 
-	const { category } = $page.params;
+	import { CardPlaceholder, ImagePlaceholder, TextPlaceholder } from 'flowbite-svelte';
+	import Loader from '../../../../components/Loader.svelte';
 
-	
+	const { category } = $page.params;
 
 	type Journal = {
 		id: number;
@@ -17,36 +18,44 @@
 
 	export let data;
 
-    $: journals = data.journals;
+	$: journals = data.journals;
 
-	$: description = journals.description;
+	$: description = journals[0].description;
 </script>
 
 <div class=" font-inter w-full min-h-screen py-[10vh]">
-	<div
-		style={` background-image: url(${journals.poster})`}
-		class="main flex items-center bg-cover bg-center bg-blend-multiply w-full min-h-[50vh] py-10 bg-[#0000009e]"
-	>
-		<div class=" w-[90%] space-y-4 mx-auto py-8">
-			<h1 class=" font-semibold text-white text-3xl">{journals.title}</h1>
-			<p class=" text-white">{journals.intro}</p>
-		</div>
-	</div>
-	<div class=" w-[90%] mx-auto">
+	{#if $navigating}
+		<ImagePlaceholder />
+	{:else}
 		<div
-			class=" mt-10 lg:w-[60%] bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10"
+			style={` background-image: url(${journals[0].poster})`}
+			class="main bg-fixed flex items-center bg-cover bg-center bg-blend-multiply w-full min-h-[50vh] py-10 bg-[#0000009e]"
 		>
-			{#each description as detail}
-				<p>{detail}</p>
-			{/each}
-			<button
-                on:click={() => goto(`/journals/search/${journals.id}`)}
-				type="submit"
-				class=" py-3 hover:text-blue-600  hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
-			>
-				See More
-			</button>
+			<div class=" w-[85%] space-y-4 mx-auto py-8">
+				<h1 class=" font-semibold text-white text-3xl">{journals[0].title}</h1>
+				<p class=" text-white">{journals[0].intro}</p>
+			</div>
 		</div>
+	{/if}
+
+	<div class=" w-[90%] mx-auto">
+		{#if $navigating}
+			<Loader />
+		{:else}
+			<div
+				class=" mt-10 lg:w-[60%] bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10"
+			>
+				<p>{journals[0].description}</p>
+
+				<button
+					on:click={() => goto(`/journals/search/${journals[0].short}`)}
+					type="submit"
+					class=" py-3 hover:text-blue-600 hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
+				>
+					See More
+				</button>
+			</div>
+		{/if}
 	</div>
 </div>
 

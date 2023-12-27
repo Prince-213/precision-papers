@@ -59,9 +59,13 @@
 	<header class=" border-b-2 py-4 w-full mx-auto shadow-xl rounded-br-md rounded-bl-md bg-white">
 		<div class=" flex w-[95%] mx-auto justify-between items-center">
 			<div class=" w-[40%] flex justify-between items-center">
-				<button on:click={() => goto('/')}>
-					<img src={logo} alt="" />
-				</button>
+				<div class=" flex items-center space-x-4">
+					<button on:click={() => goto('/')}>
+						<img src={logo} alt="" />
+					</button>
+					
+				</div>
+				
 
 				<div class="hidden lg:block w-[60%]">
 					<Search />

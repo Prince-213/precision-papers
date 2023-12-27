@@ -6,7 +6,8 @@
 		Input,
 		Checkbox,
 		Textarea,
-		ListPlaceholder
+		ListPlaceholder,
+		Spinner
 	} from 'flowbite-svelte';
 	let formModal = false;
 
@@ -25,12 +26,12 @@
 		TableSearch
 	} from 'flowbite-svelte';
 
-	import { MailBoxSolid, PapperPlaneOutline } from 'flowbite-svelte-icons'
+	import { MailBoxSolid, PapperPlaneOutline } from 'flowbite-svelte-icons';
+	import emailjs from '@emailjs/browser';
+
 	let searchTerm = '';
 
-	const { subscribers } = data;
-
-	console.log(searchTerm);
+	$: subscribers = data.subscribers;
 
 	let items = [
 		{ id: 1, maker: 'Toyota', type: 'ABC', make: 2017 },
@@ -42,11 +43,48 @@
 		(item) => item.email.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
 	);
 
-	$: recipient = ''
+	let message = '';
+
+	let subject = '';
+
+	$: sending = false;
+
+	const sendMail = async () => {
+		try {
+			
+			if (recipient != 'Everyone') {
+				sending = true;
+				await emailjs.send('service_066spww', 'template_a3jpj1k', {
+					to_name: recipient,
+					message: `Subject: ${subject} \n 
+                            ${message}`,
+					reply_to: recipient,
+					
+				}, '_VUsFZj_ItEgocPVw');
+			} else {
+				sending = true;
+				await emailjs.send('service_066spww', 'template_a3jpj1k', {
+					to_name: filteredItems.map((name) => `${name.email}`).join(','),
+					message: `Subject: ${subject} \n 
+                            ${message}`,
+					reply_to: recipient,
+					
+				}, '_VUsFZj_ItEgocPVw');
+			}
+		} catch (error) {
+			console.log(error)
+		} finally {
+			sending = false;
+		}
+	};
+
+
+
+	$: recipient = '';
 </script>
 
 <Modal bind:open={formModal} size="xs" autoclose={false} class="w-full">
-	<form class="flex flex-col space-y-6 items-center" action="#">
+	<form on:submit|preventDefault={sendMail} class="flex flex-col space-y-6 items-center">
 		<h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Email Broadcast</h3>
 		<Label class=" w-full">
 			<span>To</span>
@@ -57,34 +95,50 @@
 
 		<Label class="space-y-2 w-full">
 			<span>Subject</span>
-			<Input type="text" name="subject" placeholder="subject" required />
+			<Input bind:value={subject} type="text" name="subject" placeholder="subject"/>
 		</Label>
 
 		<div class=" w-full">
-			<Label class=" w-full mb-2" for="textarea-id" >Your message</Label>
-			<Textarea class=" w-full" id="textarea-id" placeholder="Your message" rows="4" name="message" />
+			<Label class=" w-full mb-2" for="textarea-id">Your message</Label>
+			<Textarea
+				class=" w-full"
+				id="textarea-id"
+				placeholder="Your message"
+				rows="4"
+				bind:value={message}
+				name="message"
+			/>
 		</div>
 
-		<Button  class=" flex items-start space-x-4 w-fit text-black-100 border-2 border-black-100 rounded-md"> <p>Send</p> <PapperPlaneOutline class=" -translate-y-1 rotate-45" /></Button>
+		<Button
+			type="submit"
+			class=" flex items-start space-x-4 w-fit text-black-100 border-2 border-black-100 rounded-md"
+		>
+			<p>Send</p>
+			{#if sending}
+			<Spinner currentColor="black" class={` w-6 h-6 `} currentFill="white" />
+			{:else}
+				<PapperPlaneOutline class=" -translate-y-1 rotate-45" />
+			{/if}
+		</Button>
 	</form>
 </Modal>
 <div class=" mx-auto">
 	{#if $navigating}
-		<ListPlaceholder class=" h-[30em]"/>
+		<ListPlaceholder class=" h-[30em]" />
 	{:else}
-
 		<div class=" w-full justify-end flex">
-			<Button on:click={
-				() => {
-						recipient = "Everyone"
-						formModal = true
-					}
-				} class=" text-black-100 border-2 border-black-100 rounded-md">
+			<Button
+				on:click={() => {
+					recipient = 'Everyone';
+					formModal = true;
+				}}
+				class=" text-black-100 border-2 border-black-100 rounded-md"
+			>
 				Broadcast Mail
 			</Button>
 		</div>
-		
-		
+
 		<div class=" lg:overflow-x-hidden overflow-x-scroll w-full">
 			<TableSearch
 				placeholder="Search by maker name"
@@ -93,7 +147,6 @@
 				bind:inputValue={searchTerm}
 			>
 				<TableHead>
-					<TableHeadCell class="!p-4"></TableHeadCell>
 					<TableHeadCell>Id</TableHeadCell>
 					<TableHeadCell>Email</TableHeadCell>
 					<TableHeadCell>Date</TableHeadCell>
@@ -102,22 +155,20 @@
 				<TableBody>
 					{#each filteredItems as item}
 						<TableBodyRow>
-							<TableBodyCell><Checkbox /></TableBodyCell>
 							<TableBodyCell>{item.id}</TableBodyCell>
 							<TableBodyCell>{item['email']}</TableBodyCell>
 							<TableBodyCell>{item['created_at']}</TableBodyCell>
 
 							<TableBodyCell>
 								<div class=" flex items-center space-x-4">
-									<button on:click={
-										() => {
-												recipient = item['email']
-												formModal = true
-											}
-										}>
+									<button
+										on:click={() => {
+											recipient = item['email'];
+											formModal = true;
+										}}
+									>
 										<MailBoxSolid class=" text-blue-500" />
 									</button>
-									
 								</div>
 							</TableBodyCell>
 						</TableBodyRow>

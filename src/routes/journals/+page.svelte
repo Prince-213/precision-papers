@@ -10,11 +10,20 @@
 	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
 	import office from '$lib/assets/images/pexels-marc-mueller-380769.jpg';
 	import { goto } from '$app/navigation';
-	import { Gallery } from 'flowbite-svelte';
+	import { Button, Checkbox, Gallery } from 'flowbite-svelte';
+
+	import { CardPlaceholder } from 'flowbite-svelte';
+	import { navigating } from '$app/stores';
+	import Loader from '../../components/Loader.svelte';
+
+	$: group = []
 
 	export let data;
 
 	$: journals = data.journals;
+
+	$: updated = data.updated;
+
 
 	const journalss = [
 		{
@@ -55,28 +64,74 @@
 
 <div class=" w-full py-[20vh]">
 	
-	<div class=" mans lg:w-[95%] w-[90%] md:w-[80%] columns-4 grid lg:grid-cols-3  gap-5 mx-auto">
-		{#each journals as journal}
-			<div
-				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10"
-			>
-				<h2 class=" text-2xl font-medium">
-					{journal.title}
-				</h2>
-
-				<img src={journal.poster} class=" h-[35vh] rounded-md w-full" alt="" />
-				<button
-					on:click={() => goto(`/journals/category/${journal.id}`)}
-					type="submit"
-					class=" py-3 hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
-				>
-					See More
-				</button>
+	{#if $navigating}
+		<Loader />
+	{:else}
+		<div class=" flex pl-10">
+			<div class=" space-y-8 h-fit p-5 w-[45%] bg-gray-100">
+				
+				<h3 class=" border-b-2 border-white pb-2 font-medium text-2xl">Filter By Discipline</h3>
+				<div class="  mt-5 flex items-center space-x-4">
+					<Checkbox bind:group value={'deep_learning'} />
+					<p class=" font-medium text-lg">Deep Learning</p>
+				</div>
+				<div class=" mt-5 flex items-center space-x-4">
+					<Checkbox bind:group value={'power_system_engineering'} />
+					<p class=" font-medium text-lg">Power System Engineering</p>
+				</div>
+				<div class=" mt-5 flex items-center space-x-4">
+					<Checkbox bind:group value={'control_system'} />
+					<p class=" font-medium text-lg">Control System</p>
+				</div>
+				<div class=" mt-5 flex items-center space-x-4">
+					<Checkbox bind:group value={'communication'} />
+					<p class=" font-medium text-lg">Communication </p>
+				</div>
+				<div class=" mt-5 flex items-center space-x-4">
+					<Checkbox bind:group value={'biometric_technology'} />
+					<p class=" font-medium text-lg">Biometric Technology</p>
+				</div>
+				<div class=" mt-5 flex items-center space-x-4">
+					<Checkbox bind:group value={'dms'} />
+					<p class=" font-medium text-lg">Database Management System</p>
+				</div>
+				<div class=" mt-5 flex items-center space-x-4">
+					<Checkbox bind:group value={'is'} />
+					<p class=" font-medium text-lg">Information Security</p>
+				</div>
 			</div>
-		{/each}
-	</div>
+			<div class=" space-y-4">
+				<h1 class=" text-5xl mb-10 ml-10 font-semibold">Journals</h1>
+				<div
+					class=" mans lg:w-[95%] w-[90%] md:w-[80%] columns-4 grid lg:grid-cols-3 gap-5 mx-auto"
+				>
+					{#each updated as journal}
+						<div
+							class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10 flex flex-col justify-between">
+						
+							<h2 class="h-[40%] text-lg font-semibold">
+								{journal.title}
+							</h2>
+
+							<div
+								style={`background-image: url(${journal.poster});`}
+								class=" w-full rounded-md h-28 bg-center bg-cover"
+							></div>
+
+							<Button
+								href={`/journals/category/${journal.short}`}
+								
+								class=" py-3 hover:shadow-md w-full px-8 text-black-100 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
+							>
+								See More
+							</Button>
+						</div>
+					{/each}
+				</div>
+			</div>
+		</div>
+	{/if}
 </div>
 
 <style>
-	
 </style>

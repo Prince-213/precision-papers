@@ -133,3 +133,4 @@ export const journals: journals = [
         ]
     }
 ];
+

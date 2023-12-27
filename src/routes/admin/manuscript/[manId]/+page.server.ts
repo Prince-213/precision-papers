@@ -59,18 +59,18 @@ export const actions = {
         const mainauthoremail = data.get("main-author email");
         const organization = data.get("organization");
         const department = data.get("department");
-        const noofpages = data.get("noof pages");
+        const noofpages = data.get("noofpages");
         const code = data.get("code");
         const phonenumber = data.get("phonenumber");
-        const country = data.get("country");
-        const city = data.get("city");
-        const state = data.get("state");
+        const country = data.get("address");
+        
         const intro = data.get("intro");
         const status = data.get("personalstatus");
         const journal = data.get("publishingjournal");
         const initialmanuscript: any = data.get("initialmanuscript");
         const journalid = data.get("journalid")
         const former = data.get("formermanuscript");
+        const manstatus = data.get("manstatus")
 
 
         console.log(data)  
@@ -90,14 +90,14 @@ export const actions = {
                 views: 0,
                 volume: "Volume 2 Issue XII, Dec 2023",
                 category: journal,
-                address: `${city}, ${state}, ${country}`,
+                address: country,
                 intro: intro,
                 total_authors: totalauthors,
                 author_email: mainauthoremail,
                 organisation: organization,
                 department: department,
-                phone_number: `${code}${phonenumber}`,
-
+                phone_number: `${phonenumber}`,
+                state: manstatus,
                 no_of_pages: noofpages,
                 initial_man: former,
                 },
@@ -110,17 +110,16 @@ export const actions = {
                     message: error.message,
                     error: true,
                 });
-            } else {
-                const { data, error } = await supabase.storage
-                    .from(bucket)
-                    .update(`public/${former}`, initialmanuscript, {
-                    cacheControl: "3600",
+            } else if ( initialmanuscript ) {
+
+                const { data, error } = await supabase.storage.from('journals').update(`public/${former}`, initialmanuscript, {
                     upsert: false,
-                    });
+                })
 
                 if (error) {
+                    console.log(error);
                     return fail(404, {
-                        message: error.message,
+                        message: `storage ${error.message} ${former}`,
                         error: true,
                     });
                 }

@@ -3,6 +3,9 @@ import { fail } from "@sveltejs/kit";
 import { supabase } from "$lib/supabaseClient.js";
 import { v4 as uuidv4 } from "uuid";
 import { loading } from "../../store";
+import emailjs from '@emailjs/browser'
+
+
 
 export const actions = {
   initial: async ({ request, cookies }) => {
@@ -14,8 +17,8 @@ export const actions = {
     const mainauthoremail = data.get("main-author email");
     const organization = data.get("organization");
     const department = data.get("department");
-    const noofpages = data.get("noof pages");
-    const code = data.get("code");
+    const noofpages = data.get("noofpages");
+    
     const phonenumber = data.get("phonenumber");
     const country = data.get("country");
     const city = data.get("city");
@@ -51,13 +54,15 @@ export const actions = {
             author_email: mainauthoremail,
             organisation: organization,
             department: department,
-            phone_number: `${code}${phonenumber}`,
+            phone_number: `${phonenumber}`,
             status: status,
             no_of_pages: noofpages,
             initial_man: `${journal_id}.pdf`,
           },
         ])
         .select();
+
+        
 
       if (error) {
         return fail(404, {
@@ -71,7 +76,8 @@ export const actions = {
             cacheControl: "3600",
             upsert: false,
           });
-
+        
+        
         return { message: "Registered Successfully!", error: false };
       }
 
@@ -82,6 +88,7 @@ export const actions = {
         error: true,
       });
     } finally {
+
       loading.set(false);
     }
   },

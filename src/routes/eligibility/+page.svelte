@@ -6,6 +6,7 @@
 	import background from '$lib/assets/images/pexels-marc-mueller-380769.jpg';
 	import aim from '$lib/assets/images/pexels-lukas-590041.jpg';
 	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
+	import { navigating } from '$app/stores'
 
 	import {
 		CheckOutline,
@@ -15,6 +16,7 @@
 		GlobeOutline,
         StarOutline
 	} from 'flowbite-svelte-icons';
+	import Loader from '../../components/Loader.svelte';
 
 	const benefits = [
 		'You can add your role as a Reviewer for the International Journal Of Real-Time Applications And Computing Systems (IJORTACS) through Art to their CV.',
@@ -62,68 +64,74 @@
 	];
 </script>
 
-<div class=" font-poppins w-full min-h-screen py-[10vh]">
-	<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
-		<div class=" text-white w-[40%] space-y-6 ml-[10%] ">
-			<h1 class=" text-4xl font-medium">Eligibility Info</h1>
-			<h3 class=" text-lg">One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.</h3>
-			<button class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[60%] text-left p-5">
-				<p>Publish with us</p>
-				<ChevronRightSolid />
-			</button>
+{#if $navigating}
+	<Loader />
+	{:else}
+	<div class=" font-poppins w-full min-h-screen py-[10vh]">
+		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
+			<div class=" text-white w-[40%] space-y-6 ml-[10%] ">
+				<h1 class=" text-4xl font-medium">Eligibility Info</h1>
+				<h3 class=" text-lg">One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.</h3>
+				<button class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[60%] text-left p-5">
+					<p>Publish with us</p>
+					<ChevronRightSolid />
+				</button>
+			</div>
 		</div>
-	</div>
-
-	<div class=" w-[80%] py-10 mx-auto">
-		<div class=" space-y-5">
-			<h1 class=" text-3xl font-semibold">Eligibility Info and Benefits</h1>
-			<div class=" relative w-full space-y-5 lg:space-y-20">
-				<div class=" w-full lg:flex items-center relative">
-					<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={review} />
-
-					<div
-						class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] right-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
-					>
-						<h1 class=" text-3xl font-semibold">Peer Review Process</h1>
-						<div class=" space-y-3">
-							{#each processes as process}
-								<div class=" flex items-center space-x-3">
-									<CheckOutline />
-									<p class=" text-base text-gray-700">
-										{process}
-									</p>
-								</div>
-							{/each}
+	
+		<div class=" w-[80%] py-10 mx-auto">
+			<div class=" space-y-5">
+				<h1 class=" text-3xl font-semibold">Eligibility Info and Benefits</h1>
+				<div class=" relative w-full space-y-5 lg:space-y-20">
+					<div class=" w-full lg:flex items-center relative">
+						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={review} />
+	
+						<div
+							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] right-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
+						>
+							<h1 class=" text-3xl font-semibold">Peer Review Process</h1>
+							<div class=" space-y-3">
+								{#each processes as process}
+									<div class=" flex items-center space-x-3">
+										<CheckOutline />
+										<p class=" text-base text-gray-700">
+											{process}
+										</p>
+									</div>
+								{/each}
+							</div>
+						</div>
+					</div>
+				</div>
+				<br />
+	
+				<div class=" relative w-full space-y-5 lg:space-y-20">
+					<div class=" w-full lg:flex-row-reverse lg:flex items-center relative">
+						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={aim} />
+	
+						<div
+							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] left-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
+						>
+							<h1 class=" text-3xl font-semibold">Peer Review Process</h1>
+							<div class=" space-y-3">
+								{#each benefits as process}
+									<div class=" border-b-2 border-gray-400 pb-2 flex  space-x-3">
+										
+										<p class=" text-base text-gray-700">
+											{process}
+										</p>
+									</div>
+								{/each}
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<br />
-
-			<div class=" relative w-full space-y-5 lg:space-y-20">
-				<div class=" w-full lg:flex-row-reverse lg:flex items-center relative">
-					<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={aim} />
-
-					<div
-						class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] left-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
-					>
-						<h1 class=" text-3xl font-semibold">Peer Review Process</h1>
-						<div class=" space-y-3">
-							{#each benefits as process}
-								<div class=" border-b-2 border-gray-400 pb-2 flex  space-x-3">
-									
-									<p class=" text-base text-gray-700">
-										{process}
-									</p>
-								</div>
-							{/each}
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
-</div>
+{/if}
+
+
 
 <style>
 	.main {

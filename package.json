@@ -44,6 +44,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@emailjs/browser": "^3.11.0",
 		"@supabase/supabase-js": "^2.39.0",
 		"flowbite-svelte-blocks": "^0.5.1",
 		"flowbite-svelte-icons": "^0.4.5",

@@ -1,3 +1,4 @@
+import { supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
 
 type journal = {
@@ -12,14 +13,17 @@ type journal = {
 export const load = (async ( { fetch, params, url } ) => {
 
     const { category } = params;
-
-    console.log(url.pathname)
-
-    const res = await fetch(`/api/journals-api/${category}`);
-    const journals: journal = await res.json();
     
 
+    let { data, error } = await supabase
+    .from('categories')
+    .select("*")
+    .eq('short', category)
+
+    console.log(data)
+
     return {
-        journals: journals
+        journals: data ?? [],
+        
     };
 }) satisfies PageServerLoad;
