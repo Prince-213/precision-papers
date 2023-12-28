@@ -42,7 +42,7 @@
 				Welcome to Precision Paper, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.
 
 			</p>
-			<p>Copyright IJORTACS</p>
+			<p>Copyright &copy; Precision Paper</p>
 		</div>
 		<div class=" lg:w-[20%] space-y-5">
 			<h2 class=" font-semibold">Get in Touch</h2>
