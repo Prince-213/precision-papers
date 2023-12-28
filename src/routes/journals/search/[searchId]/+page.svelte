@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	
+	
 	import { page, navigating } from '$app/stores';
 
 	import notFound from '$lib/assets/images/bubble-gum-magnifier-and-internet-search-bar.png';

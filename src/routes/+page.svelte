@@ -2,6 +2,8 @@
 	import ProcessCard from './../components/ProcessCard.svelte';
 	import Particle from './../components/Particle.svelte';
 
+	import { lazyLoad } from '$lib/data/lazyLoad'
+
 	import Icon from '@iconify/svelte';
 
 	import think from '$lib/assets/images/pexels-pavel-danilyuk-8438918.jpg';
@@ -96,10 +98,10 @@
 			>
 				<div class=" w-[90%] space-y-10 mx-auto">
 					<h1 class=" text-white font-extrabold font-nova text-4xl w-[90%] lg:text-5xl">
-						Open Access publishing for the scientific community
+						Welcome To Precision Paper
 					</h1>
 					<p class=" font-poppins font-medium lg:text-lg w-[80%] text-gray-300">
-						Maximizing the impact of research through openness. Because science works best when
+						Open Access publishing for the scientific community Maximizing the impact of research through openness. Because science works best when
 						research is open.
 					</p>
 					<div class=" w-full flex justify-between items-center">
@@ -134,25 +136,10 @@
 					<br />
 					<h1 class=" mb-4 text-3xl font-semibold">Science, is Necessary</h1>
 					<p class=" text-lg text-gray-800 mb-4">
-						International Journal Of Real-Time Applications And Computing Systems (IJORTACS) is an
-						open-source global academic journal focused on the field of science and technology. The
-						journal aims to improve the impact of academic research by providing an open platform
-						for effective collaborative innovations and reshaping existing knowledge. IJORTACS is
-						committed to publishing novel research conducted within the academic scope of science
-						and technology. The journal invites scholars from the related disciplines to submit
-						their research for peer review and publication, making it a valuable resource for
-						researchers in the field.
+						Welcome to Precision Paper, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research, we take pride in our commitment to fostering intellectual curiosity and advancing knowledge across various disciplines. At Precision Paper, our primary mission is to publish high-quality academic journals that showcase groundbreaking research and contribute to the global academic community.
 					</p>
 					<p>
-						IJORTACS offers a unique opportunity for scholars to showcase their research to a global
-						audience. The journal is dedicated to advancing the field of science and technology by
-						publishing high-quality research articles that are relevant to the current industry
-						trends. With its commitment to open-source access, IJORTACS is making a significant
-						contribution to the academic community, enabling researchers to share their work freely
-						and fostering collaboration across different disciplines. Through its rigorous
-						peer-review process, IJORTACS ensures that only the highest-quality research is
-						published, making it a trusted source of information for researchers, academics, and
-						practitioners in the field of science and technology.
+						Our platform serves as a beacon for researchers, scholars, and academics seeking a reputable avenue to share their innovative work with the world. With a rigorous peer-review process, we ensure the utmost accuracy, integrity, and precision in every publication. Precision Paper stands at the forefront of academic publishing, providing a space where original contributions thrive and intellectual boundaries are pushed. As a testament to our commitment to excellence, our journals span diverse fields, from the sciences and humanities to technology and social sciences, catering to the varied interests and expertise of our esteemed contributors. Explore Precision Paper to embark on a journey of discovery, where each page unfolds new insights, challenges established norms, and contributes to the collective wisdom of the academic community. Join us in our dedication to precision, excellence, and the pursuit of knowledge that transcends boundaries.
 					</p>
 				</div>
 			</div>
@@ -353,7 +340,7 @@
 	.card {
 		backdrop-filter: blur(3px) saturate(200%);
 		-webkit-backdrop-filter: blur(3px) saturate(200%);
-		background-color: rgba(17, 25, 40, 0.634);
+		background-color: rgba(17, 25, 40, 0.695);
 		border-radius: 10px;
 		border: 1px solid rgba(255, 255, 255, 0.048);
 		z-index: 99;

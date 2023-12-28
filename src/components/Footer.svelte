@@ -39,10 +39,8 @@
 		<div class=" lg:w-[20%] space-y-5">
 			<img src={logo} alt="" />
 			<p class=" font-medium text-gray-500">
-				IJORTACS, an emerging open source access global academic journal in the field of science and
-				technology, deals with all facets in the related fields. Its aim is to improve academic
-				research impact through open source, for effective collaborative innovations and reshaping
-				existing knowledge.
+				Welcome to Precision Paper, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.
+
 			</p>
 			<p>Copyright IJORTACS</p>
 		</div>
@@ -68,9 +66,7 @@
 				<TwitterSolid size="lg" />
 				<TailwindSolid size="lg" />
 			</div>
-			<p class=" text-gray-500 font-medium">
-				Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do eiusmod.
-			</p>
+			
 		</div>
 		<div class=" lg:w-[20%] space-y-6">
 			<h1 class=" font-medium">Join Our Newsletter</h1>
