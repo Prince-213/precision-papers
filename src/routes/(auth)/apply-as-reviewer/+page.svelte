@@ -31,6 +31,8 @@
 	} from 'flowbite-svelte-icons';
 	import { invalidateAll } from '$app/navigation';
 
+	import { reveal } from 'svelte-reveal'
+
 	export const snapshot = {
 		capture: () => {
 			return formData;
@@ -62,6 +64,7 @@
 <div class=" relative w-full py-[10vh]  flex items-center justify-center font-poppins">
 
 	<form
+		use:reveal
 		method="post"
 		
 		action="?/register"

@@ -18,6 +18,8 @@
 	import { CheckCheckIcon } from 'lucide-svelte';
 	import Loader from '../../components/Loader.svelte';
 
+	import { reveal  } from 'svelte-reveal'
+
 	const processes = [
 		'Interdisciplinary Approach: We recognize the interconnectedness of various domains and encourage interdisciplinary collaboration, believing that the convergence of ideas leads to groundbreaking innovations.',
 		'Quality Peer Review: Rigorous peer review is at the heart of Precision Papers. Our esteemed panel of experts ensures the highest standards of quality, integrity, and validity in the research shared on our platform.',
@@ -81,7 +83,7 @@
 	<div class=" font-poppins w-full min-h-screen ">
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
 			<div class=" text-white lg:w-[50%] space-y-6 w-[90%] mx-auto lg:ml-[10%]">
-				<h1 class=" text-4xl font-medium">About Us</h1>
+				<h1 use:reveal  class=" text-4xl font-medium">About Us</h1>
 				<h3 class=" text-lg">
 					Welcome to Precision Papers, a leading platform dedicated to fostering knowledge and
 					innovation in the realms of deep learning, power system engineering, control systems,
@@ -99,9 +101,9 @@
 
 		<div class=" w-[80%] py-10 mx-auto">
 			<div class=" space-y-5">
-				<h1 class=" text-3xl font-semibold">About Us</h1>
+				<h1 use:reveal class=" text-3xl font-semibold">About Us</h1>
 				<div class=" relative w-full space-y-5 lg:space-y-20">
-					<div class=" w-full lg:flex items-center relative">
+					<div use:reveal  class=" w-full lg:flex items-center relative">
 						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={background} />
 
 						<div
@@ -118,7 +120,7 @@
 						</div>
 					</div>
 					<br />
-					<div class=" w-full lg:flex lg:flex-row-reverse items-center relative">
+					<div use:reveal class=" w-full lg:flex lg:flex-row-reverse items-center relative">
 						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={aim} />
 
 						<div
@@ -138,7 +140,7 @@
 					<div class=" w-full py-5">
 						<h1 class=" font-semibold text-3xl mb-4">What Sets Us Apart:</h1>
 						{#each processes as process}
-							<div class=" flex items-center space-x-3 mb-3">
+							<div use:reveal  class=" flex items-center space-x-3 mb-3">
 								<CheckCheckIcon />
 								<p>{process}</p>
 							</div>
@@ -157,7 +159,7 @@
 					<div class=" w-full py-5">
 						<h1 class=" font-semibold text-3xl mb-4">Indexing</h1>
 						{#each indexing as index}
-							<p class=" font-medium mb-4">{index}</p>
+							<p use:reveal class=" font-medium mb-4">{index}</p>
 						{/each}
 					</div>
 				</div>

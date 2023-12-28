@@ -11,6 +11,8 @@
 
 	export let form;
 
+	import { reveal } from 'svelte-reveal'
+
 	export const snapshot = {
 		capture: () => {
 			return formData;
@@ -75,7 +77,7 @@
 				<img src={journal} class=" w-[25em] fixed left-10 top-[30vh]" alt="" />
 			</div>
 			<div class=" w-full lg:w-[45%] space-y-8">
-				<div class=" space-y-3">
+				<div use:reveal  class=" space-y-3">
 					<h1 class=" text-3xl font-semibold">Upload Finial Manuscript</h1>
 					<p class=" text-[#575F6E] text-[16px] font-medium">
 						The article must be submitted in the form of a Microsoft word-compatible file (PDF not
@@ -84,7 +86,7 @@
 					</p>
 				</div>
 				<div class=" bg-[#F0F2F4] rounded-md p-4 flex justify-between">
-					<div class=" flex space-x-4">
+					<div use:reveal class=" flex space-x-4">
 						<LockSolid class=" text-[#79808F]  " size="lg" />
 						<p class=" w-[80%] text-[13px] text-[#242426]">
 							We take privacy issues seriously. You can be sure that your personal data is securely
@@ -97,7 +99,7 @@
 
 				<form method="post" action="?/final" use:enhance class=" space-y-8">
 					{#each fields as field}
-						<div class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+						<div use:reveal class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
 							<h2 class=" text-lg text-[#242426] font-medium">{field.title}</h2>
 							<input
 								required
@@ -111,7 +113,7 @@
 					{/each}
 
 					{#each files as file}
-						<div
+						<div use:reveal
 							class=" overflow-x-hidden border-2 border-[#E2E4E5] flex justify-center items-center rounded-md space-y-5 py-8 px-6"
 						>
 							<div class=" space-y-6 flex flex-col items-center">
@@ -135,7 +137,7 @@
 
 						<p class=" font-medium">I accept the attached Author's Declaration</p>
 					</div>
-					<button
+					<button use:reveal
 						type="submit"
 						class=" py-3 px-8 border-[#BBBFC1] border-2 rounded-md hover:font-medium transition-all duration-100"
 					>

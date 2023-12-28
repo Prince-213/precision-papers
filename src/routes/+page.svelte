@@ -2,7 +2,7 @@
 	import ProcessCard from './../components/ProcessCard.svelte';
 	import Particle from './../components/Particle.svelte';
 
-	import { lazyLoad } from '$lib/data/lazyLoad'
+	import { lazyLoad } from '$lib/data/lazyLoad';
 
 	import Icon from '@iconify/svelte';
 
@@ -25,6 +25,8 @@
 	import work from '$lib/assets/images/pexels-pavel-danilyuk-8438922.jpg';
 
 	import write from '$lib/assets/images/6642641.jpg';
+
+	import { reveal } from 'svelte-reveal';
 
 	import {
 		ChevronRightSolid,
@@ -82,6 +84,8 @@
 				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
 		}
 	];
+
+	const title = ['Welcome', 'To', 'Precision', 'Paper'];
 </script>
 
 <svelte:head>
@@ -91,18 +95,24 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" w-full ">
+	<div class=" w-full">
 		<div class="main w-full flex pt-[15%] pb-[18vh] lg:pt-[0%] bg-cover overflow-x-hidden">
 			<div
+				use:reveal={{ transition: "blur" }}
 				class=" card w-[95%] lg:w-[60%] mx-auto flex items-center py-8 lg:py-10 h-fit mt-[10%] lg:mt-[8%] lg:ml-[6%] overflow-hidden"
 			>
 				<div class=" w-[90%] space-y-10 mx-auto">
-					<h1 class=" text-white font-extrabold font-nova text-4xl w-[90%] lg:text-5xl">
-						Welcome To Precision Paper
-					</h1>
-					<p class=" font-poppins font-medium lg:text-lg w-[80%] text-gray-300">
-						Open Access publishing for the scientific community Maximizing the impact of research through openness. Because science works best when
-						research is open.
+					<div class=" w-[90%] gap-4  flex flex-wrap lg:flex-nowrap  ">
+						{#each title as heading, idx}
+							<h1 use:reveal={{ transition: "fly", y: 100, delay: (idx + 2) * 250 }} class=" text-white font-extrabold font-nova text-4xl lg:text-5xl">
+								{heading}
+							</h1>
+						{/each}
+					</div>
+
+					<p class=" font-poppins font-medium lg:text-lg w-[90%] text-gray-300">
+						Open Access publishing for the scientific community Maximizing the impact of research
+						through openness. Because science works best when research is open.
 					</p>
 					<div class=" w-full flex justify-between items-center">
 						<button
@@ -116,14 +126,13 @@
 							on:click={() => goto('/initial-manuscript-submission')}
 							class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-sm lg:text-lg rounded-md w-[48.5%] text-left p-5"
 						>
-							<p>Publish </p>
+							<p>Publish</p>
 							<ChevronRightSolid />
 						</button>
 					</div>
 				</div>
 			</div>
 			<Particle />
-			
 		</div>
 		<div class=" relative w-full z-50 bg-slate-50 py-4 lg:py-10">
 			<div
@@ -135,16 +144,32 @@
 					<h3 class=" uppercase text-xl font-medium">you know about us</h3>
 					<br />
 					<h1 class=" mb-4 text-3xl font-semibold">Science, is Necessary</h1>
-					<p class=" text-lg text-gray-800 mb-4">
-						Welcome to Precision Paper, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research, we take pride in our commitment to fostering intellectual curiosity and advancing knowledge across various disciplines. At Precision Paper, our primary mission is to publish high-quality academic journals that showcase groundbreaking research and contribute to the global academic community.
+					<p use:reveal  class=" text-lg text-gray-800 mb-4">
+						Welcome to Precision Paper, a distinguished hub for academic excellence and scholarly
+						discourse. As a premier organization dedicated to the dissemination of cutting-edge
+						research, we take pride in our commitment to fostering intellectual curiosity and
+						advancing knowledge across various disciplines. At Precision Paper, our primary mission
+						is to publish high-quality academic journals that showcase groundbreaking research and
+						contribute to the global academic community.
 					</p>
-					<p>
-						Our platform serves as a beacon for researchers, scholars, and academics seeking a reputable avenue to share their innovative work with the world. With a rigorous peer-review process, we ensure the utmost accuracy, integrity, and precision in every publication. Precision Paper stands at the forefront of academic publishing, providing a space where original contributions thrive and intellectual boundaries are pushed. As a testament to our commitment to excellence, our journals span diverse fields, from the sciences and humanities to technology and social sciences, catering to the varied interests and expertise of our esteemed contributors. Explore Precision Paper to embark on a journey of discovery, where each page unfolds new insights, challenges established norms, and contributes to the collective wisdom of the academic community. Join us in our dedication to precision, excellence, and the pursuit of knowledge that transcends boundaries.
+					<p use:reveal>
+						Our platform serves as a beacon for researchers, scholars, and academics seeking a
+						reputable avenue to share their innovative work with the world. With a rigorous
+						peer-review process, we ensure the utmost accuracy, integrity, and precision in every
+						publication. Precision Paper stands at the forefront of academic publishing, providing a
+						space where original contributions thrive and intellectual boundaries are pushed. As a
+						testament to our commitment to excellence, our journals span diverse fields, from the
+						sciences and humanities to technology and social sciences, catering to the varied
+						interests and expertise of our esteemed contributors. Explore Precision Paper to embark
+						on a journey of discovery, where each page unfolds new insights, challenges established
+						norms, and contributes to the collective wisdom of the academic community. Join us in
+						our dedication to precision, excellence, and the pursuit of knowledge that transcends
+						boundaries.
 					</p>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class=" hidden relative w-full z-50 bg-slate-50 py-4 lg:py-10">
 			<div
 				class=" w-[90%] mx-auto flex flex-col lg:flex-row lg:flex lg:justify-between lg:items-center"
@@ -241,7 +266,7 @@
 			<div
 				class=" w-[90%] lg:flex lg:flex-row-reverse flex flex-col lg:justify-between lg:items-strech space-y-5 mx-auto"
 			>
-				<div class=" min-h-[40vh] w-full lg:w-[45%] overflow-hidden rounded-md">
+				<div use:reveal  class=" min-h-[40vh] w-full lg:w-[45%] overflow-hidden rounded-md">
 					<img src={write} alt="" />
 				</div>
 
@@ -345,6 +370,4 @@
 		border: 1px solid rgba(255, 255, 255, 0.048);
 		z-index: 99;
 	}
-
-	
 </style>

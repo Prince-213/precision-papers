@@ -34,6 +34,9 @@ export const load = (async ( { fetch } ) => {
 
     return {
         journals: journals,
-        updated: data ??[]
+        
+        streamed: {
+            updated: data ??[],
+        }
     };
 }) satisfies PageServerLoad;

@@ -18,7 +18,9 @@
 
 	export let data;
 
-	$: updated = data.updated;
+	$: updated = data.streamed.updated;
+
+	import { reveal } from 'svelte-reveal'
 </script>
 
 <svelte:head>
@@ -66,8 +68,9 @@
 				<div
 					class=" -translate-x-5 lg:-translate-x-0 mans lg:w-[95%] w-[95%] md:w-[80%] grid lg:grid-cols-3 gap-5 mx-auto"
 				>
-					{#each updated as journal}
+					{#each updated as journal, idx}
 						<div
+							use:reveal
 							class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10 flex flex-col justify-between"
 						>
 							<h2 class="h-[40%] text-lg font-semibold">

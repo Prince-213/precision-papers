@@ -5,6 +5,7 @@
 	import { page, navigating } from '$app/stores';
 	import { invalidateAll } from '$app/navigation';
 	import { loading } from '../../store';
+	import { reveal } from 'svelte-reveal'
 
 	const redirectTo = $page.url.searchParams.get('redirectTo') || '/';
 
@@ -118,11 +119,11 @@
 {:else}
 	<div class=" w-full min-h-screen py-[20vh] bg-white">
 		<div class=" lg:flex w-[90%] flex lg:space-x-14 mx-auto">
-			<div class=" relative w-[0%] hidden lg:block lg:w-[30%]">
+			<div   class=" relative w-[0%] hidden lg:block lg:w-[30%]">
 				<img src={journal} class=" w-[25em] fixed left-10 top-[30vh]" alt="" />
 			</div>
-			<div class=" w-full lg:w-[45%] space-y-8">
-				<div class=" space-y-3">
+			<div  class=" w-full lg:w-[45%] space-y-8">
+				<div use:reveal  class=" space-y-3">
 					<h1 class=" text-3xl font-semibold">Upload Initial Manuscript</h1>
 					<p class=" text-[#575F6E] text-[16px] font-medium">
 						The article must be submitted in the form of a Microsoft word-compatible file (PDF not
@@ -130,7 +131,7 @@
 						not accept submissions by email.
 					</p>
 				</div>
-				<div class=" bg-[#F0F2F4] rounded-md p-4 flex justify-between">
+				<div use:reveal class=" bg-[#F0F2F4] rounded-md p-4 flex justify-between">
 					<div class=" flex space-x-4">
 						<LockSolid class=" text-[#79808F]  " size="lg" />
 						<p class=" w-[80%] text-[13px] text-[#242426]">
@@ -141,7 +142,7 @@
 
 					<CloseOutline class=" mt-[2px] text-[#79808F] " size="sm" />
 				</div>
-				<div>
+				<div use:reveal>
 					<h3 class=" font-semibold text-lg">Issue Details</h3>
 					<div class=" bg-[#F0F2F4] items-center rounded-md p-4 flex justify-between">
 						<div class=" flex space-x-4">
@@ -168,7 +169,7 @@
 					}}
 				>
 					{#each fields as field}
-						<div class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+						<div use:reveal class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
 							<h2 class=" text-lg text-[#242426] font-medium">{field.title}</h2>
 							{#if field.type == 'text'}
 								<input
@@ -200,7 +201,7 @@
 							{/if}
 						</div>
 					{/each}
-					<div class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+					<div use:reveal class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
 						<h2 class=" text-lg text-[#242426] font-medium">Abstract</h2>
 
 						<Textarea
@@ -211,7 +212,7 @@
 							bind:value={formData.intro}
 						/>
 					</div>
-					<div class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+					<div use:reveal class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
 						<h2 class=" text-lg text-[#242426] font-medium">Enter your phone number</h2>
 						<div class=" flex space-x-5">
 							<input
@@ -224,7 +225,7 @@
 							/>
 						</div>
 					</div>
-					<div class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+					<div use:reveal class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
 						<h2 class=" text-lg text-[#242426] font-medium">Address</h2>
 						<div class=" grid grid-cols-2 gap-4">
 							<div>
@@ -263,7 +264,7 @@
 						</div>
 					</div>
 
-					<div class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+					<div use:reveal class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
 						<h2 class=" text-lg text-[#242426] font-medium">Personal Status</h2>
 						<select
 							required
@@ -279,7 +280,7 @@
 						</select>
 					</div>
 
-					<div class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+					<div use:reveal class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
 						<h2 class=" text-lg text-[#242426] font-medium">Publishing Journal</h2>
 						<select
 							required
@@ -336,7 +337,7 @@
 						</select>
 					</div>
 
-					<div
+					<div use:reveal
 						class=" overflow-x-hidden border-2 border-[#E2E4E5] flex justify-center items-center rounded-md space-y-5 py-8 px-6"
 					>
 						<div class=" space-y-6 flex flex-col items-center">
@@ -359,6 +360,7 @@
 						<p class=" font-medium">I accept the Author's Declaration</p>
 					</div>
 					<button
+						use:reveal
 						type="submit"
 						class=" py-3 flex items-center space-x-5 px-8 border-[#BBBFC1] border-2 rounded-md hover:font-medium transition-all duration-100"
 					>

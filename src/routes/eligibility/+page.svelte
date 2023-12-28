@@ -8,6 +8,8 @@
 	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
 	import { navigating } from '$app/stores'
 
+	import { reveal } from 'svelte-reveal'
+
 	import {
 		CheckOutline,
 		ChevronRightSolid,
@@ -74,7 +76,7 @@
 	<div class=" font-poppins w-full min-h-screen ">
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
 			<div class=" text-white lg:w-[40%] space-y-6 w-[95%] mx-auto lg:ml-[10%] ">
-				<h1 class=" text-4xl font-medium">Eligibility Info</h1>
+				<h1 use:reveal class=" text-4xl font-medium">Eligibility Info</h1>
 				<h3 class=" text-lg">One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.</h3>
 				<button class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[60%] text-left p-5">
 					<p>Publish with us</p>
@@ -84,7 +86,7 @@
 		</div>
 	
 		<div class=" w-[80%] py-10 mx-auto">
-			<div class=" space-y-5">
+			<div use:reveal  class=" space-y-5">
 				<h1 class=" text-3xl font-semibold">Eligibility Info and Benefits</h1>
 				<div class=" relative w-full space-y-5 lg:space-y-20">
 					<div class=" w-full lg:flex items-center relative">
