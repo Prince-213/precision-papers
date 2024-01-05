@@ -85,7 +85,7 @@
 		}
 	];
 
-	const title = ['Welcome', 'To', 'Precision', 'Paper'];
+	const title = ['Welcome', 'To', 'Precision', 'Papers'];
 </script>
 
 <svelte:head>
@@ -145,10 +145,10 @@
 					<br />
 					<h1 class=" mb-4 text-3xl font-semibold">Science, is Necessary</h1>
 					<p use:reveal  class=" text-lg text-gray-800 mb-4">
-						Welcome to Precision Paper, a distinguished hub for academic excellence and scholarly
+						Welcome to Precision Papers, a distinguished hub for academic excellence and scholarly
 						discourse. As a premier organization dedicated to the dissemination of cutting-edge
 						research, we take pride in our commitment to fostering intellectual curiosity and
-						advancing knowledge across various disciplines. At Precision Paper, our primary mission
+						advancing knowledge across various disciplines. At Precision Papers, our primary mission
 						is to publish high-quality academic journals that showcase groundbreaking research and
 						contribute to the global academic community.
 					</p>
@@ -156,11 +156,11 @@
 						Our platform serves as a beacon for researchers, scholars, and academics seeking a
 						reputable avenue to share their innovative work with the world. With a rigorous
 						peer-review process, we ensure the utmost accuracy, integrity, and precision in every
-						publication. Precision Paper stands at the forefront of academic publishing, providing a
+						publication. Precision Papers stands at the forefront of academic publishing, providing a
 						space where original contributions thrive and intellectual boundaries are pushed. As a
 						testament to our commitment to excellence, our journals span diverse fields, from the
 						sciences and humanities to technology and social sciences, catering to the varied
-						interests and expertise of our esteemed contributors. Explore Precision Paper to embark
+						interests and expertise of our esteemed contributors. Explore Precision Papers to embark
 						on a journey of discovery, where each page unfolds new insights, challenges established
 						norms, and contributes to the collective wisdom of the academic community. Join us in
 						our dedication to precision, excellence, and the pursuit of knowledge that transcends
