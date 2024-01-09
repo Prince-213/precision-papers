@@ -9,7 +9,7 @@ export const load = async ({ fetch }) => {
 
     
         
-    const { data } = await supabase.from("users").select()
+    const { data } = await supabase.from("users").select("*")
 
     return {
         editors: data ?? []

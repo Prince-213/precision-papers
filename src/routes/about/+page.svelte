@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
-	export let data: PageData;
 
 	import background from '$lib/assets/images/pexels-marc-mueller-380769.jpg';
 	import aim from '$lib/assets/images/pexels-lukas-590041.jpg';
@@ -84,7 +83,7 @@
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
 			<div class=" text-white lg:w-[50%] space-y-6 w-[90%] mx-auto lg:ml-[10%]">
 				<h1 use:reveal  class=" text-4xl font-medium">About Us</h1>
-				<h3 class=" text-lg">
+				<h3 class=" lg:text-lg text-base">
 					Welcome to Precision Papers, a leading platform dedicated to fostering knowledge and
 					innovation in the realms of deep learning, power system engineering, control systems,
 					communication, cybersecurity, biometric technology, database management systems,

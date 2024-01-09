@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	
 
 	import background from '$lib/assets/images/pexels-marc-mueller-380769.jpg';
 	import aim from '$lib/assets/images/pexels-lukas-590041.jpg';

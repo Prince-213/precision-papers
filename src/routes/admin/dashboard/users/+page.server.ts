@@ -8,9 +8,9 @@ import { supabase } from '$lib/supabaseClient.js'
 export const load = async ({ fetch }) => {
 
 
-    let data = (await supabase.from("users").select()).data
+    let data = (await supabase.from("users").select("*")).data
 
-    let auths = (await supabase.from("journals").select()).data
+    let auths = (await supabase.from("journals").select("*")).data
 
     
 

@@ -28,7 +28,7 @@
 		UserGroupSolid
 	} from 'flowbite-svelte-icons';
 	import { enhance } from '$app/forms';
-	export let data: LayoutData;
+
 
 	const links = [
 		{

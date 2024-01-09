@@ -117,7 +117,7 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" w-full min-h-screen py-[20vh] bg-white">
+	<div class=" w-full min-h-screen py-[10vh] lg:py-[20vh] bg-white">
 		<div class=" lg:flex w-[90%] flex lg:space-x-14 mx-auto">
 			<div   class=" relative w-[0%] hidden lg:block lg:w-[30%]">
 				<img src={journal} class=" w-[25em] fixed left-10 top-[30vh]" alt="" />

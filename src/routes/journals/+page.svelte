@@ -30,7 +30,7 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" w-full py-[10vh]">
+	<div class=" w-full py-[5vh] lg:py-[10vh]">
 		<div class=" flex pl-10">
 			<div class=" hidden lg:block space-y-8 h-fit p-5 w-[45%] bg-gray-100">
 				<h3 class=" border-b-2 border-white pb-2 font-medium text-2xl">Filter By Discipline</h3>

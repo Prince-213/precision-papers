@@ -79,7 +79,7 @@
 				});
 			};
 		}}
-		class=" lg:w-[40%] bg-white border-2 shadow-md shadow-gray-300 rounded-2xl p-10"
+		class=" lg:w-[40%] w-[90%] bg-white border-2 shadow-md shadow-gray-300 rounded-2xl p-4 lg:p-10"
 	>
 		<h2 class=" ml-3 mb-10 font-medium text-2xl">Register as A Editor</h2>
 
