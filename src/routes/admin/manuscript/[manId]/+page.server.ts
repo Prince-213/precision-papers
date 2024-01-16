@@ -36,8 +36,8 @@ export const load = (async ( { fetch, params, url } ) => {
         .eq('journal_id', manId)).data
 
 
-    const res = await fetch(`http://localhost:4000/searched-journals`);
-    const searchJournals: search[] = await res.json();
+    //const res = await fetch(`http://localhost:4000/searched-journals`);
+    //const searchJournals: search[] = await res.json();
    
 
 

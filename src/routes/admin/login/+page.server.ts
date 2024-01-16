@@ -21,7 +21,7 @@ export const actions = {
             throw redirect(303, url.searchParams.get('redirectTo') || '/')
             
         }else {
-            cookies.delete("status")
+            //cookies.delete("status")
             return fail(404, { message: "Access Denied", error: true })
         }
 

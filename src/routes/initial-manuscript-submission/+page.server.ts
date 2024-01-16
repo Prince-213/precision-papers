@@ -75,7 +75,7 @@ export const actions = {
           .upload(`public/${journal_id}.pdf`, initialmanuscript, {
             cacheControl: "3600",
             upsert: false,
-          });
+        });
         
         
         return { message: "Registered Successfully!", error: false };
