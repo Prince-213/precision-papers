@@ -85,7 +85,7 @@
 		}
 	];
 
-	const title = ['Welcome', 'To', 'Precision', 'Papers'];
+	const title = ['Welcome', 'To', 'Precision', 'Chronicles'];
 </script>
 
 <svelte:head>
@@ -145,7 +145,7 @@
 					<br />
 					<h1 class=" mb-4 text-3xl font-semibold">Science, is Necessary</h1>
 					<p use:reveal  class=" text-lg text-gray-800 mb-4">
-						Welcome to Precision Papers, a distinguished hub for academic excellence and scholarly
+						Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly
 						discourse. As a premier organization dedicated to the dissemination of cutting-edge
 						research, we take pride in our commitment to fostering intellectual curiosity and
 						advancing knowledge across various disciplines. At Precision Papers, our primary mission
@@ -156,7 +156,7 @@
 						Our platform serves as a beacon for researchers, scholars, and academics seeking a
 						reputable avenue to share their innovative work with the world. With a rigorous
 						peer-review process, we ensure the utmost accuracy, integrity, and precision in every
-						publication. Precision Papers stands at the forefront of academic publishing, providing a
+						publication. Precision Chronicles stands at the forefront of academic publishing, providing a
 						space where original contributions thrive and intellectual boundaries are pushed. As a
 						testament to our commitment to excellence, our journals span diverse fields, from the
 						sciences and humanities to technology and social sciences, catering to the varied

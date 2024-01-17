@@ -39,7 +39,7 @@
 		<div class=" lg:w-[20%] space-y-5">
 			<img src={logo} alt="" />
 			<p class=" font-medium text-gray-500">
-				Welcome to Precision Paper, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.
+				Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.
 
 			</p>
 			<p>Copyright &copy; Precision Paper</p>
