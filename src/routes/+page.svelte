@@ -89,7 +89,7 @@
 </script>
 
 <svelte:head>
-	<title>HOMEPAGE</title>
+	<title>PRECISION CHRONICLES</title>
 	<meta name="Precision chronicles homepage" content="Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research."  />
 	<meta name="keywords" content="Precision Chronicles, precision chronicles, precisionchronicles, precision, journals, precision journals, articles, Precision chronicles, precision Chronicles, Academic Journals,
 	Scholarly Publications,
