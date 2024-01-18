@@ -4,4 +4,5 @@ export const load = (async () => {
     return {};
 }) satisfies PageServerLoad;
 
-const prerender = true;
+export const prerender = true;
+export const ssr = true;
