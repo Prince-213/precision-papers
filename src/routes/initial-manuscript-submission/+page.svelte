@@ -110,11 +110,40 @@
 	};
 
 	let currentDate = new Date().toJSON().slice(0, 10);
-	console.log(currentDate); // "2022-06-17"
+	console.log(currentDate);
+	
+	import { lazyLoad } from '$lib/data/lazyLoad';// "2022-06-17"
 </script>
 
 <svelte:head>
 	<title>INITIAL MANUSCRIPT</title>
+	<meta
+		name="Precision chronicles Initial Manuscript Submission"
+		content="Welcome to Precision Chronicles, submit manuscripts."
+	/>
+	<meta
+		name="keywords"
+		content="Precision Chronicles, precision chronicles, precisionchronicles, precision, journals, precision journals, articles, Precision chronicles, precision Chronicles, Academic Journals,
+	Scholarly Publications,
+	Research Papers,
+	Manuscript Submission,
+	Precision Chronicles,
+	Journal Articles,
+	Peer-reviewed Journals,
+	Scholarly Writing,
+	Academic Publishing,
+	Manuscript Review,
+	Submission Guidelines,
+	Editorial Process,
+	Open Access Journals,
+	Research Manuscripts,
+	Scholarly Communication,
+	Publication Platform,
+	Author Guidelines,
+	Journal Submission System,
+	Research Article Submission,
+	Editorial Board."
+	/>
 </svelte:head>
 
 {#if $navigating}
@@ -123,7 +152,7 @@
 	<div class=" w-full min-h-screen py-[10vh] lg:py-[20vh] bg-white">
 		<div class=" lg:flex w-[90%] flex lg:space-x-14 mx-auto">
 			<div   class=" relative w-[0%] hidden lg:block lg:w-[30%]">
-				<img src={journal} class=" w-[25em] fixed left-10 top-[30vh]" alt="" />
+				<img use:lazyLoad={journal} class=" w-[25em] fixed left-10 top-[30vh]" alt="initial-manuscript" />
 			</div>
 			<div  class=" w-full lg:w-[45%] space-y-8">
 				<div use:reveal  class=" space-y-3">

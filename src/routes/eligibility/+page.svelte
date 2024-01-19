@@ -8,6 +8,8 @@
 	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
 	import { navigating } from '$app/stores'
 
+	import { lazyLoad } from '$lib/data/lazyLoad';
+
 	import { reveal } from 'svelte-reveal'
 
 	import {
@@ -90,7 +92,7 @@
 				<h1 class=" text-3xl font-semibold">Eligibility Info and Benefits</h1>
 				<div class=" relative w-full space-y-5 lg:space-y-20">
 					<div class=" w-full lg:flex items-center relative">
-						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={review} />
+						<img class=" lg:w-[70%] rounded-md h-auto" alt="review" use:lazyLoad={review} />
 	
 						<div
 							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] right-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"

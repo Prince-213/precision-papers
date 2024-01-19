@@ -13,6 +13,14 @@
 
 	import { navigating } from '$app/stores';
 
+	import { Select } from 'flowbite-svelte';
+  	let selected;
+  	let countries = [
+    { value: 'review', name: 'REVIEW MAIL', content: '' },
+    { value: 'ca', name: 'Canada' },
+    { value: 'fr', name: 'France' }
+];
+
 	export let data;
 
 	import {

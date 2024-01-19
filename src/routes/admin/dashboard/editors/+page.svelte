@@ -70,7 +70,7 @@
 		const { error } = await supabase.from('users').delete().eq('email', `${email}`);
 		if (!error) {
 			defaultModal = false;
-			goto(`${path}`);
+			
 			invalidateAll();
 		}
 	};

@@ -30,6 +30,7 @@
 
 	import { reveal } from 'svelte-reveal';
 
+	
 	import {
 		ChevronRightSolid,
 		PenNibOutline,
@@ -222,60 +223,7 @@
 			</div>
 		</div>
 
-		<div class=" hidden relative w-full z-50 bg-slate-50 py-4 lg:py-10">
-			<div
-				class=" w-[90%] mx-auto flex flex-col lg:flex-row lg:flex lg:justify-between lg:items-center"
-			>
-				<div class=" space-y-5">
-					<div class=" pl-10 py-4 border-l-[3px] border-blue-500">
-						<h1 class=" lg:text-lg font-semibold">OUR WORK</h1>
-					</div>
-					<img src={work} alt="" class=" h-[350px]" />
-				</div>
-				<div class=" w-full lg:w-[60%] space-y-8">
-					<h1 class=" text-3xl mt-5 lg:mt-0 lg:text-[2.5em]">
-						Lorem ipsum consectetur adipiscing elit.
-					</h1>
-					<h2 class=" text-justify text-lg lg:text-2xl text-gray-500">
-						Fusce nec tellus sed augue semper porta lacinia arcu eget nullat taciti sociosqu ad
-						litora torquent per conubia nostra.
-					</h2>
-					<div class=" lg:h-1"></div>
-					<div class=" w-full space-y-6 lg:space-y-0 lg:flex lg:justify-between">
-						<div class=" space-y-5 lg:w-[30%]">
-							<h1 class=" font-medium text-3xl">Our Officer</h1>
-							<p class=" text-xl text-gray-500 mb-4">
-								Class aptent taciti sociosqu ad litora torquent.
-							</p>
-
-							<button class=" py-4 px-12 rounded-full font-medium border-2 border-blue-500">
-								View More
-							</button>
-						</div>
-						<div class=" space-y-5 lg:w-[30%]">
-							<h1 class=" font-medium text-3xl">Our Scientist</h1>
-							<p class=" text-xl text-gray-500 mb-4">
-								Class aptent taciti sociosqu ad litora torquent.
-							</p>
-
-							<button class=" py-4 px-12 rounded-full font-medium border-2 border-blue-500">
-								View More
-							</button>
-						</div>
-						<div class=" space-y-5 lg:w-[30%]">
-							<h1 class=" font-medium text-3xl">Our Director</h1>
-							<p class=" text-xl text-gray-500 mb-4">
-								Class aptent taciti sociosqu ad litora torquent.
-							</p>
-
-							<button class=" py-4 px-12 rounded-full font-medium border-2 border-blue-500">
-								View More
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<div class=" relative w-full z-50 bg-white py-4 lg:py-10">
 			<div class=" w-[90%] mx-auto flex flex-col items-center text-center">
 				<h1 class=" lg:text-xl font-medium">TRENDING JOURNALS</h1>
@@ -283,7 +231,7 @@
 				<div class=" space-y-6 lg:space-y-0 w-full lg:flex lg:justify-between mt-10">
 					{#each blog as item}
 						<div class=" text-left  lg:w-[32%] space-y-3">
-							<img src={ item.category == 'ccs' ? work : anotherDeep} alt="" class=" w-full h-[300px] rounded-md" />
+							<img use:lazyLoad={ item.category == 'ccs' ? work : anotherDeep} alt={item.title} class=" w-full h-[300px] rounded-md" />
 							<div class=" w-full flex items-center justify-between">
 								
 								<p>{item.main_author}</p>
@@ -304,7 +252,7 @@
 				class=" w-[90%] lg:flex lg:flex-row-reverse flex flex-col lg:justify-between lg:items-strech space-y-5 mx-auto"
 			>
 				<div use:reveal class=" min-h-[40vh] w-full lg:w-[45%] overflow-hidden rounded-md">
-					<img src={write} alt="" />
+					<img use:lazyLoad={write} alt="Precision Chronicles comprehensive" />
 				</div>
 
 				<div class=" flex flex-col lg:items-start items-center lg:w-[50%] text-center lg:text-left">
