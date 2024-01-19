@@ -48,7 +48,7 @@
 
 	let status = [
 		{ value: 'pending', name: 'PENDING' },
-		{ value: 'review', name: 'REVIEWED' },
+		{ value: 'review', name: 'ONGOING REVIEW' },
 		{ value: 'published', name: 'PUBLISHED' }
 	];
 
@@ -142,6 +142,8 @@
 		formermanuscript: string;
 		initialmanuscript: string;
 		status: string;
+		sendalert: boolean;
+		updateFile: boolean;
 	};
 
 	let formData: form = {
@@ -163,7 +165,9 @@
 		publishingjournal: journals[0]?.category,
 		formermanuscript: journals[0]?.initial_man,
 		initialmanuscript: '',
-		status: journals[0]?.state
+		status: journals[0]?.state,
+		sendalert: false,
+		updateFile: false,
 	};
 
 	console.log(journals[0]?.main_author, journals[0]?.author_email);
@@ -222,6 +226,16 @@
 			formData = data;
 		}
 	};
+
+	const inputDateString = journals[0]?.created_at;
+	const inputDate = new Date(inputDateString);
+	const options = { year: 'numeric', month: 'short', day: 'numeric' };
+	const formattedDate = inputDate.toLocaleDateString('en-US', options);
+
+	console.log(formData['sendalert'])
+
+	let checked = false
+
 </script>
 
 <div class=" w-full py-[5vh] min-h-screen">
@@ -470,11 +484,21 @@
 						</div>
 					</div>
 
+					<div class=" flex space-x-2 items-center">
+						<input name="sendalert" type="checkbox" bind:checked={formData['sendalert']}>
+						<p>Send Alert Mail</p>
+					</div>
+					
+					<div class=" flex space-x-2 items-center">
+						<input name="updateFile" type="checkbox" bind:checked={formData['updateFile']}>
+						<p>Update File</p>
+					</div>
+
 					<button
 						type="submit"
 						class=" py-3 flex items-center space-x-5 px-8 border-[#BBBFC1] border-2 rounded-md hover:font-medium transition-all duration-100"
 					>
-						<p>Edit</p>
+						<p>Update</p>
 						{#if sending}
 							<Spinner currentColor="black" class={` w-6 h-6 `} currentFill="white" />
 						{:else if form}
@@ -528,11 +552,11 @@
 					</div>
 				</div>
 				<div
-					class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-2 gap-y-10 p-10"
+					class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-2 gap-y-10 gap-x-4 p-10"
 				>
 					<div class=" text-lg flex items-center space-x-3">
 						<ClockOutline />
-						<p>{journals[0]?.created_at}</p>
+						<p>{formattedDate}</p>
 					</div>
 
 					<div class=" text-lg flex space-x-3">
@@ -561,7 +585,7 @@
 				<div
 					class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl justify-between p-10"
 				>
-					<p class=" leading-9">
+					<p class=" text-justify leading-9">
 						{journals[0]?.intro}
 					</p>
 				</div>
@@ -571,7 +595,7 @@
 					class=" py-3 flex space-x-5 items-center hover:shadow-md max-w-fit px-9 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
 				>
 					<FilePdfSolid />
-					<p class=" text-lg font-medium">Edit Manuscript</p>
+					<p class=" text-lg font-medium">Update Manuscript</p>
 				</button>
 			</div>
 			<div
@@ -582,8 +606,8 @@
 					<div class=" font-poppins mt-5 space-y-4">
 						<h1 class=" text-xl font-semibold">Study More</h1>
 						<a href={path} download="proposed_file_name"
-							><Button class=" bg-black-100 text-white font-medium flex items-center space-x-5"
-								><p>Show Initial Manuscript</p>
+							><Button class={` ${journals[0].state == 'published' ? 'bg-green-600' : 'bg-black-100'}  text-white font-medium flex items-center space-x-5`}
+								><p>Show {journals[0].state == 'published' ? 'Final' : 'Initial'} Manuscript</p>
 								{#if downloading}
 									<Spinner class=" w-4 h-4" currentFill="white" />
 								{:else}

@@ -77,7 +77,7 @@
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
 			<div class=" text-white lg:w-[40%] space-y-6 w-[95%] mx-auto lg:ml-[10%] ">
 				<h1 use:reveal class=" text-4xl font-medium">Eligibility Info</h1>
-				<h3 class=" text-lg">One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.</h3>
+				<h3 class=" text-justify text-lg">One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.</h3>
 				<button class=" bg-blue-500 flex justify-between items-center text-white font-semibold text-lg rounded-md w-[60%] text-left p-5">
 					<p>Publish with us</p>
 					<ChevronRightSolid />
@@ -96,11 +96,11 @@
 							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] right-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
 						>
 							<h1 class=" text-3xl font-semibold">Peer Review Process</h1>
-							<div class=" space-y-3">
+							<div class=" space-y-3 ">
 								{#each processes as process}
 									<div class=" flex items-center space-x-3">
 										<CheckOutline />
-										<p class=" text-base text-gray-700">
+										<p class=" text-justify text-base text-gray-700">
 											{process}
 										</p>
 									</div>

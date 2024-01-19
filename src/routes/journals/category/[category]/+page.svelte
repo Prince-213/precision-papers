@@ -5,6 +5,7 @@
 
 	import { Button, ImagePlaceholder } from 'flowbite-svelte';
 	import Loader from '../../../../components/Loader.svelte';
+	import { goto } from '$app/navigation';
 
 	const { category } = $page.params;
 
@@ -19,6 +20,17 @@
 	export let data;
 
 	$: journals = data.journals;
+
+	let searchItem = data.article;
+
+	let id = data.id
+
+	const getPath = `/journals/search/${id}`;
+
+	const navigate = async (add: string) => {
+		const path = await `${getPath}${add}`;
+		await goto(path);
+	};
 
 	
 </script>
@@ -43,7 +55,7 @@
 			<Loader />
 		{:else}
 			<div
-				class=" mt-10 lg:w-[60%] bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10"
+				class=" mt-10 lg:w-full text-justify leading-8 bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10"
 			>
 				<p>{journals[0].description}</p>
 
@@ -54,6 +66,37 @@
 				>
 					See More
 				</Button>
+			</div>
+			
+			<div
+				class=" mt-20 lg:w-full text-justify leading-8 bg-white  shadow-none cursor-pointer transition-all space-y-4 duration-200  rounded-2xl"
+			>
+				<h1 class=" font-semibold lg:text-2xl text-center">Related Journals</h1>
+				<div
+					class=" mans mt-10 lg:w-full w-[95%] md:w-[80%] grid-cols-1 grid lg:grid-cols-3 gap-5 mx-auto"
+				>
+					{#each searchItem as item}
+						<div
+							class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10"
+						>
+							<h2 class=" text-2xl font-medium">{item.title}</h2>
+
+							<p>{item.main_author}</p>
+							<p class=" truncate">
+								{item.intro}
+							</p>
+
+							<button
+								on:click={() => navigate(`/paper/${item.journal_id}`)}
+								type="submit"
+								class=" py-3 hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
+							>
+							<a href={`${getPath}/paper/${item.journal_id}`} data-sveltekit-preload-data='hover'>Read More</a>
+								
+							</button>
+						</div>
+					{/each}
+				</div>
 			</div>
 		{/if}
 	</div>

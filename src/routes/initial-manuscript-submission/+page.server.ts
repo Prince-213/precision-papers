@@ -7,6 +7,9 @@ import emailjs from '@emailjs/browser'
 
 
 
+
+
+
 export const actions = {
   initial: async ({ request, cookies }) => {
     const data = await request.formData();
@@ -36,6 +39,51 @@ export const actions = {
     const bucket = "journals";
 
     
+    let currentDate = new Date().toJSON().slice(0, 10);
+	  console.log(currentDate); 
+    
+    
+    const sendMail = async (authorEmail: any, title: any, created: any) => {
+      try {
+        
+        await emailjs.send(
+          'service_066spww',
+          'template_a3jpj1k',
+          {
+            to_name: authorEmail,
+            message: `I hope this message finds you well. We appreciate your contribution to the scholarly community and your recent submission to Precision Chronicles. This email is to confirm the successful receipt of your manuscript titled ${title} on ${created}. Our editorial team is currently reviewing your work, and we will keep you informed about the progress and status of the evaluation process. `
+          },
+          '_VUsFZj_ItEgocPVw'
+        );
+      } catch (error) {
+        console.log(error);
+      } finally {
+        
+      }
+    };
+
+    const sendMailToAdmin = async (title: any, created: any) => {
+      try {
+        
+        await emailjs.send(
+          'service_066spww',
+          'template_a3jpj1k',
+          {
+            to_name: 'steverolans@gmail.com',
+            message: `A new manuscript has been successfully submitted to Precision Chronicles. Title: ${title}, Date of publication: ${created} `
+          },
+          '_VUsFZj_ItEgocPVw'
+        );
+      } catch (error) {
+        console.log(error);
+      } finally {
+        
+      }
+    };
+
+
+
+    
 
     try {
       const { data, error } = await supabase
@@ -46,7 +94,7 @@ export const actions = {
             subject_area: subjectarea,
             main_author: mainauthorname,
             views: 0,
-            volume: "Volume 2 Issue XII, Dec 2023",
+            volume: "Volume 1 Issue XII, Jan 2024",
             category: journal,
             address: `${city}, ${state}, ${country}`,
             intro: intro,
@@ -76,6 +124,10 @@ export const actions = {
             cacheControl: "3600",
             upsert: false,
         });
+
+        await sendMail( mainauthoremail, manuscripttitle, currentDate )
+
+        await sendMailToAdmin( manuscripttitle, currentDate )
         
         
         return { message: "Registered Successfully!", error: false };

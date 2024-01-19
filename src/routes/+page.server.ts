@@ -1,8 +1,23 @@
+import { supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-    return {};
+
+
+    
+    let { data, error } = await supabase
+    .from('journals')
+    .select('*')
+    .range(0, 3)
+
+
+    console.log(data)
+    
+        
+    return {
+
+        blog: data ?? []
+    };
 }) satisfies PageServerLoad;
 
 export const prerender = true;
-export const ssr = true;

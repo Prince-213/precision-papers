@@ -83,7 +83,7 @@
 		<div class="main w-full h-[60vh] bg-center bg-cover flex items-center">
 			<div class=" text-white lg:w-[50%] space-y-6 w-[90%] mx-auto lg:ml-[10%]">
 				<h1 use:reveal  class=" text-4xl font-medium">About Us</h1>
-				<h3 class=" lg:text-lg text-base">
+				<h3 class=" text-justify lg:text-lg text-base">
 					Welcome to Precision Papers, a leading platform dedicated to fostering knowledge and
 					innovation in the realms of deep learning, power system engineering, control systems,
 					communication, cybersecurity, biometric technology, database management systems,
@@ -109,7 +109,7 @@
 							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] right-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
 						>
 							<h1 class=" text-xl lg:text-3xl font-semibold">About Precision Papers</h1>
-							<p class=" lg:text-base text-gray-700">
+							<p class=" text-justify lg:text-base text-gray-700">
 								Our Mission: At Precision Papers, our mission is to facilitate the exchange of
 								cutting-edge research and insights among scholars, researchers, and experts across
 								diverse fields. We aim to provide a comprehensive platform that spans the
@@ -126,7 +126,7 @@
 							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[65%] left-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
 						>
 							<h1 class=" text-3xl font-semibold">The Aim and Scope</h1>
-							<p class=" text-base text-gray-700">
+							<p class=" text-justify text-base text-gray-700">
 								Scope of Expertise: Precision Papers focuses on a broad spectrum of fields, each
 								playing a crucial role in shaping the future of technology and research. From
 								unraveling the mysteries of deep learning to optimizing power systems and securing
@@ -147,7 +147,7 @@
 					</div>
 					<div class=" w-full py-5">
 						<h1 class=" font-semibold text-3xl mb-4">Join Our Community:</h1>
-						<p>
+						<p class=" text-justify">
 							Whether you're a seasoned researcher, an aspiring scholar, or an industry expert,
 							Precision Papers welcomes you to join our community. Share your insights, explore the
 							latest advancements, and be part of a network that is dedicated to precision in

@@ -1,4 +1,6 @@
 <script lang="ts">
+	export let data;
+
 	import ProcessCard from './../components/ProcessCard.svelte';
 	import Particle from './../components/Particle.svelte';
 
@@ -39,6 +41,8 @@
 
 	import { navigating } from '$app/stores';
 	import Loader from '../components/Loader.svelte';
+
+	import anotherDeep from '$lib/assets/images/pexels-google-deepmind-18069239.jpg'
 
 	const process = [
 		{
@@ -85,13 +89,36 @@
 		}
 	];
 
+	let blog = data.blog;
+
+	const convertDate = (input: string) => {
+		const inputDateString = input;
+		const inputDate = new Date(inputDateString);
+		const options = { year: 'numeric', month: 'short', day: 'numeric' };
+		const formattedDate = inputDate.toLocaleDateString('en-US', options);
+
+		return formattedDate
+	};
+
 	const title = ['Welcome', 'To', 'Precision', 'Chronicles'];
+
+	const posters = [
+		{
+			short: 'ccs',
+
+		}
+	]
 </script>
 
 <svelte:head>
 	<title>PRECISION CHRONICLES</title>
-	<meta name="Precision chronicles homepage" content="Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research."  />
-	<meta name="keywords" content="Precision Chronicles, precision chronicles, precisionchronicles, precision, journals, precision journals, articles, Precision chronicles, precision Chronicles, Academic Journals,
+	<meta
+		name="Precision chronicles homepage"
+		content="Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research."
+	/>
+	<meta
+		name="keywords"
+		content="Precision Chronicles, precision chronicles, precisionchronicles, precision, journals, precision journals, articles, Precision chronicles, precision Chronicles, Academic Journals,
 	Scholarly Publications,
 	Research Papers,
 	Manuscript Submission,
@@ -110,7 +137,8 @@
 	Author Guidelines,
 	Journal Submission System,
 	Research Article Submission,
-	Editorial Board.">
+	Editorial Board."
+	/>
 </svelte:head>
 
 {#if $navigating}
@@ -119,19 +147,22 @@
 	<div class=" w-full">
 		<div class="main w-full flex pt-[15%] pb-[18vh] lg:pt-[0%] bg-cover overflow-x-hidden">
 			<div
-				use:reveal={{ transition: "blur" }}
+				use:reveal={{ transition: 'blur' }}
 				class=" card w-[95%] lg:w-[60%] mx-auto flex items-center py-8 lg:py-10 h-fit mt-[10%] lg:mt-[8%] lg:ml-[6%] overflow-hidden"
 			>
 				<div class=" w-[90%] space-y-10 mx-auto">
-					<div class=" w-[90%] gap-4  flex flex-wrap lg:flex-nowrap  ">
+					<div class=" w-[90%] gap-4 flex flex-wrap lg:flex-nowrap">
 						{#each title as heading, idx}
-							<h1 use:reveal={{ transition: "fly", y: 100, delay: (idx + 2) * 250 }} class=" text-white font-extrabold font-nova text-4xl lg:text-5xl">
+							<h1
+								use:reveal={{ transition: 'fly', y: 100, delay: (idx + 2) * 250 }}
+								class=" text-white font-extrabold font-nova text-4xl lg:text-5xl"
+							>
 								{heading}
 							</h1>
 						{/each}
 					</div>
 
-					<p class=" font-poppins font-medium lg:text-lg w-[90%] text-gray-300">
+					<p class=" text-justify font-poppins font-medium lg:text-lg w-[90%] text-gray-300">
 						Open Access publishing for the scientific community Maximizing the impact of research
 						through openness. Because science works best when research is open.
 					</p>
@@ -165,27 +196,27 @@
 					<h3 class=" uppercase text-xl font-medium">you know about us</h3>
 					<br />
 					<h1 class=" mb-4 text-3xl font-semibold">Science, is Necessary</h1>
-					<p use:reveal  class=" text-lg text-gray-800 mb-4">
-						Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly
-						discourse. As a premier organization dedicated to the dissemination of cutting-edge
-						research, we take pride in our commitment to fostering intellectual curiosity and
-						advancing knowledge across various disciplines. At Precision Papers, our primary mission
-						is to publish high-quality academic journals that showcase groundbreaking research and
-						contribute to the global academic community.
+					<p use:reveal class=" text-lg text-justify text-gray-800 mb-4">
+						Welcome to Precision Chronicles, a distinguished hub for academic excellence and
+						scholarly discourse. As a premier organization dedicated to the dissemination of
+						cutting-edge research, we take pride in our commitment to fostering intellectual
+						curiosity and advancing knowledge across various disciplines. At Precision Papers, our
+						primary mission is to publish high-quality academic journals that showcase
+						groundbreaking research and contribute to the global academic community.
 					</p>
-					<p use:reveal>
+					<p use:reveal class=" text-justify">
 						Our platform serves as a beacon for researchers, scholars, and academics seeking a
 						reputable avenue to share their innovative work with the world. With a rigorous
 						peer-review process, we ensure the utmost accuracy, integrity, and precision in every
-						publication. Precision Chronicles stands at the forefront of academic publishing, providing a
-						space where original contributions thrive and intellectual boundaries are pushed. As a
-						testament to our commitment to excellence, our journals span diverse fields, from the
-						sciences and humanities to technology and social sciences, catering to the varied
-						interests and expertise of our esteemed contributors. Explore Precision Papers to embark
-						on a journey of discovery, where each page unfolds new insights, challenges established
-						norms, and contributes to the collective wisdom of the academic community. Join us in
-						our dedication to precision, excellence, and the pursuit of knowledge that transcends
-						boundaries.
+						publication. Precision Chronicles stands at the forefront of academic publishing,
+						providing a space where original contributions thrive and intellectual boundaries are
+						pushed. As a testament to our commitment to excellence, our journals span diverse
+						fields, from the sciences and humanities to technology and social sciences, catering to
+						the varied interests and expertise of our esteemed contributors. Explore Precision
+						Papers to embark on a journey of discovery, where each page unfolds new insights,
+						challenges established norms, and contributes to the collective wisdom of the academic
+						community. Join us in our dedication to precision, excellence, and the pursuit of
+						knowledge that transcends boundaries.
 					</p>
 				</div>
 			</div>
@@ -205,7 +236,7 @@
 					<h1 class=" text-3xl mt-5 lg:mt-0 lg:text-[2.5em]">
 						Lorem ipsum consectetur adipiscing elit.
 					</h1>
-					<h2 class=" text-lg lg:text-2xl text-gray-500">
+					<h2 class=" text-justify text-lg lg:text-2xl text-gray-500">
 						Fusce nec tellus sed augue semper porta lacinia arcu eget nullat taciti sociosqu ad
 						litora torquent per conubia nostra.
 					</h2>
@@ -245,41 +276,26 @@
 				</div>
 			</div>
 		</div>
-		<div class=" hidden relative w-full z-50 bg-white py-4 lg:py-10">
+		<div class=" relative w-full z-50 bg-white py-4 lg:py-10">
 			<div class=" w-[90%] mx-auto flex flex-col items-center text-center">
-				<h1 class=" lg:text-xl font-medium">TRENDING BLOGS</h1>
-				<h1 class=" lg:text-4xl font-semibold">Show About Our Popular Researches</h1>
+				<h1 class=" lg:text-xl font-medium">TRENDING JOURNALS</h1>
+				<h1 class=" lg:text-4xl font-semibold">Show About Our Latest Published Journals</h1>
 				<div class=" space-y-6 lg:space-y-0 w-full lg:flex lg:justify-between mt-10">
-					<div class=" lg:w-[32%] space-y-3">
-						<img src={think} alt="" class=" w-full h-[300px] rounded-md" />
-						<p class=" lg:text-base font-medium text-gray-400">MAR 12, 2022</p>
-						<h2 class=" lg:text-2xl font-semibold">New Researches...</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat ea inventore fugit
-							optio. Eos autem labore dolorum rem perspiciatis dolore quo consectetur! Facilis
-							perspiciatis voluptas suscipit qui non tempore aliquid!
-						</p>
-					</div>
-					<div class=" lg:w-[32%] space-y-3">
-						<img src={think} alt="" class=" w-full h-[300px] rounded-md" />
-						<p class=" lg:text-base font-medium text-gray-400">MAR 12, 2022</p>
-						<h2 class=" lg:text-2xl font-semibold">Plant Disease...</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat ea inventore fugit
-							optio. Eos autem labore dolorum rem perspiciatis dolore quo consectetur! Facilis
-							perspiciatis voluptas suscipit qui non tempore aliquid!
-						</p>
-					</div>
-					<div class=" lg:w-[32%] space-y-3">
-						<img src={think} alt="" class=" w-full h-[300px] rounded-md" />
-						<p class=" lg:text-base font-medium text-gray-400">MAR 12, 2022</p>
-						<h2 class=" lg:text-2xl font-semibold">Science Progress...</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat ea inventore fugit
-							optio. Eos autem labore dolorum rem perspiciatis dolore quo consectetur! Facilis
-							perspiciatis voluptas suscipit qui non tempore aliquid!
-						</p>
-					</div>
+					{#each blog as item}
+						<div class=" text-left  lg:w-[32%] space-y-3">
+							<img src={ item.category == 'ccs' ? work : anotherDeep} alt="" class=" w-full h-[300px] rounded-md" />
+							<div class=" w-full flex items-center justify-between">
+								
+								<p>{item.main_author}</p>
+							</div>
+							
+							<h2 class=" lg:text-xl font-semibold truncate">{item.title}</h2>
+							<p class=" text-justify truncate">
+								{item.intro}
+							</p>
+							<p class=" text-left lg:text-base font-medium text-gray-400">{ convertDate(item.created_at) }</p>
+						</div>
+					{/each}
 				</div>
 			</div>
 		</div>
@@ -287,7 +303,7 @@
 			<div
 				class=" w-[90%] lg:flex lg:flex-row-reverse flex flex-col lg:justify-between lg:items-strech space-y-5 mx-auto"
 			>
-				<div use:reveal  class=" min-h-[40vh] w-full lg:w-[45%] overflow-hidden rounded-md">
+				<div use:reveal class=" min-h-[40vh] w-full lg:w-[45%] overflow-hidden rounded-md">
 					<img src={write} alt="" />
 				</div>
 
@@ -296,13 +312,13 @@
 						A Comprehensive Guide to Science Communication
 					</h3>
 
-					<p class=" text-gray-800 mb-4">
+					<p class=" text-gray-800 mb-4 text-justify">
 						The research journey does not end when a paper is published. It is then that the work of
 						helping others discover and understand the research begins. To help you be successful in
 						this stage of your journey is why we, in collaboration with leading science
 						communicators, created this science communication guide.
 					</p>
-					<p>
+					<p class=" text-justify">
 						A Comprehensive Guide to Science Communication is a free resource available to read and
 						use by anyone, anywhere in the world that can serve as a tool for you to increase
 						visibility and thus maximize the impact of your work.
@@ -325,7 +341,7 @@
 					<div class=" flex space-x-10">
 						<PenNibOutline strokeWidth=".5" class=" w-14 h-14" />
 						<div>
-							<p>
+							<p class=" text-justify">
 								With the researcher at the heart of the publishing experience, we have created a
 								diverse portfolio of peer-reviewed, open access journals across a wide range of
 								scientific and medical disciplines. Choose the journal that fits your niche.
@@ -346,7 +362,7 @@
 					<div class=" flex space-x-10">
 						<BookOutline strokeWidth=".5" class=" w-14 h-14" />
 						<div>
-							<p>
+							<p class=" text-justify">
 								With the researcher at the heart of the publishing experience, we have created a
 								diverse portfolio of peer-reviewed, open access journals across a wide range of
 								scientific and medical disciplines. Choose the journal that fits your niche.
@@ -369,7 +385,7 @@
 <style>
 	.main {
 		background-image: url('../lib/assets//images/pexels-google-deepmind-17483811.jpg');
-		background-color: rgba(36, 36, 36, 0.162);
+		background-color: rgba(96, 155, 245, 0.162);
 		background-blend-mode: multiply;
 		background-position: center;
 	}

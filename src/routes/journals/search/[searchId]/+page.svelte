@@ -11,9 +11,9 @@
 
 	const getPath = $page.url;
 
-	const navigate = (add: string) => {
-		const path = `${getPath}${add}`;
-		goto(path);
+	const navigate = async (add: string) => {
+		const path = await `${getPath}${add}`;
+		await goto(path);
 	};
 
 	$: searchItem = data.journals;
@@ -61,7 +61,8 @@
 								type="submit"
 								class=" py-3 hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
 							>
-								Read More
+							<a href={`${getPath}/paper/${item.journal_id}`} data-sveltekit-preload-data='hover'>Read More</a>
+								
 							</button>
 						</div>
 					{/each}

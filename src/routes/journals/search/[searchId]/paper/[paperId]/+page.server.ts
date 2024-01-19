@@ -42,7 +42,16 @@ export const load = (async ( { fetch, params, url } ) => {
         .select("*")
         .eq('journal_id', paperId)).data
 
-
+    try {
+		const { data, error } = await supabase.rpc('increment', {
+			row_id: `${paperId}`
+		});
+		if (data) {
+			console.log('added vies');
+		}
+	} catch (error) {
+		console.log(error)
+	}    
   
 
 

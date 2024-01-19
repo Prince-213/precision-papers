@@ -4,7 +4,7 @@
 	import { enhance } from '$app/forms';
 	import { page, navigating } from '$app/stores';
 	import { invalidateAll } from '$app/navigation';
-	import { loading } from '../../store';
+	
 	import { reveal } from 'svelte-reveal'
 
 	const redirectTo = $page.url.searchParams.get('redirectTo') || '/';
@@ -19,7 +19,7 @@
 		CheckCircleOutline,
 		CloseCircleSolid
 	} from 'flowbite-svelte-icons';
-	import { fromJSON } from 'postcss';
+
 	import Loader from '../../components/Loader.svelte';
 
 	export let form;
@@ -108,6 +108,9 @@
 			formData = data;
 		}
 	};
+
+	let currentDate = new Date().toJSON().slice(0, 10);
+	console.log(currentDate); // "2022-06-17"
 </script>
 
 <svelte:head>
@@ -147,7 +150,7 @@
 					<div class=" bg-[#F0F2F4] items-center rounded-md p-4 flex justify-between">
 						<div class=" flex space-x-4">
 							<InfoCircleSolid class=" text-[#79808F]  " size="lg" />
-							<p class=" text-lg font-medium text-[#242426]">Volume 2 Issue XII, Dec 2023</p>
+							<p class=" text-lg font-medium text-[#242426]">Volume 1 Issue XII, Jan 2024</p>
 						</div>
 					</div>
 				</div>

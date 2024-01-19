@@ -70,7 +70,8 @@
 				>
 					{#each updated as journal, idx}
 						<div
-							use:reveal
+							use:reveal={ { transition: 'fly', threshold: 0.3, duration: 500 } }
+							
 							class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl p-10 flex flex-col justify-between"
 						>
 							<h2 class="h-[40%] text-lg font-semibold">
@@ -82,12 +83,13 @@
 								class=" w-full rounded-md h-28 bg-center bg-cover"
 							></div>
 
-							<Button
+							<a
+								data-sveltekit-preload-data="hover"
 								href={`/journals/category/${journal.short}`}
-								class=" py-3 hover:shadow-md w-full px-8 text-black-100 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
+								class=" py-3 text-center hover:shadow-md w-full px-8 text-black-100 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
 							>
 								See More
-							</Button>
+							</a>
 						</div>
 					{/each}
 				</div>

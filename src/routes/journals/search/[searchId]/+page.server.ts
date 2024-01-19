@@ -40,6 +40,6 @@ export const load = (async ( { fetch, params, url } ) => {
     return {
         journals: data ?? [],
         
-        title: title[0].title ?? ''
+        title: title != null ? title[0].title : '' 
     };
 }) satisfies PageServerLoad;

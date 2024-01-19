@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { supabase } from '$lib/supabaseClient';
-	import { Button, Spinner } from 'flowbite-svelte';
+	import { Badge, Button, Spinner } from 'flowbite-svelte';
 	import { CardPlaceholder } from 'flowbite-svelte';
 	import { BadgeCheckIcon, UserSearchIcon, EyeIcon } from 'lucide-svelte';
 	import { navigating } from '$app/stores';
@@ -15,25 +15,28 @@
 		MapPinOutline,
 		BookOpenOutline,
 		ClockOutline,
-		ArchiveDownloadSolid
+		ArchiveDownloadSolid,
+		UsersOutline
 	} from 'flowbite-svelte-icons';
 	import Loader from '../../../../../../components/Loader.svelte';
 
 	const { journals } = data;
+
+	//let manu: string = journals[0]?.initial_man;
+	//
+	//let path = `https://xedepqtbxdmvqbsbsrrd.supabase.co/storage/v1/object/public/journals/public/${manu}`;
 
 	let manu: string = journals[0]?.initial_man;
 
 	let path = `https://xedepqtbxdmvqbsbsrrd.supabase.co/storage/v1/object/public/journals/public/${manu}`;
 	console.log(journals);
 
-	$: view = journals[0].views;
+	let view = journals[0].views;
+
+	let add = view++;
 
 	onMount(async () => {
-		const { data, error } = await supabase
-			.from('journals')
-			.update({ views: view + 1 })
-			.eq('journal_id', journals[0].journal_id)
-			.select();
+		
 	});
 </script>
 
@@ -41,7 +44,7 @@
 	{#if $navigating}
 		<Loader />
 	{:else}
-		<div class=" py-20 space-y-8">
+		<div class=" flex flex-col justify-start items-start py-20 space-y-8">
 			<h1 class=" underline uppercase text-2xl lg:text-3xl font-semibold">
 				{journals[0]?.title}
 			</h1>
@@ -67,11 +70,14 @@
 					{/if}
 				</div>
 				<div class=" flex space-x-4 items-center w-fit">
-					{#if journals[0].enabled}
-						<BadgeCheckIcon class=" text-blue-500" />
-					{:else}
-						<UserSearchIcon />
-					{/if}
+					<div class=" flex items-center space-x-2">
+						{#if journals[0].enabled}
+							<BadgeCheckIcon class=" text-blue-500" />
+						{:else}
+							<UserSearchIcon />
+						{/if}
+						<h1>Author Name :</h1>
+					</div>
 
 					<p class=" lg:max-w-[90%] text-lg font-medium">
 						{journals[0]?.main_author}
@@ -79,51 +85,58 @@
 				</div>
 			</div>
 			<div
-				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-1 lg:grid-cols-3 gap-y-10 p-10"
+				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-1 lg:grid-cols-2 gap-y-10 p-10"
 			>
 				<div class=" text-lg flex items-center space-x-3">
-					<ClockOutline />
-					<p>{journals[0]?.created_at}</p>
+					<div class=" flex items-center space-x-2">
+						<ClockOutline />
+						<h3>Date Of Publication :</h3>
+					</div>
+					<p class=" font-semibold">{journals[0]?.created_at}</p>
 				</div>
 
-				<div class=" text-lg flex space-x-3">
-					<BookOpenOutline class=" mt-[6px]" />
-					<p>{journals[0]?.department}</p>
-				</div>
-				<div class=" text-lg flex space-x-3">
-					<UserOutline class=" mt-[6px]" />
-					<p>
+				<div class=" text-lg flex items-center space-x-3">
+					<div class=" flex items-center space-x-2">
+						<UsersOutline class=" " />
+						<h3>No. Of Authors :</h3>
+					</div>
+					<p class=" font-semibold">
 						{journals[0]?.total_authors}
 					</p>
 				</div>
+
 				<div class=" text-lg flex items-center space-x-3">
-					<MapPinOutline />
-					<p>{journals[0]?.address}</p>
+					<div class=" flex items-center space-x-2">
+						<EyeIcon />
+						<h3>No. Of Views :</h3>
+					</div>
+					<p class=" font-semibold">{journals[0]?.views}</p>
 				</div>
 				<div class=" text-lg flex items-center space-x-3">
-					<EyeIcon />
-					<p>{journals[0]?.views}</p>
-				</div>
-				<div class=" text-lg flex items-center space-x-3">
-					<BookOpenOutline />
-					<p>{journals[0]?.volume}</p>
+					<div class=" flex items-center space-x-2">
+						<BookOpenOutline />
+						<h3>No. Of Views :</h3>
+					</div>
+					<p class=" font-semibold">{journals[0]?.volume}</p>
 				</div>
 			</div>
 			<div
 				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md shadow-gray-300 rounded-2xl justify-between p-10"
 			>
-				<p class=" leading-9">
+				<h1 class=" font-semibold text-xl">Abstract</h1>
+				<p class=" text-justify leading-9">
 					{journals[0]?.intro}
 				</p>
 			</div>
 			<br />
-			<a class=" mt-5" href={path} download="proposed_file_name"
-				><Button class=" bg-black-100 text-white py-5 font-medium flex items-center space-x-5"
-					><p>Download Manuscript</p>
 
-					<ArchiveDownloadSolid class=" text-white" />
-				</Button></a
-			>
+			<Button
+				href={path}
+				class=" bg-black-100 lg:w-[30%]  text-white py-5 font-medium flex items-center space-x-5"
+				><p>Download Manuscript</p>
+
+				<ArchiveDownloadSolid class=" text-white" />
+			</Button>
 		</div>
 	{/if}
 </div>

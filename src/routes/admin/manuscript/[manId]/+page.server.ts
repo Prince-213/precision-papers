@@ -4,6 +4,8 @@ import { journals } from '../../../../lib/data/journals';
 import { fail } from '@sveltejs/kit';
 import { v4 as uuidv4 } from "uuid";
 
+import emailjs from '@emailjs/browser'
+
 type search = {
     id: number,
     title: string,
@@ -71,11 +73,54 @@ export const actions = {
         const journalid = data.get("journalid")
         const former = data.get("formermanuscript");
         const manstatus = data.get("manstatus")
+        const alert = data.get("sendalert")
+        const updateFile = data.get('updateFile')
 
 
         console.log(data)  
         let file;
         const bucket = "journals";
+
+        const sendPublishedCongrats = async (authorEmail: any, title: any) => {
+            try {
+            
+            await emailjs.send(
+                'service_066spww',
+                'template_a3jpj1k',
+                {
+                to_name: authorEmail,
+                message: `We trust this message finds you well. We are pleased to inform you that your manuscript titled "${title}" has been successfully submitted to Precision Chronicles. Thank you for choosing us as the platform to showcase your valuable research.`
+                },
+                '_VUsFZj_ItEgocPVw'
+            );
+            } catch (error) {
+            console.log(error);
+            } finally {
+            
+            }
+        };
+
+        const sendMail = async (authorEmail: any, title: any, id: any) => {
+            try {
+            
+            await emailjs.send(
+                'service_066spww',
+                'template_a3jpj1k',
+                {
+                to_name: authorEmail,
+                message: `We hope this email finds you well. We wanted to inform you that your manuscript titled "${title}" has entered the review process at Precision Chronicles. Our editorial team is dedicated to conducting a thorough evaluation of your work Your Manuscript ID is ${id}.
+
+                Here are some key points about the review process: \n The review process typically takes 2 weeks to complete. \n
+                We will keep you informed about the progress of the review and notify you once the evaluation is finalized. `
+                },
+                '_VUsFZj_ItEgocPVw'
+            );
+            } catch (error) {
+            console.log(error);
+            } finally {
+            
+            }
+        };
 
     
 
@@ -86,9 +131,7 @@ export const actions = {
                 {
                 title: manuscripttitle,
                 subject_area: subjectarea,
-               
-                views: 0,
-                volume: "Volume 2 Issue XII, Dec 2023",
+                volume: "Volume 1 Issue XII, Jan 2024",
                 category: journal,
                 address: country,
                 intro: intro,
@@ -110,22 +153,72 @@ export const actions = {
                     message: error.message,
                     error: true,
                 });
-            } else if ( initialmanuscript ) {
+            } else {
+                if ( updateFile && !alert ) {
+                
+                    const { data, error } = await supabase
+                            .storage
+                        .from('journals')
+                        .update(`public/${former}`, initialmanuscript, {
+                            cacheControl: '3600',
+                            upsert: true
+                        })
+    
+                    if (error) {
+                        console.log(error);
+                        
+                        return fail(404, {
+                            message: `storage ${error.message} ${former}`,
+                            error: true,
+                        });
+                    }
+    
+                    return { message: "Updated Successfully and File Upadated!", error: false };
+                } else if (updateFile && alert) {
+                    const { data, error } = await supabase
+                            .storage
+                        .from('journals')
+                        .update(`public/${former}`, initialmanuscript, {
+                            cacheControl: '3600',
+                            upsert: true
+                        })
+    
+                    if (error) {
+                        console.log(error);
+                        
+                        return fail(404, {
+                            message: `storage ${error.message} ${former}`,
+                            error: true,
+                        });
+                    }
 
-                const { data, error } = await supabase.storage.from('journals').update(`public/${former}`, initialmanuscript, {
-                    upsert: false,
-                })
+                    if ( manstatus == 'published' ) {
+                        sendPublishedCongrats(mainauthoremail, manuscripttitle)
+                    } else {
+                        sendMail(mainauthoremail, manuscripttitle, journalid)
+                    }
 
-                if (error) {
-                    console.log(error);
-                    return fail(404, {
-                        message: `storage ${error.message} ${former}`,
-                        error: true,
-                    });
+                    
+    
+                    return { message: "Updated Successfully and File Upadated! also the Email Alert has been sent", error: false };
+                } else if (!updateFile && alert) {
+                
+
+                    if ( manstatus == 'published' ) {
+                        sendPublishedCongrats(mainauthoremail, manuscripttitle)
+                    } else {
+                        sendMail(mainauthoremail, manuscripttitle, journalid)
+                    }
+    
+                    return { message: "Updated Successfully! Also the Email Alert has been sent", error: false };
                 }
 
-                return { message: "Registered Successfully!", error: false };
+            
+
+                return { message: "Updated Successfully!", error: false };
             }
+            
+            
 
 
         } catch (error) {
