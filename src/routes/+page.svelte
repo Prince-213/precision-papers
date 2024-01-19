@@ -57,7 +57,7 @@
 		})(window, document, "clarity", "script", "kocoimrx6u");
 	</script>
 	<meta
-		name="Precision chronicles homepage"
+		name="description"
 		content="Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research."
 	/>
 	<meta
