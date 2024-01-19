@@ -10,8 +10,6 @@ export const load = (async () => {
     .select('*')
     .range(0, 3)
 
-
-    console.log(data)
     
         
     return {
