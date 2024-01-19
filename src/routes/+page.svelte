@@ -230,7 +230,7 @@
 				<h1 class=" lg:text-4xl font-semibold">Show About Our Latest Published Journals</h1>
 				<div class=" space-y-6 lg:space-y-0 w-full lg:flex lg:justify-between mt-10">
 					{#each blog as item}
-						<div class=" text-left  lg:w-[32%] space-y-3">
+						<a href={`/journals/search/${item.category}/paper/${item.journal_id}`} data-sveltekit-preload-data="hover" class=" text-left  lg:w-[32%] space-y-3">
 							<img use:lazyLoad={ item.category == 'ccs' ? work : anotherDeep} alt={item.title} class=" w-full h-[300px] rounded-md" />
 							<div class=" w-full flex items-center justify-between">
 								
@@ -242,7 +242,7 @@
 								{item.intro}
 							</p>
 							<p class=" text-left lg:text-base font-medium text-gray-400">{ convertDate(item.created_at) }</p>
-						</div>
+						</a>
 					{/each}
 				</div>
 			</div>
