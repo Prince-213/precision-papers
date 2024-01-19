@@ -7,8 +7,9 @@
 	import aim from '$lib/assets/images/pexels-lukas-590041.jpg';
 	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
 	import { navigating } from '$app/stores'
-
+	
 	import { lazyLoad } from '$lib/data/lazyLoad';
+	
 
 	import { reveal } from 'svelte-reveal'
 

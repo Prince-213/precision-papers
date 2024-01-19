@@ -19,6 +19,9 @@
 
 	import { reveal  } from 'svelte-reveal'
 
+	import { lazyLoad } from '$lib/data/lazyLoad';
+	
+
 	const processes = [
 		'Interdisciplinary Approach: We recognize the interconnectedness of various domains and encourage interdisciplinary collaboration, believing that the convergence of ideas leads to groundbreaking innovations.',
 		'Quality Peer Review: Rigorous peer review is at the heart of Precision Papers. Our esteemed panel of experts ensures the highest standards of quality, integrity, and validity in the research shared on our platform.',
@@ -103,7 +106,7 @@
 				<h1 use:reveal class=" text-3xl font-semibold">About Us</h1>
 				<div class=" relative w-full space-y-5 lg:space-y-20">
 					<div use:reveal  class=" w-full lg:flex items-center relative">
-						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={background} />
+						<img class=" lg:w-[70%] rounded-md h-auto" alt="About Precision Chronicles" use:lazyLoad={background} />
 
 						<div
 							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[55%] right-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
@@ -120,7 +123,7 @@
 					</div>
 					<br />
 					<div use:reveal class=" w-full lg:flex lg:flex-row-reverse items-center relative">
-						<img class=" lg:w-[70%] rounded-md h-auto" alt="" src={aim} />
+						<img class=" lg:w-[70%] rounded-md h-auto" alt="Precision Chronicles Aim" use:lazyLoad={aim} />
 
 						<div
 							class=" rounded-md shadow-lg shadow-gray-500 py-5 lg:py-10 lg:w-[65%] left-0 lg:absolute space-y-5 px-5 bg-blue-200 opacity-95"
