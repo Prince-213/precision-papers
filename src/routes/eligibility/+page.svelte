@@ -94,11 +94,5 @@
 		background-blend-mode: multiply;
 	}
 
-	.card {
-		backdrop-filter: blur(3px) saturate(200%);
-		-webkit-backdrop-filter: blur(3px) saturate(200%);
-		background-color: rgba(17, 25, 40, 0.71);
-		border-radius: 10px;
-		border: 1px solid rgba(255, 255, 255, 0.125);
-	}
+	
 </style>

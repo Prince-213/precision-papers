@@ -3,7 +3,7 @@
 	import { Spinner } from 'flowbite-svelte';
 	import { CheckCircleOutline, CloseCircleSolid } from 'flowbite-svelte-icons';
 
-	export let data;
+	
 
 	export let form;
 

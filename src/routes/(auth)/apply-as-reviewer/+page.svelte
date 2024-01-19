@@ -7,8 +7,6 @@
 	
 
 
-	export let data;
-
 	export let form;
 
 	let sending = false;

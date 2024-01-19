@@ -1,6 +1,6 @@
 <script lang="ts">
 	import journal from '$lib/assets/images/techny-electronic-shield.png';
-	import { Checkbox, Input, Spinner, Label, InputAddon, Toast, ButtonGroup } from 'flowbite-svelte';
+	import { Input, Spinner, Label, InputAddon, Toast, ButtonGroup } from 'flowbite-svelte';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
@@ -13,13 +13,11 @@
 
 	import {
 		LockSolid,
-		CloseOutline,
-		InfoCircleSolid,
-		CloudArrowUpOutline,
+		
         CheckCircleSolid,
 		CheckCircleOutline
 	} from 'flowbite-svelte-icons';
-	import { fromJSON } from 'postcss';
+
 	import { slide } from 'svelte/transition';
 
 	export let form;
@@ -158,7 +156,5 @@
 </div>
 
 <style>
-	.box-in {
-		outline: transparent;
-	}
+	
 </style>
