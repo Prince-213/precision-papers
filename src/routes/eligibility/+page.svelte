@@ -23,14 +23,7 @@
 	} from 'flowbite-svelte-icons';
 	import Loader from '../../components/Loader.svelte';
 
-	const benefits = [
-		'You can add your role as a Reviewer for the International Journal Of Real-Time Applications And Computing Systems (IJORTACS) through Art to their CV.',
-		'This work helps to add in and provides a better way to create your identity as a well-known expert in your field and may lead to increased invitations to speak at conferences or demand for invited research of your specialized area.',
-		'You will be among the contributors who will shape and decide the urgent ways as required with changing societal needs.',
-		'Your ideas and subject inputs may help in arranging special issues as per topics of your interest and choice.',
-		'You will come across the latest research before everyone else and gives you a position of leadership in your research community.',
-		'The editors could enjoy discounts on Article Processing Charges if they publish articles in IJORTACS Journals.'
-	];
+	
 
 	const processes = [
 		'2 year research or working experience in the related areas with Ph.D./Master Degree.',
@@ -38,35 +31,7 @@
 		'The applicant should have a minimum of 10 papers, published with high impact journals and must be available for verification on demand.'
 	];
 
-	const team = [
-		{
-			name: 'Engr. Prof. Hank Anaukwu K.',
-			role: 'Editor in Chief',
-			site: 'info@ijortacs.com',
-			mail: 'cejeneral@yahoo.com'
-		},
-
-		{
-			name: 'Prof. Lee Richards',
-			role: 'Journal Manager',
-			site: 'lee.richpoint@mit.edu.uk',
-			mail: '#'
-		},
-
-		{
-			name: 'Prof. Mark Williamson H.',
-			role: 'Editor',
-			site: 'markscholar@mit.edu.uk',
-			mail: '#'
-		},
-
-		{
-			name: 'Prof. Akpan Linus J.',
-			role: 'Editor',
-			site: '#',
-			mail: 'akpanjonas@gmail.com'
-		}
-	];
+	
 </script>
 
 <svelte:head>

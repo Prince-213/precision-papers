@@ -1,15 +1,8 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 
-	import maze from '$lib/assets/images/pexels-google-deepmind-17483848.jpg';
-	import abstract from '$lib/assets/images/pexels-google-deepmind-17483848.jpg';
-	import code from '$lib/assets/images/pexels-kevin-ku-577585.jpg';
-	import think from '$lib/assets/images/pexels-pavel-danilyuk-8438918.jpg';
-	import spark from '$lib/assets/images/pexels-pixabay-414860.jpg';
-	import pie from '$lib/assets/images/pexels-lukas-590041.jpg';
-	import review from '$lib/assets/images/pexels-lukas-669621.jpg';
-	import office from '$lib/assets/images/pexels-marc-mueller-380769.jpg';
-	import { Button, Checkbox } from 'flowbite-svelte';
+	
+	import { Checkbox } from 'flowbite-svelte';
 
 	import { navigating } from '$app/stores';
 	import Loader from '../../components/Loader.svelte';

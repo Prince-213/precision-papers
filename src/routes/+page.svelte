@@ -6,23 +6,7 @@
 
 	import { lazyLoad } from '$lib/data/lazyLoad';
 
-	import Icon from '@iconify/svelte';
-
-	import think from '$lib/assets/images/pexels-pavel-danilyuk-8438918.jpg';
-
-	import initial from '$lib/assets/images/florid-student-studying-and-taking-notes.gif';
-
-	import reviewprocess from '$lib/assets/images/techny-artificial-intelligence-on-tablet-screen.gif';
-
-	import check from '$lib/assets/images/techny-searching-for-a-file-in-a-folder.gif';
-
-	import final from '$lib/assets/images/martina-boy-working-on-computer-with-checklist.gif';
-
-	import verified from '$lib/assets/images/beam-check-mark-in-a-circle.gif';
-
-	import result from '$lib/assets/images/network-current-biotech-research-and-discoveries.gif';
-
-	import online from '$lib/assets/images/isometric-cloud-computing-and-virtualization-technology.gif';
+	
 
 	import work from '$lib/assets/images/pexels-pavel-danilyuk-8438922.jpg';
 
@@ -34,8 +18,7 @@
 	import {
 		ChevronRightSolid,
 		PenNibOutline,
-		PenToSquareSolid,
-		PapperPlaneOutline,
+		
 		BookOutline
 	} from 'flowbite-svelte-icons';
 	import { goto } from '$app/navigation';
@@ -45,50 +28,7 @@
 
 	import anotherDeep from '$lib/assets/images/pexels-google-deepmind-18069239.jpg'
 
-	const process = [
-		{
-			gif: initial,
-			title: 'Initial Submission',
-			description:
-				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
-		},
-		{
-			gif: check,
-			title: 'Plegiarism Check with Turnitin Software',
-			description:
-				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
-		},
-		{
-			gif: reviewprocess,
-			title: 'Review Process',
-			description:
-				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
-		},
-		{
-			gif: result,
-			title: 'Review Result',
-			description:
-				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
-		},
-		{
-			gif: verified,
-			title: 'If Verified & Confirmed',
-			description:
-				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
-		},
-		{
-			gif: final,
-			title: 'Registration & Final Submission',
-			description:
-				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
-		},
-		{
-			gif: online,
-			title: 'Online Publication',
-			description:
-				'Vestibulum lacinia arcu eget nulla taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.'
-		}
-	];
+	
 
 	let blog = data.blog;
 
@@ -103,12 +43,6 @@
 
 	const title = ['Welcome', 'To', 'Precision', 'Chronicles'];
 
-	const posters = [
-		{
-			short: 'ccs',
-
-		}
-	]
 </script>
 
 <svelte:head>

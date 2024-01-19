@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { supabase } from '$lib/supabaseClient';
-	import { Badge, Button, Spinner } from 'flowbite-svelte';
-	import { CardPlaceholder } from 'flowbite-svelte';
+	
+	import { Button, Spinner } from 'flowbite-svelte';
+
 	import { BadgeCheckIcon, UserSearchIcon, EyeIcon } from 'lucide-svelte';
 	import { navigating } from '$app/stores';
 	import { onMount } from 'svelte';
@@ -10,9 +9,7 @@
 	export let data;
 
 	import {
-		ChartBars3FromLeftSolid,
-		UserOutline,
-		MapPinOutline,
+		
 		BookOpenOutline,
 		ClockOutline,
 		ArchiveDownloadSolid,
@@ -33,11 +30,6 @@
 
 	let view = journals[0].views;
 
-	let add = view++;
-
-	onMount(async () => {
-		
-	});
 </script>
 
 <div class=" w-[90%] font-poppins mx-auto min-h-screen space-y-10 pb-[5vh]">

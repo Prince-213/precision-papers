@@ -2,12 +2,10 @@
 	import { enhance } from '$app/forms';
 	import { Checkbox, Input, Spinner } from 'flowbite-svelte';
 
-	import { Toast, Button } from 'flowbite-svelte';
-	import { slide, blur, fly, fade } from 'svelte/transition';
-	import { CheckCircleOutline, CheckCircleSolid, CloseCircleSolid } from 'flowbite-svelte-icons';
-	import { quintOut, elasticInOut, quadInOut } from 'svelte/easing';
 
-	import {  } from 'lucide-svelte'
+	import { CheckCircleOutline,  CloseCircleSolid } from 'flowbite-svelte-icons';
+	
+
 
 	export let data;
 
@@ -15,12 +13,7 @@
 
 	let sending = false;
 
-	let open = false;
-	let counter = 6;
 
-	function trigger() {
-		open = true;
-	}
 
 
 	import {

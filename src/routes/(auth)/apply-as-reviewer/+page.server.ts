@@ -10,7 +10,6 @@ export const actions = {
         const email = data.get("email")
         const password = data.get("password")
 
-        console.log(data);
 
         try {
             const { data, error } = await supabase.auth.signUp(
@@ -34,7 +33,7 @@ export const actions = {
 
                 return { message: "Registered Successfully", error: false }
             }else {
-                console.log(error)
+                
                 return fail(404, {
                     message: "Invalid Registration!",
                     status: 404,
@@ -43,7 +42,7 @@ export const actions = {
                 });
             }
         } catch (error) {
-            console.log(error)
+            
             return fail(404, {
                 message: "Invalid Registration!",
                 status: 404,
