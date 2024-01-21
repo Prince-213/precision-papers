@@ -22,7 +22,7 @@
 		MultiSelect,
 		Badge,
 		Spinner,
-		Checkbox
+		
 	} from 'flowbite-svelte';
 	import {
 		BookOpenOutline,
@@ -174,6 +174,47 @@
 
 	let message = '';
 
+	const sendPublishedCongrats = async (authorEmail: any, title: any) => {
+            try {
+            
+            await emailjs.send(
+                'service_066spww',
+                'template_a3jpj1k',
+                {
+                to_name: authorEmail,
+                message: `We trust this message finds you well. We are pleased to inform you that your manuscript titled "${title}" has been successfully submitted to Precision Chronicles. Thank you for choosing us as the platform to showcase your valuable research.`
+                },
+                '_VUsFZj_ItEgocPVw'
+            );
+            } catch (error) {
+            console.log(error);
+            } finally {
+            
+            }
+        };
+
+        const sendReviewMail = async (authorEmail: any, title: any, id: any) => {
+            try {
+            
+            await emailjs.send(
+                'service_066spww',
+                'template_a3jpj1k',
+                {
+                to_name: authorEmail,
+                message: `We hope this email finds you well. We wanted to inform you that your manuscript titled "${title}" has entered the review process at Precision Chronicles. Our editorial team is dedicated to conducting a thorough evaluation of your work Your Manuscript ID is ${id}.
+
+                Here are some key points about the review process: \n The review process typically takes 2 weeks to complete. \n
+                We will keep you informed about the progress of the review and notify you once the evaluation is finalized. `
+                },
+                '_VUsFZj_ItEgocPVw'
+            );
+            } catch (error) {
+            console.log(error);
+            } finally {
+            
+            }
+        };
+
 	let checking = false;
 
 	let paying = false;
@@ -271,12 +312,19 @@
 					class=" space-y-8"
 					use:enhance={() => {
 						sending = true;
-						return ({ update }) => {
+						return ({ update, result }) => {
 							update().finally(async () => {
 								sending = false;
 								// Optionally if you'd like to reload the data for the current page after form submission.
 								// This is the default behavior for use:enhance.
-								await invalidateAll();
+								
+								if (result.type === 'success') {
+									if (formData.status == 'published') {
+										await sendPublishedCongrats(formData.mainauthoremail, formData.manuscripttitle)
+									} else {
+										await sendReviewMail(formData.mainauthoremail, formData.manuscripttitle, formData.journalid)
+									}
+								}
 							});
 						};
 					}}

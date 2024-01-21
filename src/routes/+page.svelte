@@ -6,29 +6,19 @@
 
 	import { lazyLoad } from '$lib/data/lazyLoad';
 
-	
-
 	import work from '$lib/assets/images/pexels-pavel-danilyuk-8438922.jpg';
 
 	import write from '$lib/assets/images/6642641.jpg';
 
 	import { reveal } from 'svelte-reveal';
 
-	
-	import {
-		ChevronRightSolid,
-		PenNibOutline,
-		
-		BookOutline
-	} from 'flowbite-svelte-icons';
+	import { ChevronRightSolid, PenNibOutline, BookOutline, UserOutline, ClockOutline } from 'flowbite-svelte-icons';
 	import { goto } from '$app/navigation';
 
 	import { navigating } from '$app/stores';
 	import Loader from '../components/Loader.svelte';
 
-	import anotherDeep from '$lib/assets/images/pexels-google-deepmind-18069239.jpg'
-
-	
+	import anotherDeep from '$lib/assets/images/pexels-google-deepmind-18069239.jpg';
 
 	let blog = data.blog;
 
@@ -38,23 +28,27 @@
 		const options = { year: 'numeric', month: 'short', day: 'numeric' };
 		const formattedDate = inputDate.toLocaleDateString('en-US', options);
 
-		return formattedDate
+		return formattedDate;
 	};
 
 	const title = ['Welcome', 'To', 'Precision', 'Chronicles'];
-
-	
-
 </script>
 
 <svelte:head>
 	<title>PRECISION CHRONICLES</title>
 	<script>
-		(function(c,l,a,r,i,t,y){
-			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
-			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-		})(window, document, "clarity", "script", "kocoimrx6u");
+		(function (c, l, a, r, i, t, y) {
+			c[a] =
+				c[a] ||
+				function () {
+					(c[a].q = c[a].q || []).push(arguments);
+				};
+			t = l.createElement(r);
+			t.async = 1;
+			t.src = 'https://www.clarity.ms/tag/' + i + '?ref=bwt';
+			y = l.getElementsByTagName(r)[0];
+			y.parentNode.insertBefore(t, y);
+		})(window, document, 'clarity', 'script', 'kocoimrx6u');
 	</script>
 	<meta
 		name="description"
@@ -166,27 +160,48 @@
 			</div>
 		</div>
 
-		
 		<div class=" relative w-full z-50 bg-white py-4 lg:py-10">
 			<div class=" w-[90%] mx-auto flex flex-col items-center text-center">
 				<h1 class=" lg:text-xl font-medium">TRENDING JOURNALS</h1>
 				<h1 class=" lg:text-4xl font-semibold">Show About Our Latest Published Journals</h1>
-				<div class=" space-y-6 lg:space-y-0 w-full lg:flex lg:justify-between mt-10">
+				<div class=" space-x-6 lg:space-y-0 w-full lg:flex mt-10">
 					{#each blog as item}
-						<a href={`/journals/search/${item.category}/paper/${item.journal_id}`} data-sveltekit-preload-data="hover" class=" text-left  lg:w-[32%] space-y-3">
-							<img use:lazyLoad={ item.category == 'ccs' ? work : anotherDeep} alt={item.title} class=" w-full h-[300px] rounded-md" />
-							<div class=" w-full flex items-center justify-between">
+						<a
+							href={`/journals/search/${item.category}/paper/${item.journal_id}`}
+							data-sveltekit-preload-data="hover"
+							class=" text-left flex flex-col justify-between border-2 rounded-md lg:w-[32%] space-y-5"
+						>
+							<div class=" p-8 space-y-4">
+								<h2 class=" lg:text-lg font-semibold">{item.title}</h2>
+
+								<p class=" text-justify font-semibold text-blue-600 line-clamp-2">
+									{item.subject_area}
+								</p>
+
+								<p class=" text-justify line-clamp-2">
+									{item.intro}
+								</p>
+							</div>
+
+							<div class=" border-t-2 space-y-4 text-gray-600 px-8 py-6">
+								<div class=" flex items-center space-x-2">
+									<UserOutline />
+									<p class=" text-left lg:text-base font-medium text-gray-400">
+										{item.main_author}
+									</p>
+								</div>
+								<div class=" flex items-center space-x-2">
+									<ClockOutline />
+									<p class=" text-left lg:text-base font-medium text-gray-400">
+										{convertDate(item.created_at)}
+									</p>
+								</div>
 								
-								<p>{item.main_author}</p>
 							</div>
 							
-							<h2 class=" lg:text-xl font-semibold truncate">{item.title}</h2>
-							<p class=" text-justify truncate">
-								{item.intro}
-							</p>
-							<p class=" text-left lg:text-base font-medium text-gray-400">{ convertDate(item.created_at) }</p>
 						</a>
 					{/each}
+					<div></div>
 				</div>
 			</div>
 		</div>

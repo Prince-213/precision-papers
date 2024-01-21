@@ -125,9 +125,7 @@ export const actions = {
             upsert: false,
         });
 
-        await sendMail( mainauthoremail, manuscripttitle, currentDate )
-
-        await sendMailToAdmin( manuscripttitle, currentDate )
+        
         
         
         return { message: "Registered Successfully!", error: false };

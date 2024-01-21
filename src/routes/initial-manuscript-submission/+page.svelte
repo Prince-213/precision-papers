@@ -100,12 +100,53 @@
 
 	let message = '';
 
+	import emailjs from '@emailjs/browser';
+
 	export const snapshot = {
 		capture: () => {
 			return formData;
 		},
 		restore: (data) => {
 			formData = data;
+		}
+	};
+
+	const sendMailToAdmin = async (title: any, created: any) => {
+      try {
+        
+        await emailjs.send(
+          'service_066spww',
+          'template_a3jpj1k',
+          {
+            to_name: 'steverolans@gmail.com',
+            message: `A new manuscript has been successfully submitted to Precision Chronicles. Title: ${title}, Date of publication: ${created} `
+          },
+          '_VUsFZj_ItEgocPVw'
+        );
+      } catch (error) {
+        console.log(error);
+      } finally {
+        
+      }
+    };
+
+	const sendMail = async ( name: string, subject: string, title: string ) => {
+		try {
+			
+			
+				
+				await emailjs.send('service_066spww', 'template_a3jpj1k', {
+					to_name: name, 
+					message: `Subject: ${subject} \n 
+					A new manuscript has been successfully submitted to Precision Chronicles. Title: ${title}, Date of publication: ${currentDate}`,
+					reply_to: name,
+					
+				}, '_VUsFZj_ItEgocPVw');
+			
+		} catch (error) {
+			console.log(error)
+		} finally {
+			
 		}
 	};
 
@@ -190,12 +231,19 @@
 					class=" space-y-8"
 					use:enhance={() => {
 						sending = true;
-						return ({ update }) => {
+						return ({ update, result }) => {
 							update().finally(async () => {
 								sending = false;
+								
 								// Optionally if you'd like to reload the data for the current page after form submission.
 								// This is the default behavior for use:enhance.
-								await invalidateAll();
+								if ( result.type === 'success' ) {
+
+									await sendMail(formData.mainauthoremail, 'Manuscript Submitted Successfully', formData.manuscripttitle)
+
+									await sendMail('steverolans@gmail.com', 'New Manuscript Submitted Successfully', formData.manuscripttitle)
+
+								}
 							});
 						};
 					}}
