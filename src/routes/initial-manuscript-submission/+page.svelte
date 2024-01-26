@@ -1,9 +1,9 @@
 <script lang="ts">
 	import journal from '$lib/assets/images/isometric-documents.png';
-	import { Checkbox, Input, Spinner, Textarea } from 'flowbite-svelte';
+	import { Checkbox,  Spinner, Textarea } from 'flowbite-svelte';
 	import { enhance } from '$app/forms';
 	import { page, navigating } from '$app/stores';
-	import { invalidateAll } from '$app/navigation';
+	
 	
 	import { reveal } from 'svelte-reveal'
 
@@ -135,9 +135,11 @@
 			
 			
 				
-				await emailjs.send('service_066spww', 'template_a3jpj1k', {
-					to_name: name, 
-					message: `Subject: ${subject} \n 
+				await emailjs.send("service_noi09ck","template_fpnhto7", {
+					user_name: name, 
+					from_name: 'Precision Chronicles',
+					subject: `${subject}`,
+					message: `
 					A new manuscript has been successfully submitted to Precision Chronicles. Title: ${title}, Date of publication: ${currentDate}`,
 					reply_to: name,
 					
@@ -241,7 +243,7 @@
 
 									await sendMail(formData.mainauthoremail, 'Manuscript Submitted Successfully', formData.manuscripttitle)
 
-									await sendMail('steverolans@gmail.com', 'New Manuscript Submitted Successfully', formData.manuscripttitle)
+									await sendMail('Admin', 'New Manuscript Submitted Successfully', formData.manuscripttitle)
 
 								}
 							});

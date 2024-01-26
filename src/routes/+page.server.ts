@@ -18,4 +18,3 @@ export const load = (async () => {
     };
 }) satisfies PageServerLoad;
 
-export const prerender = true;
