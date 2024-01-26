@@ -82,7 +82,8 @@
 							<h2 class=" text-2xl font-medium">{item.title}</h2>
 
 							<p>{item.main_author}</p>
-							<p class=" truncate">
+							<h3 class=" font-medium">Abstract</h3>
+							<p class=" line-clamp-5">
 								{item.intro}
 							</p>
 

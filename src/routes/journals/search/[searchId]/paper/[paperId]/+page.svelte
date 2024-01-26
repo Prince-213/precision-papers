@@ -30,6 +30,11 @@
 
 	let view = journals[0].views;
 
+	const inputDateString = journals[0]?.created_at;
+	const inputDate = new Date(inputDateString);
+	const options = { year: 'numeric', month: 'short', day: 'numeric' };
+	const formattedDate = inputDate.toLocaleDateString('en-US', options);
+
 </script>
 
 <svelte:head>
@@ -86,9 +91,9 @@
 				{journals[0]?.title}
 			</h1>
 			<div
-				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl justify-between p-10 flex"
+				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-8 duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl flex-col lg:flex-row  lg:space-y-0 lg:justify-between p-10 flex"
 			>
-				<div class=" space-y-8">
+				<div class=" lg:space-y-8">
 					<p class=" text-gray-800 font-medium text-xl lg:text-2xl">
 						Subject Area: {journals[0]?.subject_area}
 					</p>
@@ -124,16 +129,16 @@
 			<div
 				class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl grid grid-cols-1 lg:grid-cols-2 gap-y-10 p-10"
 			>
-				<div class=" text-lg flex items-center space-x-3">
-					<div class=" flex items-center space-x-2">
+				<div class=" text-lg flex lg:justify-start justify-between items-center space-x-3">
+					<div class=" flex items-center space-x-3">
 						<ClockOutline />
 						<h3>Date Of Publication :</h3>
 					</div>
-					<p class=" font-semibold">{journals[0]?.created_at}</p>
+					<p class=" font-semibold">{formattedDate}</p>
 				</div>
 
-				<div class=" text-lg flex items-center space-x-3">
-					<div class=" flex items-center space-x-2">
+				<div class=" text-lg flex lg:justify-start justify-between items-center space-x-3">
+					<div class=" flex items-center space-x-3">
 						<UsersOutline class=" " />
 						<h3>No. Of Authors :</h3>
 					</div>
@@ -142,15 +147,15 @@
 					</p>
 				</div>
 
-				<div class=" text-lg flex items-center space-x-3">
-					<div class=" flex items-center space-x-2">
+				<div class=" text-lg lg:justify-start justify-between flex items-center space-x-3">
+					<div class=" flex items-center space-x-3">
 						<EyeIcon />
 						<h3>No. Of Views :</h3>
 					</div>
 					<p class=" font-semibold">{journals[0]?.views}</p>
 				</div>
-				<div class=" text-lg flex items-center space-x-3">
-					<div class=" flex items-center space-x-2">
+				<div class=" text-lg lg:justify-start justify-between flex items-center space-x-3">
+					<div class=" flex items-center space-x-3">
 						<BookOpenOutline />
 						<h3>No. Of Views :</h3>
 					</div>

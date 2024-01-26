@@ -164,23 +164,31 @@
 			<div class=" w-[90%] mx-auto flex flex-col items-center text-center">
 				<h1 class=" lg:text-xl font-medium">TRENDING JOURNALS</h1>
 				<h1 class=" lg:text-4xl font-semibold">Show About Our Latest Published Journals</h1>
-				<div class=" space-x-6 lg:space-y-0 w-full lg:flex mt-10">
+				<div class=" lg:grid-cols-3 grid-cols-1 gap-10 w-full grid  mt-10">
 					{#each blog as item}
 						<a
 							href={`/journals/search/${item.category}/paper/${item.journal_id}`}
 							data-sveltekit-preload-data="hover"
 							class=" text-left flex flex-col justify-between border-2 rounded-md lg:w-[32%] space-y-5"
 						>
-							<div class=" p-8 space-y-4">
+							<div class=" p-8 pb-2 space-y-4">
 								<h2 class=" lg:text-lg font-semibold">{item.title}</h2>
 
-								<p class=" text-justify font-semibold text-blue-600 line-clamp-2">
-									{item.subject_area}
-								</p>
+								<div class=" flex items-center space-x-3">
+									<p class=" font-medium lg:text-lg">Subject Area:</p>
+									<p class=" text-justify font-semibold text-blue-600 line-clamp-2">
+										{item.subject_area}
+									</p>
+								</div>
+								
 
-								<p class=" text-justify line-clamp-2">
-									{item.intro}
-								</p>
+								<div class=" space-y-2">
+									<h1 class=" font-medium lg:text-lg">Abstract</h1>
+									<p class=" text-justify line-clamp-5">
+										{item.intro}
+									</p>
+								</div>
+								
 							</div>
 
 							<div class=" border-t-2 space-y-4 text-gray-600 px-8 py-6">
