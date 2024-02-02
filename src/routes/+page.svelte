@@ -32,6 +32,13 @@
 	};
 
 	const title = ['Welcome', 'To', 'Precision', 'Chronicles'];
+
+	let searchTerm = 'published'
+
+
+	$: filteredItems = blog.filter(
+		(item) => item['state'].toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
+	);
 </script>
 
 <svelte:head>
@@ -165,11 +172,11 @@
 				<h1 class=" lg:text-xl font-medium">TRENDING JOURNALS</h1>
 				<h1 class=" lg:text-4xl font-semibold">Show About Our Latest Published Journals</h1>
 				<div class=" lg:grid-cols-3 grid-cols-1 gap-10 w-full grid  mt-10">
-					{#each blog as item}
+					{#each filteredItems as item}
 						<a
 							href={`/journals/search/${item.category}/paper/${item.journal_id}`}
 							data-sveltekit-preload-data="hover"
-							class=" text-left flex flex-col justify-between border-2 rounded-md lg:w-[32%] space-y-5"
+							class=" text-left flex flex-col justify-between border-2 rounded-md lg:w-full space-y-5"
 						>
 							<div class=" p-8 pb-2 space-y-4">
 								<h2 class=" lg:text-lg font-semibold">{item.title}</h2>

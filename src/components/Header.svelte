@@ -168,7 +168,7 @@
 	</header>
 	<div
 		class={` w-full transition-all duration-200 ${
-			open ? 'h-[45vh]' : 'h-[0vh]'
+			open ? 'h-fit' : 'h-[0vh]'
 		}  overflow-y-hidden bg-white lg:hidden`}
 	>
 		<div class="flexflex-col lg:hidden pl-8 py-8">
