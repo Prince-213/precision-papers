@@ -42,7 +42,7 @@ export const GET: RequestHandler = async (requestEvent) => {
 
         <p style="color: #666;">Feel free to share this link with your colleagues and peers. We appreciate your valuable contribution to our platform.</p>
 
-        <p style="color: #666;">If you have any questions or require further assistance, please contact us at <a href="mailto:steverolans@gmail.com" style="color: #4caf50; text-decoration: none;">steverolans@gmail.com</a>.</p>
+        <p style="color: #666;">If you have any questions or require further assistance, please contact us at <a href="mailto:precisionchronicles@gmail.com" style="color: #4caf50; text-decoration: none;">precisionchronicles@gmail.com</a>.</p>
 
         <p style="color: #666;">Thank you for choosing our platform for publishing your work.</p>
 

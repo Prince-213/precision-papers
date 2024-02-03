@@ -33,7 +33,7 @@ export const GET: RequestHandler = async (requestEvent) => {
         <p style="color: #666;">Thank you for choosing Precision Chronicles to share your work with us.</p>
         <p style="color: #666;">We appreciate your contribution, and our team will review your submission shortly.</p>
 
-        <p style="color: #666;">If you have any questions or concerns, feel free to contact us at <a href="mailto:steverolans@gmail.com" style="color: #4caf50; text-decoration: none;">steverolans@gmail.com</a>.</p>
+        <p style="color: #666;">If you have any questions or concerns, feel free to contact us at <a href="mailto:precisionchronicles@gmail.com" style="color: #4caf50; text-decoration: none;">precisionchronicles@gmail.com</a>.</p>
 
         <a href="www.precisionchronicles.com" style="display: inline-block; padding: 10px 20px; margin-top: 20px; background-color: #4caf50; color: #fff; text-decoration: none; border-radius: 3px;">View Submission Details</a>
 

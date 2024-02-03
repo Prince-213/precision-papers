@@ -35,7 +35,7 @@ export const GET: RequestHandler = async (requestEvent) => {
 
         <p style="color: #666;">We wanted to inform you that your submitted manuscript is currently under review. Our team is carefully examining your work, and we appreciate your patience during this process.</p>
 
-        <p style="color: #666;">If you have any questions or need further information, please feel free to contact us at <a href="mailto:steverolans@gmail.com" style="color: #4caf50; text-decoration: none;">steverolans@gmail.com</a>.</p>
+        <p style="color: #666;">If you have any questions or need further information, please feel free to contact us at <a href="mailto:precisionchronicles@gmail.com" style="color: #4caf50; text-decoration: none;">precisionchronicles@gmail.com</a>.</p>
 
         <p style="color: #666;">Thank you for your contribution and for choosing our platform for your submission.</p>
 
