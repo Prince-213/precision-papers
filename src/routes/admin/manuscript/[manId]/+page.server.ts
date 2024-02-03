@@ -52,7 +52,7 @@ export const load = (async ( { fetch, params, url } ) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    update: async ({ request, cookies }) => {
+    update: async ({ request, cookies, fetch }) => {
         const data = await request.formData();
         const manuscripttitle = data.get("manuscripttitle");
         const subjectarea = data.get("subjectarea");

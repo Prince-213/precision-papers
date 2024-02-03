@@ -59,12 +59,16 @@ export const actions = {
       }
     };
   
-    const sendAdminMail = async ( title: any ) => {
+    const sendAdminMail = async ( title: any, email: any ) => {
       try {
         
         const response = await fetch(`/api/email-api/${title}`);
         const mail = await response.json();
         console.log(mail);
+
+        const responses = await fetch(`/api/email-api/initial/${email}/${title}`);
+        const mails = await responses.json();
+        console.log(mails);
         
       } catch (error) {
         console.log(error)
@@ -119,7 +123,7 @@ export const actions = {
         
         await sendMail(`${mainauthoremail}`, manuscripttitle )
 
-        await sendAdminMail(`A new manuscript has been submitted to Precision Chronicles \n Title: ${manuscripttitle}`)
+        await sendAdminMail(`A new manuscript has been submitted to Precision Chronicles \n Title: ${manuscripttitle}`, `${mainauthoremail}`)
 
         
         
