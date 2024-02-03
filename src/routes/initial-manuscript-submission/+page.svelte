@@ -98,6 +98,8 @@
 		initialmanuscript: ''
 	};
 
+	const emailAdd = formData['mainauthoremail']
+
 	let message = '';
 
 	import emailjs from '@emailjs/browser';
@@ -111,39 +113,31 @@
 		}
 	};
 
-	const sendMailToAdmin = async (title: any, created: any) => {
-      try {
-        
-        await emailjs.send(
-          'service_066spww',
-          'template_a3jpj1k',
-          {
-            to_name: 'steverolans@gmail.com',
-            message: `A new manuscript has been successfully submitted to Precision Chronicles. Title: ${title}, Date of publication: ${created} `
-          },
-          '_VUsFZj_ItEgocPVw'
-        );
-      } catch (error) {
-        console.log(error);
-      } finally {
-        
-      }
-    };
+	
 
-	const sendMail = async ( name: string, subject: string, title: string ) => {
+	const sendMail = async ( email: string,  title: any ) => {
+
+		let maile: string = await email
+		console.log(`the emial id ${maile}`)
 		try {
 			
+			const response = await fetch(`/api/email-api/initial/${maile}/${title}`);
+			const mail = await response.json();
+			console.log(mail);
 			
-				
-				await emailjs.send("service_noi09ck","template_fpnhto7", {
-					user_name: name, 
-					from_name: 'Precision Chronicles',
-					subject: `${subject}`,
-					message: `
-					A new manuscript has been successfully submitted to Precision Chronicles. Title: ${title}, Date of publication: ${currentDate}`,
-					reply_to: name,
-					
-				}, '_VUsFZj_ItEgocPVw');
+		} catch (error) {
+			console.log(error)
+		} finally {
+			
+		}
+	};
+
+	const sendAdminMail = async ( title: any ) => {
+		try {
+			
+			const response = await fetch(`/api/email-api/${title}`);
+			const mail = await response.json();
+			console.log(mail);
 			
 		} catch (error) {
 			console.log(error)
@@ -240,10 +234,6 @@
 								// Optionally if you'd like to reload the data for the current page after form submission.
 								// This is the default behavior for use:enhance.
 								if ( result.type === 'success' ) {
-
-									await sendMail(formData.mainauthoremail, 'Manuscript Submitted Successfully', formData.manuscripttitle)
-
-									await sendMail('Admin', 'New Manuscript Submitted Successfully', formData.manuscripttitle)
 
 								}
 							});

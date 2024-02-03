@@ -318,13 +318,6 @@
 								// Optionally if you'd like to reload the data for the current page after form submission.
 								// This is the default behavior for use:enhance.
 								
-								if (result.type === 'success') {
-									if (formData.status == 'published') {
-										await sendPublishedCongrats(formData.mainauthoremail, formData.manuscripttitle)
-									} else {
-										await sendReviewMail(formData.mainauthoremail, formData.manuscripttitle, formData.journalid)
-									}
-								}
 							});
 						};
 					}}

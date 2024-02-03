@@ -11,7 +11,7 @@ import emailjs from '@emailjs/browser'
 
 
 export const actions = {
-  initial: async ({ request, cookies }) => {
+  initial: async ({ request, cookies, fetch }) => {
     const data = await request.formData();
     const manuscripttitle = data.get("manuscripttitle");
     const subjectarea = data.get("subjectarea");
@@ -42,45 +42,36 @@ export const actions = {
     let currentDate = new Date().toJSON().slice(0, 10);
 	  console.log(currentDate); 
     
+    const sendMail = async ( email: string,  title: any ) => {
+
     
-    const sendMail = async (authorEmail: any, title: any, created: any) => {
+      console.log(`the emial is ${email}`)
       try {
         
-        await emailjs.send(
-          'service_066spww',
-          'template_a3jpj1k',
-          {
-            to_name: authorEmail,
-            message: `I hope this message finds you well. We appreciate your contribution to the scholarly community and your recent submission to Precision Chronicles. This email is to confirm the successful receipt of your manuscript titled ${title} on ${created}. Our editorial team is currently reviewing your work, and we will keep you informed about the progress and status of the evaluation process. `
-          },
-          '_VUsFZj_ItEgocPVw'
-        );
+        const response = await fetch(`/api/email-api/initial/${email}/${title}`);
+        const mail = await response.json();
+        console.log(mail);
+        
       } catch (error) {
-        console.log(error);
+        console.log(error)
       } finally {
         
       }
     };
-
-    const sendMailToAdmin = async (title: any, created: any) => {
+  
+    const sendAdminMail = async ( title: any ) => {
       try {
         
-        await emailjs.send(
-          'service_066spww',
-          'template_a3jpj1k',
-          {
-            to_name: 'steverolans@gmail.com',
-            message: `A new manuscript has been successfully submitted to Precision Chronicles. Title: ${title}, Date of publication: ${created} `
-          },
-          '_VUsFZj_ItEgocPVw'
-        );
+        const response = await fetch(`/api/email-api/${title}`);
+        const mail = await response.json();
+        console.log(mail);
+        
       } catch (error) {
-        console.log(error);
+        console.log(error)
       } finally {
         
       }
     };
-
 
 
     
@@ -126,6 +117,10 @@ export const actions = {
         });
 
         
+        await sendMail(`${mainauthoremail}`, manuscripttitle )
+
+        await sendAdminMail(`A new manuscript has been submitted to Precision Chronicles \n Title: ${manuscripttitle}`)
+
         
         
         return { message: "Registered Successfully!", error: false };

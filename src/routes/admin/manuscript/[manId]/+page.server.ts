@@ -81,47 +81,35 @@ export const actions = {
         let file;
         const bucket = "journals";
 
-        const sendPublishedCongrats = async (authorEmail: any, title: any) => {
+       
+
+        const sendPublishedMail = async ( email: string,  title: any, link: any ) => {
             try {
-            
-            await emailjs.send(
-                'service_066spww',
-                'template_a3jpj1k',
-                {
-                to_name: authorEmail,
-                message: `We trust this message finds you well. We are pleased to inform you that your manuscript titled "${title}" has been successfully submitted to Precision Chronicles. Thank you for choosing us as the platform to showcase your valuable research.`
-                },
-                '_VUsFZj_ItEgocPVw'
-            );
+                
+                const response = await fetch(`/api/email-api/publish/${email}/${title}/${link}`);
+                const mail = await response.json();
+                console.log(mail);
+                
             } catch (error) {
-            console.log(error);
+                console.log(error)
             } finally {
-            
+                
             }
         };
 
-        const sendMail = async (authorEmail: any, title: any, id: any) => {
+        const sendReviewMail = async ( email: string,  title: any, id: any ) => {
             try {
-            
-            await emailjs.send(
-                'service_066spww',
-                'template_a3jpj1k',
-                {
-                to_name: authorEmail,
-                message: `We hope this email finds you well. We wanted to inform you that your manuscript titled "${title}" has entered the review process at Precision Chronicles. Our editorial team is dedicated to conducting a thorough evaluation of your work Your Manuscript ID is ${id}.
-
-                Here are some key points about the review process: \n The review process typically takes 2 weeks to complete. \n
-                We will keep you informed about the progress of the review and notify you once the evaluation is finalized. `
-                },
-                '_VUsFZj_ItEgocPVw'
-            );
+                
+                const response = await fetch(`/api/email-api/review/${email}/${title}/${id}`);
+                const mail = await response.json();
+                console.log(mail);
+                
             } catch (error) {
-            console.log(error);
+                console.log(error)
             } finally {
-            
+                
             }
         };
-
     
 
         try {
@@ -193,9 +181,9 @@ export const actions = {
                     }
 
                     if ( manstatus == 'published' ) {
-                        sendPublishedCongrats(mainauthoremail, manuscripttitle)
+                        sendPublishedMail(`${mainauthoremail}`, manuscripttitle, `/journals/search/${journal}/paper/${journalid}`)
                     } else {
-                        sendMail(mainauthoremail, manuscripttitle, journalid)
+                        sendReviewMail(`{mainauthoremail}`, manuscripttitle, journalid)
                     }
 
                     
@@ -205,9 +193,9 @@ export const actions = {
                 
 
                     if ( manstatus == 'published' ) {
-                        sendPublishedCongrats(mainauthoremail, manuscripttitle)
+                        sendPublishedMail(`${mainauthoremail}`, manuscripttitle, `/journals/search/${journal}/paper/${journalid}`)
                     } else {
-                        sendMail(mainauthoremail, manuscripttitle, journalid)
+                        sendReviewMail(`${mainauthoremail}`, manuscripttitle, journalid)
                     }
     
                     return { message: "Updated Successfully! Also the Email Alert has been sent", error: false };

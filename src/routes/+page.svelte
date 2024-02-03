@@ -22,6 +22,9 @@
 
 	let blog = data.blog;
 
+	import { Email }  from '$lib/smtp'
+	import { onMount } from 'svelte';
+
 	const convertDate = (input: string) => {
 		const inputDateString = input;
 		const inputDate = new Date(inputDateString);
@@ -39,6 +42,8 @@
 	$: filteredItems = blog.filter(
 		(item) => item['state'].toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
 	);
+
+	
 </script>
 
 <svelte:head>
