@@ -54,6 +54,8 @@ export const actions = {
   
       return romanNumerals[num - 1];
     }
+
+    let chn;
   
     let current = new Date();
   
