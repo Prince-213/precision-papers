@@ -3,7 +3,7 @@ import type { PageServerLoad } from './auth/$types'
 
 export const load = (async () => {
 
-
+    
     
     const { data, error } = await supabase
     .from('journals')

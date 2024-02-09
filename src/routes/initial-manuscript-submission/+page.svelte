@@ -1,11 +1,10 @@
 <script lang="ts">
 	import journal from '$lib/assets/images/isometric-documents.png';
-	import { Checkbox,  Spinner, Textarea } from 'flowbite-svelte';
+	import { Checkbox, Spinner, Textarea } from 'flowbite-svelte';
 	import { enhance } from '$app/forms';
 	import { page, navigating } from '$app/stores';
-	
-	
-	import { reveal } from 'svelte-reveal'
+
+	import { reveal } from 'svelte-reveal';
 
 	const redirectTo = $page.url.searchParams.get('redirectTo') || '/';
 
@@ -98,7 +97,7 @@
 		initialmanuscript: ''
 	};
 
-	const emailAdd = formData['mainauthoremail']
+	const emailAdd = formData['mainauthoremail'];
 
 	let message = '';
 
@@ -113,43 +112,77 @@
 		}
 	};
 
-	
-
-	const sendMail = async ( email: string,  title: any ) => {
-
-		let maile: string = await email
-		console.log(`the emial id ${maile}`)
+	const sendMail = async (email: string, title: any) => {
+		let maile: string = await email;
+		console.log(`the emial id ${maile}`);
 		try {
-			
 			const response = await fetch(`/api/email-api/initial/${maile}/${title}`);
 			const mail = await response.json();
 			console.log(mail);
-			
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		} finally {
-			
 		}
 	};
 
-	const sendAdminMail = async ( title: any ) => {
+	const sendAdminMail = async (title: any) => {
 		try {
-			
 			const response = await fetch(`/api/email-api/${title}`);
 			const mail = await response.json();
 			console.log(mail);
-			
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		} finally {
-			
 		}
 	};
 
 	let currentDate = new Date().toJSON().slice(0, 10);
 	console.log(currentDate);
-	
-	import { lazyLoad } from '$lib/data/lazyLoad';// "2022-06-17"
+
+	import { lazyLoad } from '$lib/data/lazyLoad'; // "2022-06-17"
+
+	function convertToRoman(num: number) {
+		const romanNumerals = [
+			'I',
+			'II',
+			'III',
+			'IV',
+			'V',
+			'VI',
+			'VII',
+			'VIII',
+			'IX',
+			'X',
+			'XI',
+			'XII'
+		];
+
+		// Check if the input is within the valid range
+		if (num < 1 || num > 12) {
+			return 'Number out of range (1 to 12)';
+		}
+
+		return romanNumerals[num - 1];
+	}
+
+	let current = new Date();
+
+	const convertDate = (currentDate: Date) => {
+		const options = { day: 'numeric', month: 'short', year: 'numeric' };
+
+		// Format the date using toLocaleDateString
+		const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+		let month = current.getMonth() + 1
+
+		let numeral = convertToRoman(month)
+
+		let volume = `Volume 2 Issue ${numeral} - ${formattedDate}`
+
+		return volume;
+	};
+
+	console.log(current.getMonth());
 </script>
 
 <svelte:head>
@@ -188,11 +221,15 @@
 {:else}
 	<div class=" w-full min-h-screen py-[10vh] lg:py-[20vh] bg-white">
 		<div class=" lg:flex w-[90%] flex lg:space-x-14 mx-auto">
-			<div   class=" relative w-[0%] hidden lg:block lg:w-[30%]">
-				<img use:lazyLoad={journal} class=" w-[25em] fixed left-10 top-[30vh]" alt="initial-manuscript" />
+			<div class=" relative w-[0%] hidden lg:block lg:w-[30%]">
+				<img
+					use:lazyLoad={journal}
+					class=" w-[25em] fixed left-10 top-[30vh]"
+					alt="initial-manuscript"
+				/>
 			</div>
-			<div  class=" w-full lg:w-[45%] space-y-8">
-				<div use:reveal  class=" space-y-3">
+			<div class=" w-full lg:w-[45%] space-y-8">
+				<div use:reveal class=" space-y-3">
 					<h1 class=" text-3xl font-semibold">Upload Initial Manuscript</h1>
 					<p class=" text-[#575F6E] text-[16px] font-medium">
 						The article must be submitted in the form of a Microsoft word-compatible file (PDF not
@@ -216,7 +253,9 @@
 					<div class=" bg-[#F0F2F4] items-center rounded-md p-4 flex justify-between">
 						<div class=" flex space-x-4">
 							<InfoCircleSolid class=" text-[#79808F]  " size="lg" />
-							<p class=" text-lg font-medium text-[#242426]">Volume 1 Issue XII, Jan 2024</p>
+							<p class=" text-lg font-medium text-[#242426]">
+								{convertDate(current)}
+							</p>
 						</div>
 					</div>
 				</div>
@@ -230,11 +269,10 @@
 						return ({ update, result }) => {
 							update().finally(async () => {
 								sending = false;
-								
+
 								// Optionally if you'd like to reload the data for the current page after form submission.
 								// This is the default behavior for use:enhance.
-								if ( result.type === 'success' ) {
-
+								if (result.type === 'success') {
 								}
 							});
 						};
@@ -336,7 +374,10 @@
 						</div>
 					</div>
 
-					<div use:reveal class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+					<div
+						use:reveal
+						class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6"
+					>
 						<h2 class=" text-lg text-[#242426] font-medium">Personal Status</h2>
 						<select
 							required
@@ -352,7 +393,10 @@
 						</select>
 					</div>
 
-					<div use:reveal class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
+					<div
+						use:reveal
+						class=" overflow-x-hidden border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6"
+					>
 						<h2 class=" text-lg text-[#242426] font-medium">Publishing Journal</h2>
 						<select
 							required
@@ -409,7 +453,8 @@
 						</select>
 					</div>
 
-					<div use:reveal
+					<div
+						use:reveal
 						class=" overflow-x-hidden border-2 border-[#E2E4E5] flex justify-center items-center rounded-md space-y-5 py-8 px-6"
 					>
 						<div class=" space-y-6 flex flex-col items-center">

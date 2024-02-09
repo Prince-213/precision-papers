@@ -31,9 +31,54 @@ export const actions = {
     const journal = data.get("publishingjournal");
     const initialmanuscript: any = data.get("initialmanuscript");
 
+    function convertToRoman(num: number) {
+      const romanNumerals = [
+        'I',
+        'II',
+        'III',
+        'IV',
+        'V',
+        'VI',
+        'VII',
+        'VIII',
+        'IX',
+        'X',
+        'XI',
+        'XII'
+      ];
+  
+      // Check if the input is within the valid range
+      if (num < 1 || num > 12) {
+        return 'Number out of range (1 to 12)';
+      }
+  
+      return romanNumerals[num - 1];
+    }
+  
+    let current = new Date();
+  
+    const convertDate = (currentDate: Date) => {
+      const options = { day: 'numeric', month: 'short', year: 'numeric' };
+  
+      // Format the date using toLocaleDateString
+      const formattedDate = currentDate.toLocaleDateString('en-US', options);
+  
+      let month = current.getMonth() + 1
+  
+      let numeral = convertToRoman(month)
+  
+      let volume = `Volume 2 Issue ${numeral} - ${formattedDate}`
+  
+      return volume;
+    };
+
+    
+
+    
+
     let journal_id = uuidv4();
 
-    console.log(data)
+    
 
     let file;
     const bucket = "journals";
@@ -89,7 +134,7 @@ export const actions = {
             subject_area: subjectarea,
             main_author: mainauthorname,
             views: 0,
-            volume: "Volume 1 Issue XII, Jan 2024",
+            volume: convertDate(current),
             category: journal,
             address: `${city}, ${state}, ${country}`,
             intro: intro,
