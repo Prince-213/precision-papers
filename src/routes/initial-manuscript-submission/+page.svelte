@@ -254,7 +254,7 @@
 						<div class=" flex space-x-4">
 							<InfoCircleSolid class=" text-[#79808F]  " size="lg" />
 							<p class=" text-lg font-medium text-[#242426]">
-								Volume 1 2024
+								{convertDate(current)}
 							</p>
 						</div>
 					</div>
