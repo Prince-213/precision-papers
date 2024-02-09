@@ -62,27 +62,25 @@
 
 	$: sending = false;
 
+	
+
 	const sendMail = async () => {
 		try {
 			
 			if (recipient != 'Everyone') {
 				sending = true;
-				await emailjs.send('service_066spww', 'template_a3jpj1k', {
-					to_name: recipient,
-					message: `Subject: ${subject} \n 
-                            ${message}`,
-					reply_to: recipient,
-					
-				}, '_VUsFZj_ItEgocPVw');
+				let response = await fetch(`/api/email-api/custom/${recipient}/${subject}\n${message}`);
+				let messageResponse = await response.json();
+				console.log(messageResponse)
 			} else {
 				sending = true;
-				await emailjs.send('service_066spww', 'template_a3jpj1k', {
-					to_name: filteredItems.map((name) => `${name.email}`).join(','),
-					message: `Subject: ${subject} \n 
-                            ${message}`,
-					reply_to: recipient,
-					
-				}, '_VUsFZj_ItEgocPVw');
+				for (let index = 0; index < filteredItems.length; index++) {
+					const element = filteredItems[index]['email'];
+					let responseAll = await fetch(`/api/email-api/custom/${element}/${subject}\n${message}`);
+					let messageResponseAll = await responseAll.json();
+					console.log(messageResponseAll)
+				}
+				
 			}
 		} catch (error) {
 			console.log(error)
