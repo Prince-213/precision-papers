@@ -1,16 +1,18 @@
 import { supabase } from '$lib/supabaseClient';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from './auth/$types' 
 
 export const load = (async () => {
 
 
     
-    let { data, error } = await supabase
+    const { data, error } = await supabase
     .from('journals')
     .select('*')
-    .range(0, 3)
+    .eq('state', 'published')
 
-    
+    console.log(data)
+
+
         
     return {
 

@@ -1,12 +1,10 @@
 <script lang="ts">
 	export let data;
 
-	import ProcessCard from './../components/ProcessCard.svelte';
+
 	import Particle from './../components/Particle.svelte';
 
 	import { lazyLoad } from '$lib/data/lazyLoad';
-
-	import work from '$lib/assets/images/pexels-pavel-danilyuk-8438922.jpg';
 
 	import write from '$lib/assets/images/6642641.jpg';
 
@@ -18,12 +16,11 @@
 	import { navigating } from '$app/stores';
 	import Loader from '../components/Loader.svelte';
 
-	import anotherDeep from '$lib/assets/images/pexels-google-deepmind-18069239.jpg';
 
-	let blog = data.blog;
 
-	import { Email }  from '$lib/smtp'
-	import { onMount } from 'svelte';
+	const blog = data.blog;
+
+	console.log(blog)
 
 	const convertDate = (input: string) => {
 		const inputDateString = input;
@@ -39,10 +36,7 @@
 	let searchTerm = 'published'
 
 
-	$: filteredItems = blog.filter(
-		(item) => item['state'].toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
-	);
-
+	const firstThreeItems = blog.slice(0, 3);
 	
 </script>
 
@@ -177,7 +171,7 @@
 				<h1 class=" lg:text-xl font-medium">TRENDING JOURNALS</h1>
 				<h1 class=" lg:text-4xl font-semibold">Show About Our Latest Published Journals</h1>
 				<div class=" lg:grid-cols-3 grid-cols-1 gap-10 w-full grid  mt-10">
-					{#each filteredItems as item}
+					{#each firstThreeItems as item}
 						<a
 							href={`/journals/search/${item.category}/paper/${item.journal_id}`}
 							data-sveltekit-preload-data="hover"

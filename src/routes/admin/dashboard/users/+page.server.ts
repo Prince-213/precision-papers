@@ -1,16 +1,16 @@
-import { journals } from '$lib/data/journals.js';
+
 import { supabase } from '$lib/supabaseClient.js'
 
 
 
 
 
-export const load = async ({ fetch }) => {
+export const load = async ({  }) => {
 
 
-    let data = (await supabase.from("users").select("*")).data
+    const data = (await supabase.from("users").select("*")).data
 
-    let auths = (await supabase.from("journals").select("*")).data
+    const auths = (await supabase.from("journals").select("*")).data
 
     
 

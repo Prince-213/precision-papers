@@ -1,22 +1,9 @@
 import type { RequestHandler } from './$types';
 
-
-import { Email }  from '$lib/smtp' 
-
-
 import { json } from "@sveltejs/kit";
 
 import nodeMailer from 'nodemailer';
 
-
-
-type journal = {
-    id: number,
-    title: string,
-    poster: string,
-    intro: string,
-    description: string[]
-}
 
 export const GET: RequestHandler = async (requestEvent) => {
     const { params } = requestEvent
