@@ -69,14 +69,14 @@
 			
 			if (recipient != 'Everyone') {
 				sending = true;
-				let response = await fetch(`/api/email-api/custom/${recipient}/${subject}\n${message}`);
+				let response = await fetch(`/api/email-api/custom/${recipient}/${subject}:- ${message}`);
 				let messageResponse = await response.json();
 				console.log(messageResponse)
 			} else {
 				sending = true;
 				for (let index = 0; index < filteredItems.length; index++) {
 					const element = filteredItems[index]['email'];
-					let responseAll = await fetch(`/api/email-api/custom/${element}/${subject}\n${message}`);
+					let responseAll = await fetch(`/api/email-api/custom/${element}/${subject}:- ${message}`);
 					let messageResponseAll = await responseAll.json();
 					console.log(messageResponseAll)
 				}
