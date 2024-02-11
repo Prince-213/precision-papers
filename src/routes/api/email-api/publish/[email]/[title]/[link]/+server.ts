@@ -21,7 +21,7 @@ type journal = {
 
 export const GET: RequestHandler = async (requestEvent) => {
     const { params } = requestEvent
-    const email = params['emailkey']
+    const email = params['email']
     const title = params['title']
     const link = params['link']
 
