@@ -10,6 +10,23 @@ export const actions = {
         const finalmanuscript = data.get('finalmanuscript')
 		const authordeclaration = data.get('authordeclarations')
         
+
+        const sendAdminMail = async ( title: any, email: any ) => {
+            try {
+            
+                const response = await fetch(`/api/email-api/${title}`);
+                const mail = await response.json();
+                console.log(mail);
+    
+            } catch (error) {
+                console.log(error)
+            } finally {
+            
+            }
+        };
+
+        await sendAdminMail(`A new Final manuscript has been submitted to Precision Chronicles \n Title: ${manuscripttitle}`, `${mainauthoremail}`)
+
         return { message: "Registered Successfully!" }
     }
 }
