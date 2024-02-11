@@ -277,6 +277,49 @@
 
 	let checked = false
 
+	function convertToRoman(num: number) {
+            const romanNumerals = [
+              'I',
+              'II',
+              'III',
+              'IV',
+              'V',
+              'VI',
+              'VII',
+              'VIII',
+              'IX',
+              'X',
+              'XI',
+              'XII'
+            ];
+        
+            // Check if the input is within the valid range
+            if (num < 1 || num > 12) {
+              return 'Number out of range (1 to 12)';
+            }
+        
+            return romanNumerals[num - 1];
+        }
+    
+        let chn;
+        
+        let current = new Date();
+
+        const convertDate = (currentDate: Date) => {
+            const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        
+            // Format the date using toLocaleDateString
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+        
+            let month = current.getMonth() + 1
+        
+            let numeral = convertToRoman(month)
+        
+            let volume = `Volume 1 Issue ${numeral} - ${formattedDate}`
+        
+            return volume;
+        };
+
 </script>
 
 <div class=" w-full py-[5vh] min-h-screen">
@@ -367,11 +410,11 @@
 						/>
 					</div>
 					<div class=" border-2 border-[#E2E4E5] rounded-md space-y-5 py-8 px-6">
-						<h2 class=" text-lg text-[#242426] font-medium">Main Author Name</h2>
+						<h2 class=" text-lg text-[#242426] font-medium">All Author Name</h2>
 
 						<input
 							type="text"
-							name="main-author name"
+							name="allauthorname"
 							placeholder={`Enter Main Author Name`}
 							bind:value={formData.mainauthorname}
 							class=" focus-within:outline-none box-in outline-none focus-within:border-none focus:border-none focus:outline-transparent w-full border-l-0 border-t-0 border-r-0 border-b-2 border-[#E2E4E5]"
