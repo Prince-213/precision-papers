@@ -131,6 +131,7 @@ export const actions = {
                 state: manstatus,
                 no_of_pages: noofpages,
                 initial_man: former,
+                main_author: mainauthorname
                 },
             ])
             .eq('journal_id', journalid)

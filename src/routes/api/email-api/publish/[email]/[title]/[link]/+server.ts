@@ -37,8 +37,11 @@ export const GET: RequestHandler = async (requestEvent) => {
         <p style="color: #666;">We are delighted to inform you that your manuscript titled "${title}" has been successfully published on our platform. Congratulations!</p>
 
         <p style="color: #666;">You can access your published manuscript by clicking on the following link:</p>
-
-        <a href={${link}} style="color: #4caf50; text-decoration: none;">View Published Manuscript</a>
+        
+        <button style=' background-color: #4caf50; padding: 10px'>
+            <a href={'${link}'} style="color: #000; text-decoration: none;">View Published Manuscript</a>
+        </button>
+        
 
         <p style="color: #666;">Feel free to share this link with your colleagues and peers. We appreciate your valuable contribution to our platform.</p>
 
