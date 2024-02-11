@@ -81,7 +81,50 @@ export const actions = {
         let file;
         const bucket = "journals";
 
-       
+        function convertToRoman(num: number) {
+            const romanNumerals = [
+              'I',
+              'II',
+              'III',
+              'IV',
+              'V',
+              'VI',
+              'VII',
+              'VIII',
+              'IX',
+              'X',
+              'XI',
+              'XII'
+            ];
+        
+            // Check if the input is within the valid range
+            if (num < 1 || num > 12) {
+              return 'Number out of range (1 to 12)';
+            }
+        
+            return romanNumerals[num - 1];
+        }
+    
+        let chn;
+        
+        let current = new Date();
+
+        const convertDate = (currentDate: Date) => {
+            const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        
+            // Format the date using toLocaleDateString
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+        
+            let month = current.getMonth() + 1
+        
+            let numeral = convertToRoman(month)
+        
+            let volume = `Volume 1 Issue ${numeral} - ${formattedDate}`
+        
+            return volume;
+        };
+
+    
 
         const sendPublishedMail = async ( email: string,  title: any, link: any ) => {
             try {
@@ -119,7 +162,7 @@ export const actions = {
                 {
                 title: manuscripttitle,
                 subject_area: subjectarea,
-                volume: "Volume 1 Issue XII, Jan 2024",
+                volume: convertDate(current),
                 category: journal,
                 address: country,
                 intro: intro,
