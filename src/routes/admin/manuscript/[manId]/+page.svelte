@@ -80,7 +80,7 @@
 	let path = `https://xedepqtbxdmvqbsbsrrd.supabase.co/storage/v1/object/public/journals/public/${manu}`;
 
 	import { Section } from 'flowbite-svelte-blocks';
-	import { Label, Input, Modal, Textarea, Select } from 'flowbite-svelte';
+	import { Label, Input, Modal, Textarea, Select, Breadcrumb, BreadcrumbItem } from 'flowbite-svelte';
 	import { invalidateAll } from '$app/navigation';
 	import { enhance } from '$app/forms';
 	import { BadgeCheckIcon, UserSearchIcon } from 'lucide-svelte';
@@ -337,6 +337,13 @@
 			</div>
 		</div>
 	{:else}
+		<header class=" pl-[4%]">
+			<Breadcrumb aria-label="Default breadcrumb example">
+				<BreadcrumbItem href="/" home>Home</BreadcrumbItem>
+				<BreadcrumbItem href="/admin/dashboard">Dashboard</BreadcrumbItem>
+				<BreadcrumbItem >Edit Page</BreadcrumbItem>
+			</Breadcrumb>
+		</header>
 		<div class=" flex justify-between items-start">
 			<Modal title="Edit Manuscript" bind:open={defaultModal} class="min-w-full">
 				<div>

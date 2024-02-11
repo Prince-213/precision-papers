@@ -3,6 +3,8 @@
 	
 	import { supabase } from '$lib/supabaseClient';
 
+	import Header from './../../../../components/Header.svelte'
+
 	type journals = {
 		id: number;
 		created_at: string;
@@ -93,6 +95,7 @@
 	{#if $navigating}
 		<ListPlaceholder class=" h-[30em]" />
 	{:else}
+		
 		<div class=" w-full flex justify-center space-x-4 mx-auto">
 			<button class=" p-3 rounded-md bg-red-500 text-white">Pending</button>
 			<button class=" p-3 rounded-md bg-yellow-400 text-white">Review</button>
