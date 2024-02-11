@@ -42,15 +42,34 @@
 	const handleCancel = () => {
 		defaultModal = false;
 	};
-	const handleDelete = async (id: any) => {
-		const { error } = await supabase.from('journals').delete().eq('journal_id', `${id}`);
+
+	$: expectedDelete = 'Delete'
+	$: journalDelete = ''
+
+	const openModal = (title: any, id: any) => {
+		expectedDelete = `Title: ${title} || \n Id: ${id}`;
+		journalDelete = id;
+		defaultModal = true
+	}
+
+	const handleDelete = async (id: any, title: string) => {
+
+		
+		const { error } = await supabase.from('journals').delete().eq('journal_id', `${journalDelete}`);
 		if (!error) {
 			defaultModal = false;
 			invalidateAll()
 		}
 	};
 
-	
+	const summaryDate = ( input: any ) => {
+		const inputDateString = input;
+		const inputDate = new Date(inputDateString);
+		const options = { year: 'numeric', month: 'short', day: 'numeric' };
+		const formattedDate = inputDate.toLocaleDateString('en-US', options);
+
+		return formattedDate
+	}
 
 	import {
 		Table,
@@ -87,19 +106,20 @@
 				bind:inputValue={searchTerm}
 			>
 				<TableHead>
-					
+					<TableHeadCell>Date</TableHeadCell>
 					<TableHeadCell>Title</TableHeadCell>
 					<TableHeadCell>Subject Area</TableHeadCell>
 					<TableHeadCell>Status</TableHeadCell>
-					<TableHeadCell>Date</TableHeadCell>
+					
 					<TableHeadCell>Manage</TableHeadCell>
+					<TableHeadCell>Journal Id</TableHeadCell>
 				</TableHead>
 				<TableBody>
 					{#each filteredItems as item}
 						<TableBodyRow>
-							
-							<TableBodyCell class="">{item.title}</TableBodyCell>
-							<TableBodyCell>{item['subject_area']}</TableBodyCell>
+							<TableBodyCell>{ summaryDate(item['created_at']) }</TableBodyCell>
+							<TableBodyCell class="  whitespace-pre-wrap"> <h1 class=" w-[80%] ">{item.title}</h1> </TableBodyCell>
+							<TableBodyCell class=" whitespace-pre-wrap">{item['subject_area']}</TableBodyCell>
 							<TableBodyCell>
 								{#if item['state'] == 'pending'}
 									<button class=" p-3 rounded-md bg-red-500 text-white">Pending</button>
@@ -110,17 +130,21 @@
 								{/if}
 								
 							</TableBodyCell>
-							<TableBodyCell>{item['created_at']}</TableBodyCell>
+							
 
 							<TableBodyCell>
 								<div class=" flex items-center space-x-4">
 									<Button href={`/admin/manuscript/${item['journal_id']}`} >
 										<EditOutline class=" text-blue-500" />
 									</Button>
-									<button on:click={() => (defaultModal = true)}>
+									<button on:click={() => openModal(item.title, item['journal_id'])}>
 										<TrashBinOutline class=" text-red-500" />
 									</button>
 								</div>
+							</TableBodyCell>
+
+							<TableBodyCell class=" whitespace-pre-wrap">
+								<h1>{item['journal_id']}</h1>
 							</TableBodyCell>
 						</TableBodyRow>
 						<Modal title="" bind:open={defaultModal} autoclose size="sm" class="w-full">
@@ -139,9 +163,12 @@
 							<p class="mb-4 text-gray-500 dark:text-gray-300 text-center">
 								Are you sure you want to delete this item?
 							</p>
+							<p class=" font-semibold text-red-500 text-center">
+								{expectedDelete}
+							</p>
 							<div class="flex justify-center items-center space-x-4">
 								<Button color="light" on:click={handleCancel}>No, cancel</Button>
-								<Button color="red" on:click={() => handleDelete(item['journal_id'])}
+								<Button color="red" on:click={() => handleDelete(item['journal_id'], item['title'])}
 									>Yes, I'm sure</Button
 								>
 							</div>

@@ -69,7 +69,7 @@ export const actions = {
   
       let numeral = convertToRoman(month)
   
-      let volume = `Volume 2 Issue ${numeral} - ${formattedDate}`
+      let volume = `Volume 1 Issue ${numeral} - ${formattedDate}`
   
       return volume;
     };

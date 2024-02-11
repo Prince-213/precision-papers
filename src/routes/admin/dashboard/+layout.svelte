@@ -99,7 +99,7 @@
 		</div>
 	</header>
 	<main class=" space-x-6 flex justify-between w-full min-h-screen p-5">
-		<aside class=" w-[20%] h-screen space-y-6">
+		<aside class=" w-[14%] h-screen space-y-6">
 			<div class=" space-y-5 p-6 bg-white h-fit rounded-xl">
 				
 				{#each links as link, idx}
@@ -109,7 +109,7 @@
 						}}
 						class={` w-full p-4 rounded-md ${
 							active == link.path ? 'bg-[#eaf2fd]' : 'bg-transparent'
-						}    flex space-x-8 items-center cursor-pointer`}
+						}    flex space-x-4 items-center cursor-pointer`}
 					>
 						<svelte:component
 							this={link.icon}
@@ -146,13 +146,13 @@
             }}
 				class=" w-full rounded-xl flex px-10 py-4 space-x-4 bg-white cursor-pointer"
 			>
-				<button   class=" flex items-center space-x-6">
+				<button   class=" flex items-center space-x-4">
 					<img src={logout} alt="" />
 					<p>Logout</p>
 				</button>
 			</form>
 		</aside>
-		<div class=" w-[80%] h-[84vh] overflow-y-scroll bg-white rounded-xl p-6">
+		<div class=" w-[86%] h-[84vh] overflow-y-scroll bg-white rounded-xl p-6">
 			<slot />
 		</div>
 	</main>
