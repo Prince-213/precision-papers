@@ -32,7 +32,7 @@ export const GET: RequestHandler = async (requestEvent) => {
         secure: true,
         auth: {
             user: 'precisionchronicles@gmail.com',
-            pass: 'rcinxergssvykcyz'
+            pass: 'resjalnexerzehpc'
         }
     })
     

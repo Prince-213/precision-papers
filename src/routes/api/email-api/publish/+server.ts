@@ -1,4 +1,4 @@
-import type { RequestHandler } from './$types';
+import type { RequestHandler } from './[email]/[title]/[link]/$types';
 
 
 
@@ -19,11 +19,11 @@ type journal = {
     description: string[]
 }
 
-export const GET: RequestHandler = async (requestEvent) => {
-    const { params } = requestEvent
-    const email = params['email']
-    const title = params['title']
-    const link = params['link']
+export const POST: RequestHandler = async (requestEvent) => {
+
+    const { request } = requestEvent;
+
+    let { email, title, link } = await request.json();
 
     const html = `
     <body style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
@@ -64,7 +64,7 @@ export const GET: RequestHandler = async (requestEvent) => {
         secure: true,
         auth: {
             user: 'precisionchronicles@gmail.com',
-            pass: 'rcinxergssvykcyz'
+            pass: 'resjalnexerzehpc'
         }
     })
     
@@ -77,7 +77,5 @@ export const GET: RequestHandler = async (requestEvent) => {
 
     
     
-    
-    
-    return json({info});
+    return json(info, {status: 200});
 };

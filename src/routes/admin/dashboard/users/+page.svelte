@@ -62,24 +62,54 @@
 
 	$: sending = false;
 
-	
+	let sumMail = subscribers.map(item => item.email)
+	let authMail = authors.map(item => item['author_email'])
+
+	let allEmail = [...sumMail, ...authMail]
 
 	const sendMail = async () => {
 		try {
 			
 			if (recipient != 'Everyone') {
 				sending = true;
-				let response = await fetch(`/api/email-api/custom/${recipient}/${subject}:- ${message}`);
-				let messageResponse = await response.json();
-				console.log(messageResponse)
+				try {
+                const response = await fetch(`/api/email-api/publish`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                    email: recipient,
+                    content: message,
+                    subject: subject
+                    }),
+                });
+        
+                const responseData = await response.json();
+                console.log(responseData);
+            } catch (e) {
+                console.error(e);
+            }
 			} else {
 				sending = true;
-				for (let index = 0; index < filteredItems.length; index++) {
-					const element = filteredItems[index]['email'];
-					let responseAll = await fetch(`/api/email-api/custom/${element}/${subject}:- ${message}`);
-					let messageResponseAll = await responseAll.json();
-					console.log(messageResponseAll)
-				}
+				try {
+                const response = await fetch(`/api/email-api/publish`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                    email: allEmail,
+                    content: message,
+                    subject: subject
+                    }),
+                });
+        
+                const responseData = await response.json();
+                console.log(responseData);
+            } catch (e) {
+                console.error(e);
+            }
 				
 			}
 		} catch (error) {

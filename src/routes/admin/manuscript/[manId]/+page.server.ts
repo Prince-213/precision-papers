@@ -128,29 +128,43 @@ export const actions = {
 
         const sendPublishedMail = async ( email: string,  title: any, link: any ) => {
             try {
-                
-                const response = await fetch(`/api/email-api/publish/${email}/${title}/${link}`);
-                const mail = await response.json();
-                console.log(mail);
-                
-            } catch (error) {
-                console.log(error)
-            } finally {
-                
+                const response = await fetch(`/api/email-api/publish`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                    email: email,
+                    title: title,
+                    link: link
+                    }),
+                });
+        
+                const responseData = await response.json();
+                console.log(responseData);
+            } catch (e) {
+                console.error(e);
             }
         };
 
         const sendReviewMail = async ( email: string,  title: any, id: any ) => {
             try {
-                
-                const response = await fetch(`/api/email-api/review/${email}/${title}/${id}`);
-                const mail = await response.json();
-                console.log(mail);
-                
-            } catch (error) {
-                console.log(error)
-            } finally {
-                
+                const response = await fetch(`/api/email-api/review`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                    email: email,
+                    title: title,
+                    id: id
+                    }),
+                });
+        
+                const responseData = await response.json();
+                console.log(responseData);
+            } catch (e) {
+                console.error(e);
             }
         };
     

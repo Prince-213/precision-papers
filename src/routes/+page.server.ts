@@ -10,7 +10,7 @@ export const load = (async () => {
     .select('*')
     .eq('state', 'published')
 
-    console.log(data)
+    //console.log(data)
 
 
         

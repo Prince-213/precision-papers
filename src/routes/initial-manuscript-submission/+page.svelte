@@ -97,11 +97,7 @@
 		initialmanuscript: ''
 	};
 
-	const emailAdd = formData['mainauthoremail'];
-
-	let message = '';
-
-	import emailjs from '@emailjs/browser';
+	
 
 	export const snapshot = {
 		capture: () => {
@@ -112,29 +108,7 @@
 		}
 	};
 
-	const sendMail = async (email: string, title: any) => {
-		let maile: string = await email;
-		console.log(`the emial id ${maile}`);
-		try {
-			const response = await fetch(`/api/email-api/initial/${maile}/${title}`);
-			const mail = await response.json();
-			console.log(mail);
-		} catch (error) {
-			console.log(error);
-		} finally {
-		}
-	};
-
-	const sendAdminMail = async (title: any) => {
-		try {
-			const response = await fetch(`/api/email-api/${title}`);
-			const mail = await response.json();
-			console.log(mail);
-		} catch (error) {
-			console.log(error);
-		} finally {
-		}
-	};
+	
 
 	let currentDate = new Date().toJSON().slice(0, 10);
 	console.log(currentDate);
