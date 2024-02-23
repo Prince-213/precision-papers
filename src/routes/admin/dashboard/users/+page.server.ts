@@ -10,12 +10,10 @@ export const load = async ({  }) => {
 
     //const data = (await supabase.from("users").select("*")).data
 
-    const auths = (await supabase.from("journals").select("*")).data
+    const { data } = await supabase.from("journals").select("*")
 
-    
 
     return {
-        //subscribers: data ?? [],
-        authors: auths ?? []
+        authors: data ?? []
     };
 }

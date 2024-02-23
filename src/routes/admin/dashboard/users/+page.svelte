@@ -40,7 +40,7 @@
 
 	//$: subscribers = data.subscribers;
 
-    $: authors = data.authors;
+    let authors = data.authors;
 
 	let items = [
 		{ id: 1, maker: 'Toyota', type: 'ABC', make: 2017 },
@@ -71,7 +71,7 @@
 			if (recipient != 'Everyone') {
 				sending = true;
 				try {
-                const response = await fetch(`/api/email-api/publish`, {
+                const response = await fetch(`/api/email-api/custom`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -91,7 +91,7 @@
 			} else {
 				sending = true;
 				try {
-                const response = await fetch(`/api/email-api/publish`, {
+                const response = await fetch(`/api/email-api/custom`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
