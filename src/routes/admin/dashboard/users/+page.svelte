@@ -38,7 +38,7 @@
 
 	let searchTerm = '';
 
-	$: subscribers = data.subscribers;
+	//$: subscribers = data.subscribers;
 
     $: authors = data.authors;
 
@@ -48,9 +48,7 @@
 		{ id: 3, maker: 'Volvo', type: 'FGH', make: 2019 },
 		{ id: 4, maker: 'Saab', type: 'IJK', make: 2020 }
 	];
-	$: filteredItems = subscribers.filter(
-		(item) => item.email.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
-	);
+	
 
     $: filteredAuths = authors.filter(
 		(item) => item.author_email.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
@@ -62,10 +60,10 @@
 
 	$: sending = false;
 
-	let sumMail = subscribers.map(item => item.email)
+	//let sumMail = subscribers.map(item => item.email)
 	let authMail = authors.map(item => item['author_email'])
 
-	let allEmail = [...sumMail, ...authMail]
+	let allEmail = [...authMail]
 
 	const sendMail = async () => {
 		try {
@@ -193,29 +191,10 @@
 					<TableHeadCell>Manage</TableHeadCell>
 				</TableHead>
 				<TableBody>
-					{#each filteredItems as item, idx}
-						<TableBodyRow class=" font-medium">
-							<TableBodyCell>{idx + 1}</TableBodyCell>
-							<TableBodyCell>{item['email']}</TableBodyCell>
-							<TableBodyCell>{item['first_name']}{item['last_name']}</TableBodyCell>
-                            <TableBodyCell class=" uppercase">{item['role']}</TableBodyCell>
-							<TableBodyCell>
-								<div class=" flex items-center space-x-4">
-									<button
-										on:click={() => {
-											recipient = item['email'];
-											formModal = true;
-										}}
-									>
-										<MailBoxSolid class=" text-blue-500" />
-									</button>
-								</div>
-							</TableBodyCell>
-						</TableBodyRow>
-					{/each}
+					
                     {#each filteredAuths as item, idx}
 						<TableBodyRow class=" font-medium">
-							<TableBodyCell>{filteredItems.length + 1 + idx}</TableBodyCell>
+							<TableBodyCell>{idx + 1}</TableBodyCell>
 							<TableBodyCell>{item['author_email']}</TableBodyCell>
 							<TableBodyCell>{item['main_author']}</TableBodyCell>
                             <TableBodyCell class=" font-medium uppercase">{item['role']}</TableBodyCell>
