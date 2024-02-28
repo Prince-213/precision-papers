@@ -15,7 +15,7 @@ export const actions = {
 
         console.log(data)
 
-        if (name == 'dog' && pass == 'dog') {
+        if (name == process.env.ADMIN_USER && pass == process.env.ADMIN_PASS) {
             cookies.set("status", 'admin', {path: '/'})
             return { message: "Access Grandted", error: false }
             throw redirect(303, url.searchParams.get('redirectTo') || '/')
