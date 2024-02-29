@@ -613,7 +613,7 @@
 					class=" lg:w-full max-h-fit bg-white border-2 shadow-none cursor-pointer transition-all space-y-4 duration-200 hover:shadow-md items-start shadow-gray-300 rounded-2xl justify-between p-10 flex"
 				>
 					<div class=" space-y-8">
-						<p class=" text-gray-800 font-medium text-2xl">
+						<p class=" hidden text-gray-800 font-medium text-2xl">
 							Subject Area: {journals[0]?.subject_area}
 						</p>
 						{#if journals[0].state == 'published'}
