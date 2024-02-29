@@ -180,7 +180,7 @@
 							<div class=" p-8 pb-2 space-y-4">
 								<h2 class=" lg:text-lg font-semibold">{item.title}</h2>
 
-								<div class=" flex items-center space-x-3">
+								<div class=" items-center space-x-3 hidden">
 									<p class=" font-medium lg:text-lg">Subject Area:</p>
 									<p class=" text-justify font-semibold text-blue-600 line-clamp-2">
 										{item.subject_area}
