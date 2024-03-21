@@ -14,12 +14,15 @@ export const load = (async ( { fetch } ) => {
     const res = await fetch('/api/journals-api');
     const journals: journal = await res.json();
     
-    let { data, error } = await supabase
+    /* let { data, error } = await supabase
     .from('categories')
-    .select('*')
+    .select('*') */
+
+    const cat = await fetch('/api/journal-categories');
+	const categories = await cat.json();
 
     return {
         journals: journals,
-        updated: data?? []
+        updated: categories ?? []
     };
 }) satisfies LayoutServerLoad;

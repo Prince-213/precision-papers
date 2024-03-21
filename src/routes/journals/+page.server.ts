@@ -1,16 +1,15 @@
 import { supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
 
-
 type journals = {
-    id: number,
-    title: string,
-    poster: string,
-    intro: string,
-    description: string[]
-}[]
+	id: number;
+	title: string;
+	poster: string;
+	intro: string;
+	description: string[];
+}[];
 
-type updated = {
+/* type updated = {
     id: number;
     created_at: string;
     category: string;
@@ -20,25 +19,25 @@ type updated = {
     description: string;
     short: string;
 }[]
+ */
+export const load = (async ({ fetch }) => {
+	const res = await fetch('/api/journals-api');
+	const journals: journals = await res.json();
 
-export const load = (async ( { fetch } ) => {
+	const cat = await fetch('/api/journal-categories');
+	const categories = await cat.json();
 
-    const res = await fetch('/api/journals-api');
-    const journals: journals = await res.json();
-
-
-    let { data, error } = await supabase
+	/* let { data, error } = await supabase
     .from('categories')
-    .select('*')
-    
+    .select('*') */
 
-    return {
-        journals: journals,
-        
-        streamed: {
-            updated: data ??[],
-        }
-    };
+	return {
+		journals: journals,
+
+		streamed: {
+			updated: categories ?? []
+		}
+	};
 }) satisfies PageServerLoad;
 
 export const prerender = true;

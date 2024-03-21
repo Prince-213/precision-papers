@@ -1,6 +1,6 @@
 import { supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
-
+/* 
 type search = {
     id: number,
     title: string,
@@ -13,25 +13,39 @@ type search = {
     journal_category: string,
     address: string
     intro: string
+} */
+
+type Categories = {
+    id: number;
+    created_at: string;
+    title: string;
+    poster: string;
+    intro: string;
+    description: string;
+    short: string;
 }
 
-
-export const load = (async ( { fetch, params, url } ) => {
+export const load = (async ( { fetch, params} ) => {
 
     const { searchId } = params;
 
-    let { data, error } = await supabase
+    const { data } = await supabase
     .from('journals')
     .select("*")
     .eq('category', searchId)
     .eq('state', 'published')
 
-    let title = (await supabase
+    const cat = await fetch('/api/journal-categories');
+	const categories: Categories[] = await cat.json();
+
+    const title = categories.filter(item => item.short == searchId)
+
+    /* let title = (await supabase
     .from('categories')
     .select("*")
     .eq('short', searchId)
     
-    ).data
+    ).data */
 
     
 
