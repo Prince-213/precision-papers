@@ -26,7 +26,7 @@
 	});
 </script>
 
-<div class=" relative font-inter">
+<div class=" relative font-inter ">
 	{#if !path.includes('/admin')}
 		<Header />
 	{/if}
