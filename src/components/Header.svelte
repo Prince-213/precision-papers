@@ -25,6 +25,8 @@
 
 	let open = false;
 
+	let searchValue: string = "";
+
 	const toggle = () => {
 		open = !open;
 		menuAnimation.setSpeed(3);
@@ -55,7 +57,8 @@
 	});
 </script>
 
-<div class=" sticky w-full z-50">
+<div class="  sticky w-full z-50">
+	
 	<header class=" border-b-2 py-4 w-full mx-auto shadow-xl rounded-br-md rounded-bl-md bg-white">
 		<div class=" flex w-[95%] mx-auto justify-between items-center">
 			<div class=" w-[40%] flex justify-between items-center">
@@ -66,7 +69,14 @@
 				</div>
 
 				<div class="hidden lg:block w-[60%]">
-					<Search />
+					<!-- <Search /> -->
+					<form  on:submit|preventDefault={ () => goto(`/search/${searchValue}`) }  class=" py-3 px-5 rounded-xl bg-slate-5 flex items-center space-x-4 border-2 border-blue-100 shadow-lg">
+						<button type="submit" class=" border-none outline-none">
+							<SearchOutline />
+						</button>
+						
+						<input type="text"  class=" p-0 border-none outline-none ring-0 focus:border-none focus:outline-none ring-offset-0" placeholder="Click to search journal" required bind:value={searchValue} />
+					</form>
 				</div>
 			</div>
 			<div class="hidden lg:flex space-x-6 items-center">
