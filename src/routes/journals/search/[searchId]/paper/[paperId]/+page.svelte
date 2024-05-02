@@ -157,7 +157,7 @@
 				<div class=" text-lg lg:justify-start justify-between flex items-center space-x-3">
 					<div class=" flex items-center space-x-3">
 						<BookOpenOutline />
-						<h3>No. Of Views :</h3>
+						<h3>Volume :</h3>
 					</div>
 					<p class=" font-semibold">{journals[0]?.volume}</p>
 				</div>

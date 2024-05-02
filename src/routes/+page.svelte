@@ -17,8 +17,9 @@
 	import Loader from '../components/Loader.svelte';
 
 
+	
 
-	const blog = data.blog;
+	let blog = data.blog;
 
 	console.log(blog)
 
@@ -36,7 +37,7 @@
 	let searchTerm = 'published'
 
 
-	const firstThreeItems = blog.slice(0, 3);
+	let firstThreeItems = blog.slice(0, 3);
 	
 </script>
 
@@ -171,7 +172,7 @@
 				<h1 class=" lg:text-xl font-medium">TRENDING JOURNALS</h1>
 				<h1 class=" lg:text-4xl font-semibold">Show About Our Latest Published Journals</h1>
 				<div class=" lg:grid-cols-3 grid-cols-1 gap-10 w-full grid  mt-10">
-					{#each firstThreeItems as item}
+					{#each blog as item}
 						<a
 							href={`/journals/search/${item.category}/paper/${item.journal_id}`}
 							data-sveltekit-preload-data="hover"
