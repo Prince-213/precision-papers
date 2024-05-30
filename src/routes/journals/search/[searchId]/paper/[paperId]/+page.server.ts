@@ -61,3 +61,6 @@ export const load = (async ( { fetch, params, url } ) => {
         
     };
 }) satisfies PageServerLoad;
+
+export const prerender = true;
+export const ssr = true;

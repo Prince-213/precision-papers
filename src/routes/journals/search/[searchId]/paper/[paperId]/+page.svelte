@@ -38,7 +38,7 @@
 </script>
 
 <svelte:head>
-	<title>{journals[0].title}</title>
+	<title>{journals[0].title} precision chronicles</title>
 	<script>
 		(function (c, l, a, r, i, t, y) {
 			c[a] =
