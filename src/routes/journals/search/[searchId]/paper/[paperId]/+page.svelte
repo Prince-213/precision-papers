@@ -39,23 +39,23 @@
 
 <svelte:head>
 	<title>{journals[0].title} precision chronicles</title>
-	<script>
-		(function (c, l, a, r, i, t, y) {
-			c[a] =
-				c[a] ||
-				function () {
-					(c[a].q = c[a].q || []).push(arguments);
-				};
-			t = l.createElement(r);
-			t.async = 1;
-			t.src = 'https://www.clarity.ms/tag/' + i + '?ref=bwt';
-			y = l.getElementsByTagName(r)[0];
-			y.parentNode.insertBefore(t, y);
-		})(window, document, 'clarity', 'script', 'kocoimrx6u');
-	</script>
+	<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "BlogPosting",
+		  "headline": `${journals[0].title}`,
+		  "description": `${journals[0].intro}`,
+		  "author": {
+			"@type": "Person",
+			"name": `${journals[0].main_author}`
+		  },
+		  "datePublished": `${formattedDate}`,
+		  "articleBody": `${journals[0].into}`
+		}
+		</script>
 	<meta
 		name="description"
-		content="Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research."
+		content={journals[0]?.intro}
 	/>
 	<meta
 		name="keywords"
