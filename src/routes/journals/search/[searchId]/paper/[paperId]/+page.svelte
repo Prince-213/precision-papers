@@ -5,6 +5,7 @@
 	import { BadgeCheckIcon, UserSearchIcon, EyeIcon } from 'lucide-svelte';
 	import { navigating } from '$app/stores';
 	import { onMount } from 'svelte';
+	import SEO from '../../../../../../lib/components/SEO.svelte'
 
 	export let data;
 
@@ -35,7 +36,13 @@
 	const options = { year: 'numeric', month: 'short', day: 'numeric' };
 	const formattedDate = inputDate.toLocaleDateString('en-US', options);
 
+	let title = journals[0]?.title
+	let metadescription = journals[0].intro
 </script>
+
+
+
+<SEO   {title} {metadescription} />
 
 <svelte:head>
 	<title>{journals[0].title} precision chronicles</title>
