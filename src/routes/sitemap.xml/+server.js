@@ -3,6 +3,24 @@ const posts = [
 	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-05-30' }
 ]; //list of posts containing a slug [{title: "Test title", slug: "test-title", updatedAt: "2023-01-01"}]
 
+const categories = [
+	'pdse',
+	'resm',
+	'ptai',
+	'ccs',
+	'pcs',
+	'scs',
+	'wtr',
+	'fct',
+	'crw',
+	'bir',
+	'sbt',
+	'cet',
+	'dmt',
+	'sisr',
+	'dlp'
+];
+
 const pages = [
 	'about',
 	'eligibility',
@@ -55,7 +73,7 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
 				? null
 				: `
   <url>
-    <loc>${website}/journal/search/${post.slug}</loc>
+    <loc>${website}/journals/search/${post.slug}</loc>
     <changefreq>weekly</changefreq>
     <lastmod>${post.updatedAt}</lastmod>
     <priority>0.3</priority>
@@ -63,4 +81,32 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
   `
 		)
 		.join('')}
+  
+    ${categories
+			.map(
+				(item) =>
+					`
+    <url>
+      <loc>${website}/journals/category/${item}</loc>
+      <changefreq>weekly</changefreq>
+      <lastmod>${new Date()}</lastmod>
+      <priority>0.3</priority>
+    </url>
+    `
+			)
+			.join('')}
+
+      ${categories
+				.map(
+					(item) =>
+						`
+      <url>
+        <loc>${website}/journals/search/${item}</loc>
+        <changefreq>weekly</changefreq>
+        <lastmod>${new Date()}</lastmod>
+        <priority>0.3</priority>
+      </url>
+      `
+				)
+				.join('')}
 </urlset>`;
