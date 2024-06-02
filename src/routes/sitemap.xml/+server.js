@@ -1,6 +1,6 @@
 const posts = [
-	{ title: 'Search Id', slug: 'searchId', updatedAt: '2024-05-30' },
-	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-05-30' }
+	{ title: 'Search Id', slug: 'searchId', updatedAt: '2024-06-02T17:51:10:855' },
+	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-06-02T17:51:10:855' }
 ]; //list of posts containing a slug [{title: "Test title", slug: "test-title", updatedAt: "2023-01-01"}]
 
 function formatDate(date) {
