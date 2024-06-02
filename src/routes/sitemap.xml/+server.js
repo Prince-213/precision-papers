@@ -3,6 +3,21 @@ const posts = [
 	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-05-30' }
 ]; //list of posts containing a slug [{title: "Test title", slug: "test-title", updatedAt: "2023-01-01"}]
 
+function formatDate(date) {
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+	const day = String(date.getDate()).padStart(2, '0');
+	const hours = String(date.getHours()).padStart(2, '0');
+	const minutes = String(date.getMinutes()).padStart(2, '0');
+	const seconds = String(date.getSeconds()).padStart(2, '0');
+	const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+
+	return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}:${milliseconds}`;
+}
+
+const currentDate = new Date();
+const formattedDate = formatDate(currentDate);
+
 const categories = [
 	'pdse',
 	'resm',
@@ -55,6 +70,7 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
     <loc>${site}</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
+
   </url>
   ${pages
 		.map(
@@ -75,7 +91,7 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
   <url>
     <loc>${website}/journals/search/${post.slug}</loc>
     <changefreq>weekly</changefreq>
-    <lastmod>${post.updatedAt}</lastmod>
+    <lastmod>${formattedDate}</lastmod>
     <priority>0.3</priority>
   </url>
   `
@@ -89,7 +105,7 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
     <url>
       <loc>${website}/journals/category/${item}</loc>
       <changefreq>weekly</changefreq>
-      <lastmod>${new Date()}</lastmod>
+      <lastmod>${formattedDate}</lastmod>
       <priority>0.3</priority>
     </url>
     `
@@ -103,7 +119,7 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
       <url>
         <loc>${website}/journals/search/${item}</loc>
         <changefreq>weekly</changefreq>
-        <lastmod>${new Date()}</lastmod>
+        <lastmod>${formattedDate}</lastmod>
         <priority>0.3</priority>
       </url>
       `
