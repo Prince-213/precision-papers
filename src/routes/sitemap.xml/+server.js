@@ -16,7 +16,7 @@ function formatDate(date) {
 }
 
 const currentDate = new Date();
-const formattedDate = formatDate(currentDate);
+const formattedDate = '2022-06-04';
 
 const categories = [
 	'pdse',
