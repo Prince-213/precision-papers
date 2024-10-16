@@ -69,6 +69,7 @@ export async function GET({ url }) {
 	return response;
 }
 
+//DId it not see the change
 const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
   xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
