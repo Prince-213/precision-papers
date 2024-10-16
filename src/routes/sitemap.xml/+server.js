@@ -127,9 +127,9 @@ const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8
 			(journal) =>
 				`
     <url>
-      <loc>${website}/journals/search/${journal.category}/paper/${journal.id}</loc>
+      <loc>${website}/journals/search/${journal.category}/paper/${journal.journal_id}</loc>
       <changefreq>weekly</changefreq>
-      <lastmod>${formatDate(new Date(journal.updatedAt))}</lastmod>
+      <lastmod>${formatDate(Date.now())}</lastmod>
       <priority>0.3</priority>
     </url>`
 		)
