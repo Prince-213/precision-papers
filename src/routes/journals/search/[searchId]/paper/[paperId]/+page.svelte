@@ -87,6 +87,11 @@
 	Research Article Submission,
 	Editorial Board."
 	/>
+	<meta property="og:title" content={journals[0]?.title} />
+  <meta property="og:description" content={journals[0]?.description} />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://myblog.com/{journals[0]?.id}" />
+  
 </svelte:head>
 
 <div class=" w-[90%] font-poppins mx-auto min-h-screen space-y-10 pb-[5vh]">

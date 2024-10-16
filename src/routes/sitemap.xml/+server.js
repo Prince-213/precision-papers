@@ -1,3 +1,5 @@
+import { supabase } from '$lib/supabaseClient';
+
 const posts = [
 	{ title: 'Search Id', slug: 'searchId', updatedAt: '2024-06-02T17:51:10:855' },
 	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-06-02T17:51:10:855' }
@@ -50,14 +52,24 @@ const website = 'https://www.precisionchronicles.com';
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url }) {
-	const body = sitemap(posts, pages);
+	const { data: journals, error } = await supabase
+		.from('journals')
+		.select('*')
+		.in('category', categories); // categories array
+
+	if (error) {
+		console.error('Error fetching journals:', error);
+	}
+
+	// Continue to generate the sitemap using the fetched journals
+	const body = sitemap(posts, pages, journals);
 	const response = new Response(body);
 	response.headers.set('Cache-Control', 'max-age=0, s-maxage=3600');
 	response.headers.set('Content-Type', 'application/xml');
 	return response;
 }
 
-const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
+const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8" ?>
 <urlset
   xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
@@ -70,8 +82,8 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
     <loc>${site}</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-
   </url>
+
   ${pages
 		.map(
 			(page) => `
@@ -79,10 +91,10 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
     <loc>${website}/${page}</loc>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-  </url>
-  `
+  </url>`
 		)
 		.join('')}
+
   ${posts
 		.map((post) =>
 			post.visible
@@ -93,36 +105,33 @@ const sitemap = (posts, pages) => `<?xml version="1.0" encoding="UTF-8" ?>
     <changefreq>weekly</changefreq>
     <lastmod>${formattedDate}</lastmod>
     <priority>0.3</priority>
-  </url>
-  `
+  </url>`
 		)
 		.join('')}
-  
-    ${categories
-			.map(
-				(item) =>
-					`
+
+  ${categories
+		.map(
+			(item) =>
+				`
     <url>
       <loc>${website}/journals/category/${item}</loc>
       <changefreq>weekly</changefreq>
       <lastmod>${formattedDate}</lastmod>
       <priority>0.3</priority>
-    </url>
-    `
-			)
-			.join('')}
+    </url>`
+		)
+		.join('')}
 
-      ${categories
-				.map(
-					(item) =>
-						`
-      <url>
-        <loc>${website}/journals/search/${item}</loc>
-        <changefreq>weekly</changefreq>
-        <lastmod>${formattedDate}</lastmod>
-        <priority>0.3</priority>
-      </url>
-      `
-				)
-				.join('')}
+  ${journals
+		.map(
+			(journal) =>
+				`
+    <url>
+      <loc>${website}/journals/search/${journal.category}/paper/${journal.id}</loc>
+      <changefreq>weekly</changefreq>
+      <lastmod>${formatDate(new Date(journal.updatedAt))}</lastmod>
+      <priority>0.3</priority>
+    </url>`
+		)
+		.join('')}
 </urlset>`;
