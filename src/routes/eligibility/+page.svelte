@@ -35,7 +35,18 @@
 </script>
 
 <svelte:head>
-	<title>ELIGIBILITY</title>
+  <title>Eligibility | Precision Chronicles</title>
+	<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Eligibility",
+      "description": "One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.",
+      "url": "https://www.precisionchronicles.com/eligibility"
+    }
+  </script>
+  <meta name="description" content="One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication." />
+  <meta name="keywords" content="eligibilty, our eligibility, company values" />
 </svelte:head>
 
 {#if $navigating}

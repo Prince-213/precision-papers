@@ -42,6 +42,15 @@
 </script>
 
 <svelte:head>
+	<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Home",
+      "description": "Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.",
+      "url": "https://www.precisionchronicles.com"
+    }
+  </script>
 	<title>PRECISION CHRONICLES</title>
 	<script>
 		(function (c, l, a, r, i, t, y) {

@@ -1,17 +1,13 @@
 import { supabase } from '$lib/supabaseClient';
 
 const posts = [
-	{ title: 'Search Id', slug: 'searchId', updatedAt: '2024-06-02T17:51:10:855' },
-	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-06-02T17:51:10:855' }
-]; //list of posts containing a slug [{title: "Test title", slug: "test-title", updatedAt: "2023-01-01"}]
+	{ title: 'Search Id', slug: 'searchId', updatedAt: '2024-06-02T17:51:10.855Z' },
+	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-06-02T17:51:10.855Z' }
+]; // Example posts
 
 function formatDate(date) {
-	const isoString = date.toISOString(); // Get the date in ISO format
-	return isoString.split('.')[0]; // Remove milliseconds
+	return date.toISOString().split('.')[0] + 'Z'; // ISO format with Z for UTC
 }
-
-const currentDate = new Date();
-const formattedDate = formatDate(currentDate);
 
 const categories = [
 	'pdse',
@@ -38,7 +34,7 @@ const pages = [
 	'initial-manuscript-submission',
 	'journals',
 	'search'
-]; //list of pages as a string ex. ["about", "blog", "contact"]
+];
 
 const site = 'https://www.precisionchronicles.com';
 const website = 'https://www.precisionchronicles.com';
@@ -48,13 +44,12 @@ export async function GET() {
 	const { data: journals, error } = await supabase
 		.from('journals')
 		.select('*')
-		.in('category', categories); // categories array
+		.in('category', categories);
 
 	if (error) {
 		console.error('Error fetching journals:', error);
 	}
 
-	// Continue to generate the sitemap using the fetched journals
 	const body = sitemap(posts, pages, journals);
 	const response = new Response(body);
 	response.headers.set('Cache-Control', 'max-age=0, s-maxage=3600');
@@ -63,14 +58,7 @@ export async function GET() {
 }
 
 const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8" ?>
-<urlset
-  xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
-  xmlns:xhtml="https://www.w3.org/1999/xhtml"
-  xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0"
-  xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
-  xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
->
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${site}</loc>
     <changefreq>daily</changefreq>
@@ -89,14 +77,12 @@ const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8
 		.join('')}
 
   ${posts
-		.map((post) =>
-			post.visible
-				? null
-				: `
+		.map(
+			(post) => `
   <url>
     <loc>${website}/journals/search/${post.slug}</loc>
     <changefreq>weekly</changefreq>
-    <lastmod>${formattedDate}</lastmod>
+    <lastmod>${formatDate(new Date(post.updatedAt))}</lastmod>
     <priority>0.3</priority>
   </url>`
 		)
@@ -104,27 +90,25 @@ const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8
 
   ${categories
 		.map(
-			(item) =>
-				`
-    <url>
-      <loc>${website}/journals/category/${item}</loc>
-      <changefreq>weekly</changefreq>
-      <lastmod>${formattedDate}</lastmod>
-      <priority>0.3</priority>
-    </url>`
+			(item) => `
+  <url>
+    <loc>${website}/journals/category/${item}</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>${formatDate(new Date())}</lastmod>
+    <priority>0.3</priority>
+  </url>`
 		)
 		.join('')}
 
   ${journals
 		.map(
-			(journal) =>
-				`
-    <url>
-      <loc>${website}/journals/search/${journal.category}/paper/${journal.journal_id}</loc>
-      <changefreq>weekly</changefreq>
-      <lastmod>${formatDate(new Date(journal.created_at))}</lastmod>
-      <priority>0.3</priority>
-    </url>`
+			(journal) => `
+  <url>
+    <loc>${website}/journals/search/${journal.category}/paper/${journal.journal_id}</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>${formatDate(new Date(journal.created_at))}</lastmod>
+    <priority>0.3</priority>
+  </url>`
 		)
 		.join('')}
 </urlset>`;

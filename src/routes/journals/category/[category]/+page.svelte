@@ -35,6 +35,12 @@
 	
 </script>
 
+<svelte:head>
+  <title>Journals Category | Precision Chronicles</title>
+  <meta name="description" content="One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication." />
+  <meta name="keywords" content="eligibilty, our eligibility, company values" />
+</svelte:head>
+
 <div class=" font-inter w-full min-h-screen pb-[10vh]">
 	{#if $navigating}
 		<ImagePlaceholder />

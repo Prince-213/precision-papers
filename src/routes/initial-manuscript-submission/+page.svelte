@@ -161,6 +161,15 @@
 
 <svelte:head>
 	<title>INITIAL MANUSCRIPT</title>
+	<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Initial Mamuscript Submission",
+      "description": "Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.",
+      "url": "https://www.precisionchronicles.com/initial-manuscript-submission"
+    }
+  </script>
 	<meta
 		name="Precision chronicles Initial Manuscript Submission"
 		content="Welcome to Precision Chronicles, submit manuscripts."

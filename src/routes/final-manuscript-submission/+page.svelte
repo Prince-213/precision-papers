@@ -65,7 +65,43 @@
 </script>
 
 <svelte:head>
-	<title>FINAL MANUSCRIPT</title>
+  <title>Final Manuscript Submission | Precision Chronicles</title>
+	<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Final Mamuscript Submission",
+      "description": "Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.",
+      "url": "https://www.precisionchronicles.com/final-manuscript-submission"
+    }
+  </script>
+  <meta
+		name="description"
+		content="Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research."
+	/>
+	<meta
+		name="keywords"
+		content="Precision Chronicles, precision chronicles, precisionchronicles, precision, journals, precision journals, articles, Precision chronicles, precision Chronicles, Academic Journals,
+	Scholarly Publications,
+	Research Papers,
+	Manuscript Submission,
+	Precision Chronicles,
+	Journal Articles,
+	Peer-reviewed Journals,
+	Scholarly Writing,
+	Academic Publishing,
+	Manuscript Review,
+	Submission Guidelines,
+	Editorial Process,
+	Open Access Journals,
+	Research Manuscripts,
+	Scholarly Communication,
+	Publication Platform,
+	Author Guidelines,
+	Journal Submission System,
+	Research Article Submission,
+	Editorial Board."
+	/>
 </svelte:head>
 
 {#if $navigating}
