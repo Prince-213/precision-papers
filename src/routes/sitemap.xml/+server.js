@@ -1,9 +1,84 @@
 import { supabase } from '$lib/supabaseClient';
 
+const currentTime = new Date();
+
 const posts = [
-	{ title: 'Search Id', slug: 'searchId', updatedAt: '2024-06-02T17:51:10.855Z' },
-	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-06-02T17:51:10.855Z' }
-]; // Example posts
+	{
+		title: 'International Journal of PowerGrid Dynamics Systems Engineering',
+		short: 'pdse',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Recycled Energy Systems and Management',
+		short: 'resm',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Power-Tech Advances and Innovations',
+		short: 'ptai',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Engineering Design and Cognitive Computing Systems',
+		short: 'ccs',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Precision Control Systems',
+		short: 'pcs',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Space Communication Spectrum',
+		short: 'scs',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Wireless Technologies Review',
+		short: 'wtr',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Future Communication Trends',
+		short: 'fct',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Cyber Resilience Review',
+		short: 'crw',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Computer Science and Biometric Innovations Review',
+		short: 'bir',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Computer Science and Smart Biometric Trends',
+		short: 'sbt',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Biomedical and Computer Engineering Trends',
+		short: 'cet',
+		updatedAt: currentTime
+	},
+	{
+		title: 'Advance Journal of Database Management Trends',
+		short: 'dmt',
+		updatedAt: currentTime
+	},
+	{
+		title: 'Advance Journal of Secure Information Systems Review',
+		short: 'sisr',
+		updatedAt: currentTime
+	},
+	{
+		title: 'International Journal of Advanced Deep Learning Perspectives',
+		short: 'adl',
+		updatedAt: currentTime
+	}
+];
 
 /**
  * @param {Date} date
@@ -35,8 +110,7 @@ const pages = [
 	'eligibility',
 	'final-manuscript-submission',
 	'initial-manuscript-submission',
-	'journals',
-	'search'
+	'journals'
 ];
 
 const site = 'https://www.precisionchronicles.com';
@@ -81,9 +155,9 @@ const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8
 
   ${posts
 		.map(
-			(/** @type {{ slug: any; updatedAt: string | number | Date; }} */ post) => `
+			(post) => `
   <url>
-    <loc>${website}/journals/search/${post.slug}</loc>
+    <loc>${website}/journals/search/${post.short}</loc>
     <changefreq>weekly</changefreq>
     <lastmod>${formatDate(new Date(post.updatedAt))}</lastmod>
     <priority>0.3</priority>
@@ -109,7 +183,7 @@ const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8
 				/** @type {{ category: any; journal_id: any; created_at: string | number | Date; }} */ journal
 			) => `
   <url>
-    <loc>${website}/journals/search/${journal.category}/paper/${journal.journal_id}</loc>
+    <loc>${website}/paper/${journal.journal_id}</loc>
     <changefreq>weekly</changefreq>
     <lastmod>${formatDate(new Date(journal.created_at))}</lastmod>
     <priority>0.3</priority>

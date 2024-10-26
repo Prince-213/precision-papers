@@ -94,11 +94,11 @@
 							</p>
 
 							<button
-								on:click={() => navigate(`/paper/${item.journal_id}`)}
+								on:click={() => goto(`/paper/${item.journal_id}`)}
 								type="submit"
 								class=" py-3 hover:shadow-md w-full px-8 border-[#BBBFC1] border-2 rounded-md transition-all duration-100"
 							>
-							<a href={`${getPath}/paper/${item.journal_id}`} data-sveltekit-preload-data='hover'>Read More</a>
+							<a href={`/paper/${item.journal_id}`} data-sveltekit-preload-data='hover'>Read More</a>
 								
 							</button>
 						</div>

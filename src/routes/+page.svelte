@@ -183,7 +183,7 @@
 				<div class=" lg:grid-cols-3 grid-cols-1 gap-10 w-full grid  mt-10">
 					{#each blog as item}
 						<a
-							href={`/journals/search/${item.category}/paper/${item.journal_id}`}
+							href={`/paper/${item.journal_id}`}
 							data-sveltekit-preload-data="hover"
 							class=" text-left flex flex-col justify-between border-2 rounded-md lg:w-full space-y-5"
 						>

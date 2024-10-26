@@ -5,7 +5,7 @@
 	import { BadgeCheckIcon, UserSearchIcon, EyeIcon } from 'lucide-svelte';
 	import { navigating } from '$app/stores';
 	import { onMount } from 'svelte';
-	import SEO from '../../../../../../lib/components/SEO.svelte'
+	import SEO from '../../../lib/components/SEO.svelte'
 
 	export let data;
 
@@ -16,7 +16,11 @@
 		ArchiveDownloadSolid,
 		UsersOutline
 	} from 'flowbite-svelte-icons';
-	import Loader from '../../../../../../components/Loader.svelte';
+	import Loader from '../../../components/Loader.svelte';
+
+	import { page } from '$app/stores';
+
+  $: fullUrl = $page.url.href;
 
 	const { journals } = data;
 
@@ -38,6 +42,7 @@
 
 	let title = journals[0]?.title
 	let metadescription = journals[0].intro
+
 </script>
 
 
@@ -89,8 +94,8 @@
 	/>
 	<meta property="og:title" content={journals[0]?.title} />
   <meta property="og:description" content={journals[0]?.description} />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://myblog.com/{journals[0]?.id}" />
+  <meta property="og:url" content={fullUrl} />
+	<meta property="og:image" content="https://www.precisionchronicles.com/frame2.png" />
   
 </svelte:head>
 
@@ -100,6 +105,7 @@
 	{:else}
 		<div class=" flex flex-col justify-start items-start py-20 space-y-8">
 			<h1 class=" underline uppercase text-2xl lg:text-3xl font-semibold">
+				
 				{journals[0]?.title}
 			</h1>
 			<div
