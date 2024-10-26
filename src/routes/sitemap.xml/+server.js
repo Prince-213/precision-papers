@@ -5,6 +5,9 @@ const posts = [
 	{ title: 'Paper Id', slug: 'paperId', updatedAt: '2024-06-02T17:51:10.855Z' }
 ]; // Example posts
 
+/**
+ * @param {Date} date
+ */
 function formatDate(date) {
 	return date.toISOString().split('.')[0] + 'Z'; // ISO format with Z for UTC
 }
@@ -78,7 +81,7 @@ const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8
 
   ${posts
 		.map(
-			(post) => `
+			(/** @type {{ slug: any; updatedAt: string | number | Date; }} */ post) => `
   <url>
     <loc>${website}/journals/search/${post.slug}</loc>
     <changefreq>weekly</changefreq>
@@ -102,7 +105,9 @@ const sitemap = (posts, pages, journals) => `<?xml version="1.0" encoding="UTF-8
 
   ${journals
 		.map(
-			(journal) => `
+			(
+				/** @type {{ category: any; journal_id: any; created_at: string | number | Date; }} */ journal
+			) => `
   <url>
     <loc>${website}/journals/search/${journal.category}/paper/${journal.journal_id}</loc>
     <changefreq>weekly</changefreq>

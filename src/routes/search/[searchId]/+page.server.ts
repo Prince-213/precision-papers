@@ -15,17 +15,7 @@ type search = {
     intro: string
 } */
 
-type Categories = {
-	id: number;
-	created_at: string;
-	title: string;
-	poster: string;
-	intro: string;
-	description: string;
-	short: string;
-};
-
-export const load = (async ({ fetch, params }) => {
+export const load = (async ({ params }) => {
 	const { searchId } = params;
 
 	const { data } = await supabase
@@ -34,14 +24,16 @@ export const load = (async ({ fetch, params }) => {
 
 		.eq('state', 'published');
 
-	const cat = await fetch('/api/journal-categories');
-	const categories: Categories[] = await cat.json();
-
 	// const title = categories.filter((item) => item.short == searchId);
 
 	const title = searchId;
 
-	const content = data?.filter((item) => item.title.toLowerCase().includes(title));
+	const content = data?.filter(
+		(item) =>
+			item.title.toLowerCase().includes(title) ||
+			item.main_author.toLowerCase().includes(title) ||
+			item.intro.toLowerCase().includes(title)
+	);
 
 	/* let title = (await supabase
     .from('categories')

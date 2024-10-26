@@ -1,4 +1,3 @@
-import { supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
 
 type journals = {
