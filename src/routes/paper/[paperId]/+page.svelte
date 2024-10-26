@@ -50,7 +50,7 @@
 <SEO   {title} {metadescription} />
 
 <svelte:head>
-	<title>{journals[0].title} precision chronicles</title>
+	<title>{journals[0].title}</title>
 	<script type="application/ld+json">
 		{
 		  "@context": "https://schema.org",
