@@ -6,19 +6,12 @@ const posts = [
 ]; //list of posts containing a slug [{title: "Test title", slug: "test-title", updatedAt: "2023-01-01"}]
 
 function formatDate(date) {
-	const year = date.getFullYear();
-	const month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
-	const day = String(date.getDate()).padStart(2, '0');
-	const hours = String(date.getHours()).padStart(2, '0');
-	const minutes = String(date.getMinutes()).padStart(2, '0');
-	const seconds = String(date.getSeconds()).padStart(2, '0');
-	const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
-
-	return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}:${milliseconds}`;
+	const isoString = date.toISOString(); // Get the date in ISO format
+	return isoString.split('.')[0]; // Remove milliseconds
 }
 
 const currentDate = new Date();
-const formattedDate = '2024-05-30';
+const formattedDate = formatDate(currentDate);
 
 const categories = [
 	'pdse',
@@ -51,7 +44,7 @@ const site = 'https://www.precisionchronicles.com';
 const website = 'https://www.precisionchronicles.com';
 
 /** @type {import('./$types').RequestHandler} */
-export async function GET({ url }) {
+export async function GET() {
 	const { data: journals, error } = await supabase
 		.from('journals')
 		.select('*')
