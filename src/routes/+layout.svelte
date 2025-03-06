@@ -26,7 +26,7 @@
 	});
 </script>
 
-<div class=" relative font-inter ">
+<div class=" relative font-inter min-h-screen flex flex-col justify-between ">
 	{#if !path.includes('/admin')}
 		<Header />
 	{/if}

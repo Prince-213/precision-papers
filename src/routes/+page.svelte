@@ -98,7 +98,7 @@
 {#if $navigating}
 	<Loader />
 {:else}
-	<div class=" w-full">
+	<div class=" w-full min-h-screen">
 		<div class="main w-full flex pt-[15%] pb-[18vh] lg:pt-[0%] bg-cover overflow-x-hidden">
 			<div
 				
