@@ -113,8 +113,8 @@ const pages = [
 	'journals'
 ];
 
-const site = 'https://www.precisionchronicles.com';
-const website = 'https://www.precisionchronicles.com';
+const site = 'https://www.precisionchronicles.org';
+const website = 'https://www.precisionchronicles.org';
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET() {
