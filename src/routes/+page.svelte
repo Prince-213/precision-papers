@@ -48,7 +48,7 @@
       "@type": "WebPage",
       "name": "Home",
       "description": "Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.",
-      "url": "https://www.precisionchronicles.com"
+      "url": "https://www.precisionchronicles.org"
     }
   </script>
 	<title>PRECISION CHRONICLES</title>
@@ -101,14 +101,13 @@
 	<div class=" w-full">
 		<div class="main w-full flex pt-[15%] pb-[18vh] lg:pt-[0%] bg-cover overflow-x-hidden">
 			<div
-				use:reveal={{ transition: 'blur' }}
+				
 				class=" card w-[95%] lg:w-[60%] mx-auto flex items-center py-8 lg:py-10 h-fit mt-[10%] lg:mt-[8%] lg:ml-[6%] overflow-hidden"
 			>
 				<div class=" w-[90%] space-y-10 mx-auto">
 					<div class=" w-[90%] gap-4 flex flex-wrap lg:flex-nowrap">
 						{#each title as heading, idx}
 							<h1
-								use:reveal={{ transition: 'fly', y: 100, delay: (idx + 2) * 250 }}
 								class=" text-white font-extrabold font-nova text-4xl lg:text-5xl"
 							>
 								{heading}
