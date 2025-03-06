@@ -83,7 +83,7 @@
       "@type": "WebPage",
       "name": "About Us",
       "description": "Welcome to Precision Papers, a leading platform dedicated to fostering knowledge and innovation in the realms of deep learning, power system engineering, control systems, communication, cybersecurity, biometric technology, database management systems, information security, and biomedical engineering.",
-      "url": "https://www.precisionchronicles.com/about"
+      "url": "https://www.precisionchronicles.org/about"
     }
   </script>
   <meta name="description" content="Welcome to Precision Papers, a leading platform dedicated to fostering knowledge and innovation in the realms of deep learning, power system engineering, control systems, communication, cybersecurity, biometric technology, database management systems, information security, and biomedical engineering." />

@@ -72,7 +72,7 @@
       "@type": "WebPage",
       "name": "Final Mamuscript Submission",
       "description": "Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.",
-      "url": "https://www.precisionchronicles.com/final-manuscript-submission"
+      "url": "https://www.precisionchronicles.org/final-manuscript-submission"
     }
   </script>
   <meta

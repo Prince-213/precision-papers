@@ -42,7 +42,7 @@
       "@type": "WebPage",
       "name": "Eligibility",
       "description": "One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication.",
-      "url": "https://www.precisionchronicles.com/eligibility"
+      "url": "https://www.precisionchronicles.org/eligibility"
     }
   </script>
   <meta name="description" content="One of the world's largest fully open access journal publishers. We believe in openness, in scholarly publishing and research communication." />

@@ -31,7 +31,7 @@
       "@type": "WebPage",
       "name": "Journals",
       "description": "Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.",
-      "url": "https://www.precisionchronicles.com/journals"
+      "url": "https://www.precisionchronicles.org/journals"
     }
   </script>
 	<meta

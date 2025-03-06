@@ -167,7 +167,7 @@
       "@type": "WebPage",
       "name": "Initial Mamuscript Submission",
       "description": "Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.",
-      "url": "https://www.precisionchronicles.com/initial-manuscript-submission"
+      "url": "https://www.precisionchronicles.org/initial-manuscript-submission"
     }
   </script>
 	<meta
