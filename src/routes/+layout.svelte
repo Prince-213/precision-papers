@@ -28,7 +28,7 @@
 
 <svelte:head>
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/png" href="/frame2.png">
 
   <!-- Open Graph (OG) Meta Tags for Social Sharing -->
   <meta property="og:title" content="Precision Chronicles">
@@ -36,6 +36,7 @@
   <meta property="og:image" content="/frame2.png"> <!-- Change to your logo's URL -->
   <meta property="og:url" content="https://www.precisionchronicles.org/">
   <meta name="twitter:card" content="summary_large_image">
+	
 </svelte:head>
 
 <div class=" relative font-inter min-h-screen flex flex-col justify-between ">
