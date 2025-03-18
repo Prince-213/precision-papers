@@ -37,7 +37,7 @@
   <meta property="og:title" content={title} />
   <meta property="og:description" content={metadescription} />
   <meta property="og:url" content={$page.url.href} />
-  <meta property="og:image" content="https://www.precisionchronicles.org/frame2.webp" />
+  <meta property="og:image" content="https://www.precisionchronicles.org/frame2.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <script type="application/ld+json">
@@ -49,7 +49,7 @@
       "author": { "@type": "Person", "name": journal?.main_author },
       "datePublished": journal?.created_at,
       "articleBody": journal?.intro,
-      "image": "https://www.precisionchronicles.com/frame2.webp"
+      "image": "https://www.precisionchronicles.org/frame2.png"
     })}
   </script>
 </svelte:head>
