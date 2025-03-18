@@ -33,9 +33,12 @@
   <!-- Open Graph (OG) Meta Tags for Social Sharing -->
   <meta property="og:title" content="Precision Chronicles">
   <meta property="og:description" content="Welcome to Precision Chronicles, a distinguished hub for academic excellence and scholarly discourse. As a premier organization dedicated to the dissemination of cutting-edge research.">
-  <meta property="og:image" content="/frame2.png"> <!-- Change to your logo's URL -->
+  
   <meta property="og:url" content="https://www.precisionchronicles.org/">
   <meta name="twitter:card" content="summary_large_image">
+	<meta property="og:image" content="https://www.precisionchronicles.org/frame2.png">
+<meta property="twitter:image" content="https://www.precisionchronicles.org/frame2.png">
+<meta name="msapplication-TileImage" content="https://www.precisionchronicles.org/frame2.png">
 	
 </svelte:head>
 
